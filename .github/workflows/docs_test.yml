@@ -1,0 +1,51 @@
+name: Docs Tests
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs_test.yml'
+      - 'README.md'
+  push:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs_test.yml'
+      - 'README.md'
+
+jobs:
+  test-examples:
+    name: Run Examples
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - run: composer update --no-interaction --no-progress --no-ansi
+
+      - run: vendor/bin/behat -c docs/behat.yml
+
+
+  build-docs:
+    name: Build Documentation
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - name: Build API docs
+        run: |
+          php docker/initialize
+          docker/docs run --rm doctum build
+
+      - name: Build user docs
+        run: docker/docs run --rm sphinx build

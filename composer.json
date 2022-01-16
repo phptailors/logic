@@ -1,0 +1,46 @@
+{
+  "name": "phptailors/logic",
+  "description": "First-order logic",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "support": {
+    "issues": "https://github.com/phptailors/predicate/issues",
+    "source": "https://github.com/phptailors/predicate"
+  },
+  "authors": [
+    {
+      "name": "Paweł Tomulik",
+      "email": "ptomulik@meil.pw.edu.pl"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-pcre": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.4",
+    "phptailors/phpunit-inheritance": "dev-master",
+    "vimeo/psalm": "4.x-dev",
+    "psalm/plugin-phpunit": "^0.16",
+    "psy/psysh": "^0.11.1",
+    "behat/behat": "^3.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tailors\\Logic\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tailors\\Logic\\": "tests/src/",
+      "Tailors\\Logic\\Docs\\Behat\\": "docs/sphinx/behat/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  }
+}

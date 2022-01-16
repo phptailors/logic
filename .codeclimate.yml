@@ -1,0 +1,25 @@
+---
+version: "2"
+##checks:
+##  argument-count:
+##    config:
+##      threshold: 5
+exclude_patterns:
+  - ".psalm/"
+  - "build/"
+  - "docs/"
+  - "bin/"
+  - "vendor/"
+  - "**/tests/"
+  - "**/behat/"
+  - "**/vendor/"
+  - ".php-cs-fixer.dist.php"
+plugins:
+  phpcodesniffer:
+    enabled: true
+
+  duplication:
+    enabled: true
+
+  fixme:
+    enabled: true

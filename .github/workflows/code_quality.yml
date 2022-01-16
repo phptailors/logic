@@ -1,0 +1,47 @@
+name: Code Quality
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  coding-guidelines:
+    name: Coding Guidelines (php-cs-fixer)
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Instal PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+          tools: php-cs-fixer:3.4.0
+
+      - name: Run friendsofphp/php-cs-fixer
+        run: php-cs-fixer fix --diff --dry-run --show-progress=dots --using-cache=no --verbose
+
+  type-checker:
+    name: Type Checker (vimeo/psalm)
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+          tools: composer:v2
+
+      - name: Update dependencies with composer
+        run: composer update --no-interaction --no-ansi --no-progress
+
+      - name: Run vimeo/psalm on packages
+        run: vendor/bin/psalm --no-progress --shepherd --show-info=true --stats
