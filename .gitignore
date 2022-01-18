@@ -1,0 +1,42 @@
+# Dead end.
+/docs/tmp/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+*.bkp
+*.bak
+*~
+.~lock.*
+
+# Others
+vendor
+node_modules
+*.gem
+Gemfile.lock
+.bundle/*
+!.bundle/config
+
+# Jekyll
+_site
+.sass-cache
+.jekyll-metadata
+.jekyll-cache
+
+
+# From normal development branches (master, etc.)
+.phpunit.result.cache
+/bin/
+/build/
+/docker
+/docs/build/
+/docs/cache/
+/docs/sphinx/
+/tmp/
+composer.lock
