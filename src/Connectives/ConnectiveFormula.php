@@ -11,12 +11,14 @@
 namespace Tailors\Logic\Connectives;
 
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\FunctionalExpressionInterface;
 use Tailors\Logic\FunctionalExpressionTrait;
 
 /**
  * @psalm-immutable
+ * @template-implements FunctionalExpressionInterface<FormulaInterface>
  */
-final class ConnectiveFormula implements FormulaInterface
+final class ConnectiveFormula implements FormulaInterface, FunctionalExpressionInterface
 {
     /** @template-use FunctionalExpressionTrait<ConnectiveInterface,FormulaInterface> */
     use FunctionalExpressionTrait;

@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\SymbolNotationTrait;
 use Tailors\Logic\TermInterface;
 
 /**
@@ -22,6 +22,8 @@ use Tailors\Logic\TermInterface;
  */
 final class Constant implements FunctionInterface, TermInterface
 {
+    use SymbolNotationTrait;
+
     /**
      * @var mixed
      * @psalm-var T
@@ -64,10 +66,5 @@ final class Constant implements FunctionInterface, TermInterface
     {
         // FIXME: make it better
         return var_export($this->value, true);
-    }
-
-    public function notation(): int
-    {
-        return FunctionalInterface::NOTATION_SYMBOL;
     }
 }

@@ -60,7 +60,7 @@ api_url = api_url_base + '%s'
 # -- Project information -----------------------------------------------------
 
 project = 'Logic'
-copyright = '2020, Paweł Tomulik'
+copyright = '2022, Paweł Tomulik'
 author = 'Paweł Tomulik'
 
 # The short X.Y version

@@ -12,8 +12,10 @@ namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\SymbolNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
+use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
@@ -26,6 +28,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 final class ConstantTest extends TestCase
 {
     use ImplementsInterfaceTrait;
+    use UsesTraitTrait;
 
     public function setUp(): void
     {
@@ -40,6 +43,11 @@ final class ConstantTest extends TestCase
     public function testImplementsTermInterface(): void
     {
         $this->assertImplementsInterface(TermInterface::class, Constant::class);
+    }
+
+    public function testUsesSymbolNotationTrait(): void
+    {
+        $this->assertUsesTrait(SymbolNotationTrait::class, Constant::class);
     }
 
     public function testArity(): void
@@ -89,6 +97,7 @@ final class ConstantTest extends TestCase
     public function testNotation(): void
     {
         $const = new Constant(0);
+        /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctionalInterface::NOTATION_SYMBOL, $const->notation());
     }
 }

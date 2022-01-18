@@ -11,13 +11,15 @@
 namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\FunctionalExpressionInterface;
 use Tailors\Logic\FunctionalExpressionTrait;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ * @template-implements FunctionalExpressionInterface<TermInterface>
  */
-final class PredicateFormula implements FormulaInterface
+final class PredicateFormula implements FormulaInterface, FunctionalExpressionInterface
 {
     /** @template-use FunctionalExpressionTrait<PredicateInterface,TermInterface> */
     use FunctionalExpressionTrait;

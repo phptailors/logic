@@ -10,13 +10,15 @@
 
 namespace Tailors\Logic\Functions;
 
+use Tailors\Logic\FunctionalExpressionInterface;
 use Tailors\Logic\FunctionalExpressionTrait;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ * @template-implements FunctionalExpressionInterface<TermInterface>
  */
-final class FunctionTerm implements TermInterface
+final class FunctionTerm implements TermInterface, FunctionalExpressionInterface
 {
     /** @template-use FunctionalExpressionTrait<FunctionInterface,TermInterface> */
     use FunctionalExpressionTrait;
