@@ -65,6 +65,7 @@ final class SubTest extends TestCase
     /**
      * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
      */
     public function testWithReturnsFunctionTerm(): void
     {

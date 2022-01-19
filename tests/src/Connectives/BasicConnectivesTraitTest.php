@@ -32,7 +32,9 @@ final class BasicConnectivesTraitTest extends TestCase
      * @uses \Tailors\Logic\Connectives\BinaryConnectiveTrait::with
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
-     * @uses \Tailors\Logic\FunctorExpressionTrait::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      */
     public function testAnd(): void
     {
@@ -53,7 +55,9 @@ final class BasicConnectivesTraitTest extends TestCase
      * @uses \Tailors\Logic\Connectives\BinaryConnectiveTrait::with
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
-     * @uses \Tailors\Logic\FunctorExpressionTrait::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      */
     public function testOr(): void
     {

@@ -57,6 +57,7 @@ final class ConjunctionTest extends TestCase
 
     /**
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
      */
     public function testWithReturnsConnectiveFormula(): void
     {

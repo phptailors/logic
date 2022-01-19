@@ -14,9 +14,9 @@ namespace Tailors\Logic;
  * @psalm-immutable
  * @psalm-template Functor of FunctorInterface
  * @psalm-template Argument of ExpressionInterface
- * @psalm-require-implements FunctorExpressionInterface
+ * @template-implements FunctorExpressionInterface<Argument>
  */
-trait FunctorExpressionTrait
+abstract class AbstractFunctorExpression implements FunctorExpressionInterface
 {
     /**
      * @var Functor
@@ -29,6 +29,16 @@ trait FunctorExpressionTrait
     private $arguments;
 
     /**
+     * @psalm-param Functor $functor
+     * @psalm-param array<Argument> $arguments
+     */
+    public function __construct(FunctorInterface $functor, array $arguments)
+    {
+        $this->functor = $functor;
+        $this->arguments = $arguments;
+    }
+
+    /**
      * @psalm-return array<Argument>
      */
     public function arguments(): array
@@ -36,6 +46,9 @@ trait FunctorExpressionTrait
         return $this->arguments;
     }
 
+    /**
+     * @psalm-return Functor
+     */
     public function functor(): FunctorInterface
     {
         return $this->functor;

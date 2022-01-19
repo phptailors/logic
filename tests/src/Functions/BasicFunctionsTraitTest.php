@@ -40,12 +40,14 @@ final class BasicFunctionsTraitTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\Constant::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
      * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
      * @uses \Tailors\Logic\Functions\BinaryFunctionTrait::with
+     * @uses \Tailors\Logic\Functions\Constant::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::function
-     * @uses \Tailors\Logic\Functions\FunctionTerm::arguments
      */
     public function testSub(): void
     {
@@ -64,12 +66,14 @@ final class BasicFunctionsTraitTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\Constant::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
      * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
      * @uses \Tailors\Logic\Functions\BinaryFunctionTrait::with
+     * @uses \Tailors\Logic\Functions\Constant::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::function
-     * @uses \Tailors\Logic\Functions\FunctionTerm::arguments
      */
     public function testSum(): void
     {

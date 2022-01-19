@@ -14,37 +14,37 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \Tailors\Logic\FunctorExpressionTrait
+ * @covers \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
  */
-final class FunctorExpressionTraitTest extends TestCase
+final class AbstractFunctorExpressionTest extends TestCase
 {
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    /**
-     * @psalm-param array<ExpressionInterface> $arguments
-     */
-    public function getFunctorExpression(FunctorInterface $functor, array $arguments): ExpressionInterface
-    {
-        return new /** @psalm-immutable */ class($functor, $arguments) implements ExpressionInterface, FunctorExpressionInterface {
-            use FunctorExpressionTrait;
-
-            /**
-             * @psalm-param array<ExpressionInterface> $arguments
-             */
-            public function __construct(FunctorInterface $functor, array $arguments)
-            {
-                $this->functor = $functor;
-                $this->arguments = $arguments;
-            }
-        };
-    }
+//    /**
+//     * @psalm-param array<ExpressionInterface> $arguments
+//     */
+//    public function getFunctorExpression(FunctorInterface $functor, array $arguments): ExpressionInterface
+//    {
+//        return new /** @psalm-immutable */ class($functor, $arguments) implements ExpressionInterface, FunctorExpressionInterface {
+//            use AbstractFunctorExpression;
+//
+//            /**
+//             * @psalm-param array<ExpressionInterface> $arguments
+//             */
+//            public function __construct(FunctorInterface $functor, array $arguments)
+//            {
+//                $this->functor = $functor;
+//                $this->arguments = $arguments;
+//            }
+//        };
+//    }
 
     /**
      * @psalm-return array<array-key, array{
@@ -114,7 +114,11 @@ final class FunctorExpressionTraitTest extends TestCase
             ->willReturn($symbol)
         ;
 
-        $expression = $this->getFunctorExpression($functor, $arguments);
+        /** @var \PHPUnit\Framework\MockObject\MockObject&AbstractFunctorExpression */
+        $expression = $this->getMockBuilder(AbstractFunctorExpression::class)
+            ->setConstructorArgs([$functor, $arguments])
+            ->getMockForAbstractClass()
+        ;
 
         $this->assertSame($result, $expression->expressionString());
     }

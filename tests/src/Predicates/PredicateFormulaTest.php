@@ -37,6 +37,10 @@ final class PredicateFormulaTest extends TestCase
         $this->assertImplementsInterface(FormulaInterface::class, PredicateFormula::class);
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     */
     public function testPredicateReturnsProvidedPredicate(): void
     {
         $p = $this->getMockBuilder(PredicateInterface::class)->getMock();
@@ -46,6 +50,10 @@ final class PredicateFormulaTest extends TestCase
         $this->assertSame($p, $term->predicate());
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     */
     public function testFunctorReturnsProvidedPredicate(): void
     {
         $p = $this->getMockBuilder(PredicateInterface::class)->getMock();
@@ -55,6 +63,10 @@ final class PredicateFormulaTest extends TestCase
         $this->assertSame($p, $term->functor());
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     */
     public function testArgumentsReturnsProvidedArguments(): void
     {
         $p = $this->getMockBuilder(PredicateInterface::class)->getMock();
@@ -82,6 +94,13 @@ final class PredicateFormulaTest extends TestCase
      * @dataProvider providerExpressionStringReturnsFunctionExpression
      *
      * @psalm-param array<string> $symbols
+     *
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsList
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsString
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionString
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      */
     public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
     {

@@ -29,7 +29,9 @@ final class BinaryFunctionTraitTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\FunctorExpressionTrait::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
      * @uses \Tailors\Logic\Functions\FunctionTerm::function
      */

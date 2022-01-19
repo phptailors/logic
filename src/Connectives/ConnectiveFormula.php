@@ -10,27 +10,22 @@
 
 namespace Tailors\Logic\Connectives;
 
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
-use Tailors\Logic\FunctorExpressionInterface;
-use Tailors\Logic\FunctorExpressionTrait;
 
 /**
  * @psalm-immutable
- * @template-implements FunctorExpressionInterface<FormulaInterface>
+ * @template-extends AbstractFunctorExpression<ConnectiveInterface,FormulaInterface>
  */
-final class ConnectiveFormula implements FormulaInterface, FunctorExpressionInterface
+final class ConnectiveFormula extends AbstractFunctorExpression implements FormulaInterface
 {
-    /** @template-use FunctorExpressionTrait<ConnectiveInterface,FormulaInterface> */
-    use FunctorExpressionTrait;
-
-    public function __construct(ConnectiveInterface $functor, FormulaInterface ...$arguments)
+    public function __construct(ConnectiveInterface $connective, FormulaInterface ...$arguments)
     {
-        $this->functor = $functor;
-        $this->arguments = $arguments;
+        parent::__construct($connective, $arguments);
     }
 
     public function connective(): ConnectiveInterface
     {
-        return $this->functor;
+        return $this->functor();
     }
 }

@@ -36,6 +36,10 @@ final class ConnectiveFormulaTest extends TestCase
         $this->assertImplementsInterface(FormulaInterface::class, ConnectiveFormula::class);
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     */
     public function testConnectiveReturnsProvidedConnective(): void
     {
         $p = $this->getMockBuilder(ConnectiveInterface::class)->getMock();
@@ -45,6 +49,10 @@ final class ConnectiveFormulaTest extends TestCase
         $this->assertSame($p, $term->connective());
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
+     */
     public function testFunctorReturnsProvidedConnective(): void
     {
         $p = $this->getMockBuilder(ConnectiveInterface::class)->getMock();
@@ -54,6 +62,10 @@ final class ConnectiveFormulaTest extends TestCase
         $this->assertSame($p, $term->functor());
     }
 
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     */
     public function testArgumentsReturnsProvidedArguments(): void
     {
         $p = $this->getMockBuilder(ConnectiveInterface::class)->getMock();
@@ -81,6 +93,13 @@ final class ConnectiveFormulaTest extends TestCase
      * @dataProvider providerExpressionStringReturnsFunctionExpression
      *
      * @psalm-param array<string> $symbols
+     *
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsList
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsString
+     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionString
+     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      */
     public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
     {
