@@ -45,13 +45,13 @@ final class FunctionTermTest extends TestCase
         $this->assertSame($f, $term->function());
     }
 
-    public function testFunctionalReturnsProvidedFunction(): void
+    public function testFunctorReturnsProvidedFunction(): void
     {
         $f = $this->getMockBuilder(FunctionInterface::class)->getMock();
 
         /** @var FunctionInterface $f */
         $term = new FunctionTerm($f);
-        $this->assertSame($f, $term->functional());
+        $this->assertSame($f, $term->functor());
     }
 
     public function testArgumentsReturnsProvidedArguments(): void

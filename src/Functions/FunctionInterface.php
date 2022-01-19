@@ -10,14 +10,14 @@
 
 namespace Tailors\Logic\Functions;
 
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\FunctorInterface;
 
 /**
  * @psalm-immutable
  *
  * @psalm-template Ret
  */
-interface FunctionInterface extends FunctionalInterface
+interface FunctionInterface extends FunctorInterface
 {
     /**
      * @psalm-param mixed $arguments

@@ -33,6 +33,6 @@ final class SuffixNotationTraitTest extends TestCase
             use SuffixNotationTrait;
         };
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_SUFFIX, $trait->notation());
+        $this->assertSame(FunctorInterface::NOTATION_SUFFIX, $trait->notation());
     }
 }

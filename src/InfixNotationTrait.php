@@ -16,10 +16,10 @@ namespace Tailors\Logic;
 trait InfixNotationTrait
 {
     /**
-     * @psalm-return FunctionalInterface::NOTATION_INFIX
+     * @psalm-return FunctorInterface::NOTATION_INFIX
      */
     final public function notation(): int
     {
-        return FunctionalInterface::NOTATION_INFIX;
+        return FunctorInterface::NOTATION_INFIX;
     }
 }

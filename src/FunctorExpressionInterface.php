@@ -14,12 +14,12 @@ namespace Tailors\Logic;
  * @psalm-immutable
  * @psalm-template Argument of ExpressionInterface
  */
-interface FunctionalExpressionInterface
+interface FunctorExpressionInterface
 {
     /**
      * @psalm-return array<Argument>
      */
     public function arguments(): array;
 
-    public function functional(): FunctionalInterface;
+    public function functor(): FunctorInterface;
 }

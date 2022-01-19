@@ -17,7 +17,7 @@ namespace Tailors\Logic;
  *
  * @psalm-type Arity = 0|positive-int
  */
-interface FunctionalInterface extends SymbolInterface
+interface FunctorInterface extends SymbolInterface
 {
     public const NOTATION_PREFIX = 0;
     public const NOTATION_INFIX = 1;

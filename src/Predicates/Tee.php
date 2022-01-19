@@ -11,7 +11,7 @@
 namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\FormulaInterface;
-use Tailors\Logic\FunctionalExpressionInterface;
+use Tailors\Logic\FunctorExpressionInterface;
 use Tailors\Logic\SymbolNotationTrait;
 
 /**
@@ -42,7 +42,7 @@ final class Tee implements PredicateInterface, FormulaInterface
         return '⊤';
     }
 
-    public function expressionString(FunctionalExpressionInterface $parent = null): string
+    public function expressionString(FunctorExpressionInterface $parent = null): string
     {
         return $this->symbol();
     }

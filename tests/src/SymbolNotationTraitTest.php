@@ -33,6 +33,6 @@ final class SymbolNotationTraitTest extends TestCase
             use SymbolNotationTrait;
         };
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_SYMBOL, $trait->notation());
+        $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $trait->notation());
     }
 }

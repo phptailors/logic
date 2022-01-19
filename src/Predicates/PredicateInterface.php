@@ -10,12 +10,12 @@
 
 namespace Tailors\Logic\Predicates;
 
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\FunctorInterface;
 
 /**
  * @psalm-immutable
  */
-interface PredicateInterface extends FunctionalInterface
+interface PredicateInterface extends FunctorInterface
 {
     /**
      * @psalm-param mixed $arguments

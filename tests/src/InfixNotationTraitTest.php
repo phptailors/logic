@@ -33,6 +33,6 @@ final class InfixNotationTraitTest extends TestCase
             use InfixNotationTrait;
         };
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_INFIX, $trait->notation());
+        $this->assertSame(FunctorInterface::NOTATION_INFIX, $trait->notation());
     }
 }

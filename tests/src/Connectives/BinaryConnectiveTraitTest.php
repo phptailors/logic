@@ -29,7 +29,7 @@ final class BinaryConnectiveTraitTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\FunctionalExpressionTrait::arguments
+     * @uses \Tailors\Logic\FunctorExpressionTrait::arguments
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
      * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
      */

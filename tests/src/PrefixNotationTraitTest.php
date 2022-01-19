@@ -33,6 +33,6 @@ final class PrefixNotationTraitTest extends TestCase
             use PrefixNotationTrait;
         };
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_PREFIX, $trait->notation());
+        $this->assertSame(FunctorInterface::NOTATION_PREFIX, $trait->notation());
     }
 }

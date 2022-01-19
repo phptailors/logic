@@ -11,7 +11,7 @@
 namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\TestCase;
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\SymbolNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -98,6 +98,6 @@ final class ConstantTest extends TestCase
     {
         $const = new Constant(0);
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_SYMBOL, $const->notation());
+        $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $const->notation());
     }
 }

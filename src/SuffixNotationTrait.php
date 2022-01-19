@@ -16,10 +16,10 @@ namespace Tailors\Logic;
 trait SuffixNotationTrait
 {
     /**
-     * @psalm-return FunctionalInterface::NOTATION_SUFFIX
+     * @psalm-return FunctorInterface::NOTATION_SUFFIX
      */
     final public function notation(): int
     {
-        return FunctionalInterface::NOTATION_SUFFIX;
+        return FunctorInterface::NOTATION_SUFFIX;
     }
 }

@@ -16,10 +16,10 @@ namespace Tailors\Logic;
 trait PrefixNotationTrait
 {
     /**
-     * @psalm-return FunctionalInterface::NOTATION_PREFIX
+     * @psalm-return FunctorInterface::NOTATION_PREFIX
      */
     public function notation(): int
     {
-        return FunctionalInterface::NOTATION_PREFIX;
+        return FunctorInterface::NOTATION_PREFIX;
     }
 }

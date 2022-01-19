@@ -29,7 +29,7 @@ final class UnaryPredicateTraitTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\FunctionalExpressionTrait::arguments
+     * @uses \Tailors\Logic\FunctorExpressionTrait::arguments
      * @uses \Tailors\Logic\Predicates\PredicateFormula::__construct
      * @uses \Tailors\Logic\Predicates\PredicateFormula::predicate
      */

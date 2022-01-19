@@ -11,27 +11,27 @@
 namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\FormulaInterface;
-use Tailors\Logic\FunctionalExpressionInterface;
-use Tailors\Logic\FunctionalExpressionTrait;
+use Tailors\Logic\FunctorExpressionInterface;
+use Tailors\Logic\FunctorExpressionTrait;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
- * @template-implements FunctionalExpressionInterface<TermInterface>
+ * @template-implements FunctorExpressionInterface<TermInterface>
  */
-final class PredicateFormula implements FormulaInterface, FunctionalExpressionInterface
+final class PredicateFormula implements FormulaInterface, FunctorExpressionInterface
 {
-    /** @template-use FunctionalExpressionTrait<PredicateInterface,TermInterface> */
-    use FunctionalExpressionTrait;
+    /** @template-use FunctorExpressionTrait<PredicateInterface,TermInterface> */
+    use FunctorExpressionTrait;
 
-    public function __construct(PredicateInterface $functional, TermInterface ...$arguments)
+    public function __construct(PredicateInterface $predicate, TermInterface ...$arguments)
     {
-        $this->functional = $functional;
+        $this->functor = $predicate;
         $this->arguments = $arguments;
     }
 
     public function predicate(): PredicateInterface
     {
-        return $this->functional;
+        return $this->functor;
     }
 }

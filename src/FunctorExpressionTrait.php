@@ -12,16 +12,16 @@ namespace Tailors\Logic;
 
 /**
  * @psalm-immutable
- * @psalm-template Functional of FunctionalInterface
+ * @psalm-template Functor of FunctorInterface
  * @psalm-template Argument of ExpressionInterface
- * @psalm-require-implements FunctionalExpressionInterface
+ * @psalm-require-implements FunctorExpressionInterface
  */
-trait FunctionalExpressionTrait
+trait FunctorExpressionTrait
 {
     /**
-     * @var Functional
+     * @var Functor
      */
-    private $functional;
+    private $functor;
 
     /**
      * @var array<Argument>
@@ -36,23 +36,23 @@ trait FunctionalExpressionTrait
         return $this->arguments;
     }
 
-    public function functional(): FunctionalInterface
+    public function functor(): FunctorInterface
     {
-        return $this->functional;
+        return $this->functor;
     }
 
-    public function expressionString(FunctionalExpressionInterface $parent = null): string
+    public function expressionString(FunctorExpressionInterface $parent = null): string
     {
-        $symbol = $this->functional()->symbol();
+        $symbol = $this->functor()->symbol();
 
-        switch ($this->functional()->notation()) {
-            case FunctionalInterface::NOTATION_INFIX:
+        switch ($this->functor()->notation()) {
+            case FunctorInterface::NOTATION_INFIX:
                 return '('.$this->expressionArgumentsString(' '.$symbol.' ').')';
 
-            case FunctionalInterface::NOTATION_SUFFIX:
+            case FunctorInterface::NOTATION_SUFFIX:
                 return '('.$this->expressionArgumentsString(', ').')'.$symbol;
 
-            case FunctionalInterface::NOTATION_SYMBOL:
+            case FunctorInterface::NOTATION_SYMBOL:
                 return $symbol;
 
             default:

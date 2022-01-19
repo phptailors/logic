@@ -10,12 +10,12 @@
 
 namespace Tailors\Logic\Connectives;
 
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\FunctorInterface;
 
 /**
  * @psalm-immutable
  */
-interface ConnectiveInterface extends FunctionalInterface
+interface ConnectiveInterface extends FunctorInterface
 {
     public function apply(bool ...$arguments): bool;
 }

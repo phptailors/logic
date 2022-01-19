@@ -16,10 +16,10 @@ namespace Tailors\Logic;
 trait SymbolNotationTrait
 {
     /**
-     * @psalm-return FunctionalInterface::NOTATION_SYMBOL
+     * @psalm-return FunctorInterface::NOTATION_SYMBOL
      */
     final public function notation(): int
     {
-        return FunctionalInterface::NOTATION_SYMBOL;
+        return FunctorInterface::NOTATION_SYMBOL;
     }
 }

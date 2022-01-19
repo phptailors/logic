@@ -14,13 +14,13 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
- * @covers \Tailors\Logic\FunctionalExpressionTrait
+ * @covers \Tailors\Logic\FunctorExpressionTrait
  *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
  */
-final class FunctionalExpressionTraitTest extends TestCase
+final class FunctorExpressionTraitTest extends TestCase
 {
     public function setUp(): void
     {
@@ -30,17 +30,17 @@ final class FunctionalExpressionTraitTest extends TestCase
     /**
      * @psalm-param array<ExpressionInterface> $arguments
      */
-    public function getFunctionalExpression(FunctionalInterface $functional, array $arguments): ExpressionInterface
+    public function getFunctorExpression(FunctorInterface $functor, array $arguments): ExpressionInterface
     {
-        return new /** @psalm-immutable */ class($functional, $arguments) implements ExpressionInterface, FunctionalExpressionInterface {
-            use FunctionalExpressionTrait;
+        return new /** @psalm-immutable */ class($functor, $arguments) implements ExpressionInterface, FunctorExpressionInterface {
+            use FunctorExpressionTrait;
 
             /**
              * @psalm-param array<ExpressionInterface> $arguments
              */
-            public function __construct(FunctionalInterface $functional, array $arguments)
+            public function __construct(FunctorInterface $functor, array $arguments)
             {
-                $this->functional = $functional;
+                $this->functor = $functor;
                 $this->arguments = $arguments;
             }
         };
@@ -48,7 +48,7 @@ final class FunctionalExpressionTraitTest extends TestCase
 
     /**
      * @psalm-return array<array-key, array{
-     *      0: FunctionalInterface::NOTATION_*,
+     *      0: FunctorInterface::NOTATION_*,
      *      1: string,
      *      2: array<ExpressionInterface>,
      *      3: string
@@ -76,41 +76,41 @@ final class FunctionalExpressionTraitTest extends TestCase
         ;
 
         return [
-            [FunctionalInterface::NOTATION_PREFIX, 'f', [$a, $b], 'f(a, b)'],
-            [FunctionalInterface::NOTATION_INFIX, '+', [$a, $b], '(a + b)'],
-            [FunctionalInterface::NOTATION_SUFFIX, 'f', [$a, $b], '(a, b)f'],
-            [FunctionalInterface::NOTATION_SYMBOL, 'f', [$a, $b], 'f'],
+            [FunctorInterface::NOTATION_PREFIX, 'f', [$a, $b], 'f(a, b)'],
+            [FunctorInterface::NOTATION_INFIX, '+', [$a, $b], '(a + b)'],
+            [FunctorInterface::NOTATION_SUFFIX, 'f', [$a, $b], '(a, b)f'],
+            [FunctorInterface::NOTATION_SYMBOL, 'f', [$a, $b], 'f'],
         ];
     }
 
     /**
      * @dataProvider providerExpressionString
      *
-     * @psalm-param FunctionalInterface::NOTATION_* $notation
+     * @psalm-param FunctorInterface::NOTATION_* $notation
      * @psalm-param array<ExpressionInterface> $arguments
      */
     public function testExpressionString(int $notation, string $symbol, array $arguments, string $result): void
     {
-        $functional = $this->getMockBuilder(FunctionalInterface::class)
+        $functor = $this->getMockBuilder(FunctorInterface::class)
             ->onlyMethods(['symbol', 'notation', 'arity'])
             ->getMock()
         ;
 
-        $functional->expects($this->never())
+        $functor->expects($this->never())
             ->method('arity')
         ;
 
-        $functional->expects($this->once())
+        $functor->expects($this->once())
             ->method('notation')
             ->willReturn($notation)
         ;
 
-        $functional->expects($this->once())
+        $functor->expects($this->once())
             ->method('symbol')
             ->willReturn($symbol)
         ;
 
-        $expression = $this->getFunctionalExpression($functional, $arguments);
+        $expression = $this->getFunctorExpression($functor, $arguments);
 
         $this->assertSame($result, $expression->expressionString());
     }

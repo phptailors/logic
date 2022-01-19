@@ -11,26 +11,26 @@
 namespace Tailors\Logic\Connectives;
 
 use Tailors\Logic\FormulaInterface;
-use Tailors\Logic\FunctionalExpressionInterface;
-use Tailors\Logic\FunctionalExpressionTrait;
+use Tailors\Logic\FunctorExpressionInterface;
+use Tailors\Logic\FunctorExpressionTrait;
 
 /**
  * @psalm-immutable
- * @template-implements FunctionalExpressionInterface<FormulaInterface>
+ * @template-implements FunctorExpressionInterface<FormulaInterface>
  */
-final class ConnectiveFormula implements FormulaInterface, FunctionalExpressionInterface
+final class ConnectiveFormula implements FormulaInterface, FunctorExpressionInterface
 {
-    /** @template-use FunctionalExpressionTrait<ConnectiveInterface,FormulaInterface> */
-    use FunctionalExpressionTrait;
+    /** @template-use FunctorExpressionTrait<ConnectiveInterface,FormulaInterface> */
+    use FunctorExpressionTrait;
 
-    public function __construct(ConnectiveInterface $functional, FormulaInterface ...$arguments)
+    public function __construct(ConnectiveInterface $functor, FormulaInterface ...$arguments)
     {
-        $this->functional = $functional;
+        $this->functor = $functor;
         $this->arguments = $arguments;
     }
 
     public function connective(): ConnectiveInterface
     {
-        return $this->functional;
+        return $this->functor;
     }
 }

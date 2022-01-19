@@ -12,7 +12,7 @@ namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
-use Tailors\Logic\FunctionalInterface;
+use Tailors\Logic\FunctorInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
@@ -71,6 +71,6 @@ final class TeeTest extends TestCase
     {
         $tee = new Tee();
         /** @psalm-suppress RedundantConditionGivenDocblockType */
-        $this->assertSame(FunctionalInterface::NOTATION_SYMBOL, $tee->notation());
+        $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $tee->notation());
     }
 }

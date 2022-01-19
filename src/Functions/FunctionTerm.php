@@ -10,27 +10,27 @@
 
 namespace Tailors\Logic\Functions;
 
-use Tailors\Logic\FunctionalExpressionInterface;
-use Tailors\Logic\FunctionalExpressionTrait;
+use Tailors\Logic\FunctorExpressionInterface;
+use Tailors\Logic\FunctorExpressionTrait;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
- * @template-implements FunctionalExpressionInterface<TermInterface>
+ * @template-implements FunctorExpressionInterface<TermInterface>
  */
-final class FunctionTerm implements TermInterface, FunctionalExpressionInterface
+final class FunctionTerm implements TermInterface, FunctorExpressionInterface
 {
-    /** @template-use FunctionalExpressionTrait<FunctionInterface,TermInterface> */
-    use FunctionalExpressionTrait;
+    /** @template-use FunctorExpressionTrait<FunctionInterface,TermInterface> */
+    use FunctorExpressionTrait;
 
     public function __construct(FunctionInterface $function, TermInterface ...$arguments)
     {
-        $this->functional = $function;
+        $this->functor = $function;
         $this->arguments = $arguments;
     }
 
     public function function(): FunctionInterface
     {
-        return $this->functional;
+        return $this->functor;
     }
 }

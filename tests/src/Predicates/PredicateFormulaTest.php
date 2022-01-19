@@ -46,13 +46,13 @@ final class PredicateFormulaTest extends TestCase
         $this->assertSame($p, $term->predicate());
     }
 
-    public function testFunctionalReturnsProvidedPredicate(): void
+    public function testFunctorReturnsProvidedPredicate(): void
     {
         $p = $this->getMockBuilder(PredicateInterface::class)->getMock();
 
         /** @var PredicateInterface $p */
         $term = new PredicateFormula($p);
-        $this->assertSame($p, $term->functional());
+        $this->assertSame($p, $term->functor());
     }
 
     public function testArgumentsReturnsProvidedArguments(): void

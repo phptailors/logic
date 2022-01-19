@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
-use Tailors\Logic\FunctionalExpressionInterface;
+use Tailors\Logic\FunctorExpressionInterface;
 use Tailors\Logic\SymbolNotationTrait;
 use Tailors\Logic\TermInterface;
 
@@ -63,7 +63,7 @@ final class Constant implements FunctionInterface, TermInterface
         return 'const';
     }
 
-    public function expressionString(FunctionalExpressionInterface $parent = null): string
+    public function expressionString(FunctorExpressionInterface $parent = null): string
     {
         // FIXME: make it better
         return var_export($this->value, true);

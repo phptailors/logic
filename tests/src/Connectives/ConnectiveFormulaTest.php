@@ -45,13 +45,13 @@ final class ConnectiveFormulaTest extends TestCase
         $this->assertSame($p, $term->connective());
     }
 
-    public function testFunctionalReturnsProvidedConnective(): void
+    public function testFunctorReturnsProvidedConnective(): void
     {
         $p = $this->getMockBuilder(ConnectiveInterface::class)->getMock();
 
         /** @var ConnectiveInterface $p */
         $term = new ConnectiveFormula($p);
-        $this->assertSame($p, $term->functional());
+        $this->assertSame($p, $term->functor());
     }
 
     public function testArgumentsReturnsProvidedArguments(): void
