@@ -46,4 +46,14 @@ final class Tee implements PredicateInterface, FormulaInterface
     {
         return $this->symbol();
     }
+
+    /**
+     * @psalm-return 0
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 0;
+    }
 }

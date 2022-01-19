@@ -48,7 +48,7 @@ final class AbstractNumericFunctionTest extends TestCase
 
         $function = $this->getMockBuilder(AbstractNumericFunction::class)
             ->setConstructorArgs([$validator])
-            ->onlyMethods(['symbol', 'applyImpl', 'arity', 'notation'])
+            ->onlyMethods(['symbol', 'applyImpl', 'arity', 'notation', 'precedence'])
             ->getMock()
         ;
 
@@ -69,6 +69,10 @@ final class AbstractNumericFunctionTest extends TestCase
 
         $function->expects($this->never())
             ->method('notation')
+        ;
+
+        $function->expects($this->never())
+            ->method('precedence')
         ;
 
         $validator->expects($this->once())

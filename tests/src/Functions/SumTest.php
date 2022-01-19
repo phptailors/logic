@@ -118,4 +118,15 @@ final class SumTest extends TestCase
 
         $this->assertSame($result, (new Sum($validator))->apply(...$arguments));
     }
+
+    /**
+     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
+     */
+    public function testPrecedenceReturnValue(): void
+    {
+        $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)
+            ->getMock()
+        ;
+        $this->assertSame(7, (new Sum($validator))->precedence());
+    }
 }

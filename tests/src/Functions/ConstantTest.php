@@ -100,4 +100,9 @@ final class ConstantTest extends TestCase
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $const->notation());
     }
+
+    public function testPrecedenceReturnValue(): void
+    {
+        $this->assertSame(0, (new Constant(0))->precedence());
+    }
 }

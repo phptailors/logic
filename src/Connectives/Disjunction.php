@@ -41,4 +41,14 @@ final class Disjunction implements ConnectiveInterface
             $last
         );
     }
+
+    /**
+     * @psalm-return 16
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 16;
+    }
 }

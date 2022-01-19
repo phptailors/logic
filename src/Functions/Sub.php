@@ -31,6 +31,16 @@ final class Sub extends AbstractNumericFunction
     }
 
     /**
+     * @psalm-return 7
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 7;
+    }
+
+    /**
      * @psalm-param ValidArglist $arguments
      * @psalm-return Number
      */

@@ -73,4 +73,9 @@ final class FalsumTest extends TestCase
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $falsum->notation());
     }
+
+    public function testPrecedenceReturnValue(): void
+    {
+        $this->assertSame(0, (new Falsum())->precedence());
+    }
 }

@@ -18,6 +18,7 @@ namespace Tailors\Logic;
  * @psalm-immutable
  *
  * @psalm-type Arity = 0|positive-int
+ * @psalm-type Precedence = 0|positive-int
  */
 interface FunctorInterface extends SymbolInterface
 {
@@ -35,4 +36,11 @@ interface FunctorInterface extends SymbolInterface
      * @psalm-return self::NOTATION_*
      */
     public function notation(): int;
+
+    /**
+     * @psalm-return Precedence
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int;
 }

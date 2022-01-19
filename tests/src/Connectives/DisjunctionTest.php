@@ -100,4 +100,9 @@ final class DisjunctionTest extends TestCase
     {
         $this->assertSame($result, (new Disjunction())->apply(...$arguments));
     }
+
+    public function testPrecedenceReturnValue(): void
+    {
+        $this->assertSame(16, (new Disjunction())->precedence());
+    }
 }

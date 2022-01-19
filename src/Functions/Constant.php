@@ -68,4 +68,14 @@ final class Constant implements FunctionInterface, TermInterface
         // FIXME: make it better
         return var_export($this->value, true);
     }
+
+    /**
+     * @psalm-return 0
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 0;
+    }
 }

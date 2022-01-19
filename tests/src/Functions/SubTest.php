@@ -118,4 +118,15 @@ final class SubTest extends TestCase
 
         $this->assertSame($result, (new Sub($validator))->apply(...$arguments));
     }
+
+    /**
+     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
+     */
+    public function testPrecedenceReturnValue(): void
+    {
+        $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)
+            ->getMock()
+        ;
+        $this->assertSame(7, (new Sub($validator))->precedence());
+    }
 }

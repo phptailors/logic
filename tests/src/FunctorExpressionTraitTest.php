@@ -92,12 +92,16 @@ final class FunctorExpressionTraitTest extends TestCase
     public function testExpressionString(int $notation, string $symbol, array $arguments, string $result): void
     {
         $functor = $this->getMockBuilder(FunctorInterface::class)
-            ->onlyMethods(['symbol', 'notation', 'arity'])
+            ->onlyMethods(['symbol', 'notation', 'arity', 'precedence'])
             ->getMock()
         ;
 
         $functor->expects($this->never())
             ->method('arity')
+        ;
+
+        $functor->expects($this->never())
+            ->method('precedence')
         ;
 
         $functor->expects($this->once())

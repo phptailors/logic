@@ -41,4 +41,14 @@ final class Conjunction implements ConnectiveInterface
             $last
         );
     }
+
+    /**
+     * @psalm-return 15
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 15;
+    }
 }

@@ -42,6 +42,7 @@ final class AbstractPredicateTest extends TestCase
                 'notation',
                 'symbol',
                 'validate',
+                'precedence',
             ])->getMock();
 
         $func->expects($this->never())
@@ -54,6 +55,10 @@ final class AbstractPredicateTest extends TestCase
 
         $func->expects($this->never())
             ->method('symbol')
+        ;
+
+        $func->expects($this->never())
+            ->method('precedence')
         ;
 
         return $func;

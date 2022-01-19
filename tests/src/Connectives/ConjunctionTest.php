@@ -100,4 +100,9 @@ final class ConjunctionTest extends TestCase
     {
         $this->assertSame($result, (new Conjunction())->apply(...$arguments));
     }
+
+    public function testPrecedenceReturnValue(): void
+    {
+        $this->assertSame(15, (new Conjunction())->precedence());
+    }
 }

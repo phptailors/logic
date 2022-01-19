@@ -73,4 +73,9 @@ final class TeeTest extends TestCase
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $tee->notation());
     }
+
+    public function testPrecedenceReturnValue(): void
+    {
+        $this->assertSame(0, (new Tee())->precedence());
+    }
 }

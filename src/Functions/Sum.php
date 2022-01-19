@@ -52,4 +52,14 @@ final class Sum extends AbstractNumericFunction
             0
         );
     }
+
+    /**
+     * @psalm-return 7
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 7;
+    }
 }
