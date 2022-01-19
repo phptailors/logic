@@ -19,6 +19,16 @@ use PHPUnit\Framework\TestCase;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @psalm-import-type Precedence from FunctorInterface
+ *
+ * @psalm-type FunctorParams = array{
+ *      symbol?: string,
+ *      notation?: FunctorInterface::NOTATION_*,
+ *      arity?: 0|positive-int,
+ *      precedence?: Precedence,
+ *      arguments?: array<ExpressionInterface>,
+ *  }
  */
 final class AbstractFunctorExpressionTest extends TestCase
 {
@@ -27,31 +37,11 @@ final class AbstractFunctorExpressionTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-//    /**
-//     * @psalm-param array<ExpressionInterface> $arguments
-//     */
-//    public function getFunctorExpression(FunctorInterface $functor, array $arguments): ExpressionInterface
-//    {
-//        return new /** @psalm-immutable */ class($functor, $arguments) implements ExpressionInterface, FunctorExpressionInterface {
-//            use AbstractFunctorExpression;
-//
-//            /**
-//             * @psalm-param array<ExpressionInterface> $arguments
-//             */
-//            public function __construct(FunctorInterface $functor, array $arguments)
-//            {
-//                $this->functor = $functor;
-//                $this->arguments = $arguments;
-//            }
-//        };
-//    }
-
     /**
      * @psalm-return array<array-key, array{
-     *      0: FunctorInterface::NOTATION_*,
-     *      1: string,
-     *      2: array<ExpressionInterface>,
-     *      3: string
+     *      0: string,
+     *      1: FunctorParams,
+     *      2?: FunctorParams
      *  }>
      */
     public function providerExpressionString(): array
@@ -76,50 +66,195 @@ final class AbstractFunctorExpressionTest extends TestCase
         ;
 
         return [
-            [FunctorInterface::NOTATION_PREFIX, 'f', [$a, $b], 'f(a, b)'],
-            [FunctorInterface::NOTATION_INFIX, '+', [$a, $b], '(a + b)'],
-            [FunctorInterface::NOTATION_SUFFIX, 'f', [$a, $b], '(a, b)f'],
-            [FunctorInterface::NOTATION_SYMBOL, 'f', [$a, $b], 'f'],
+            [
+                'f(a, b)',
+                [
+                    'notation'  => FunctorInterface::NOTATION_PREFIX,
+                    'symbol'    => 'f',
+                    'arguments' => [$a, $b],
+                ],
+            ],
+            [
+                'a + b',
+                [
+                    'notation'  => FunctorInterface::NOTATION_INFIX,
+                    'symbol'    => '+',
+                    'arguments' => [$a, $b],
+                ],
+            ],
+            [
+                '(a, b)f',
+                [
+                    'notation'  => FunctorInterface::NOTATION_SUFFIX,
+                    'symbol'    => 'f',
+                    'arguments' => [$a, $b],
+                ],
+            ],
+            [
+                'f',
+                [
+                    'notation'  => FunctorInterface::NOTATION_SYMBOL,
+                    'symbol'    => 'f',
+                    'arguments' => [$a, $b],
+                ],
+            ],
+            [
+                'f(a, b)',
+                [
+                    'notation'  => FunctorInterface::NOTATION_PREFIX,
+                    'symbol'    => 'f',
+                    'arguments' => [$a, $b],
+                ],
+                [
+                ],
+            ],
+            [
+                'f(a, b)',
+                [
+                    'notation'  => FunctorInterface::NOTATION_PREFIX,
+                    'symbol'    => 'f',
+                    'arguments' => [$a, $b],
+                ],
+                [
+                    'arguments' => [$a, $b],
+                ],
+            ],
+            [
+                'a',
+                [
+                    'notation'  => FunctorInterface::NOTATION_INFIX,
+                    'symbol'    => '+',
+                    'arguments' => [$a],
+                ],
+                [
+                ],
+            ],
+            [
+                'a + b',
+                [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
+                    'symbol'     => '+',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 2,
+                ],
+                [
+                    'precedence' => 2,
+                ],
+            ],
+            [
+                'a + b',
+                [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
+                    'symbol'     => '+',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 1,
+                ],
+                [
+                    'precedence' => 2,
+                ],
+            ],
+            [
+                '(a + b)',
+                [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
+                    'symbol'     => '+',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 2,
+                ],
+                [
+                    'precedence' => 1,
+                ],
+            ],
         ];
     }
 
     /**
      * @dataProvider providerExpressionString
      *
-     * @psalm-param FunctorInterface::NOTATION_* $notation
-     * @psalm-param array<ExpressionInterface> $arguments
+     * @psalm-param FunctorParams $functorParams
+     * @psalm-param FunctorParams $parentParams
      */
-    public function testExpressionString(int $notation, string $symbol, array $arguments, string $result): void
+    public function testExpressionString(string $result, array $functorParams, array $parentParams = null): void
     {
-        $functor = $this->getMockBuilder(FunctorInterface::class)
-            ->onlyMethods(['symbol', 'notation', 'arity', 'precedence'])
-            ->getMock()
-        ;
-
-        $functor->expects($this->never())
-            ->method('arity')
-        ;
-
-        $functor->expects($this->never())
-            ->method('precedence')
-        ;
-
-        $functor->expects($this->once())
-            ->method('notation')
-            ->willReturn($notation)
-        ;
-
-        $functor->expects($this->once())
-            ->method('symbol')
-            ->willReturn($symbol)
-        ;
+        $functor = $this->getFunctorMock($functorParams);
 
         /** @var \PHPUnit\Framework\MockObject\MockObject&AbstractFunctorExpression */
         $expression = $this->getMockBuilder(AbstractFunctorExpression::class)
-            ->setConstructorArgs([$functor, $arguments])
+            ->setConstructorArgs([$functor, $functorParams['arguments'] ?? []])
             ->getMockForAbstractClass()
         ;
 
-        $this->assertSame($result, $expression->expressionString());
+        if (null !== $parentParams) {
+            $parentExpression = $this->getParentFunctorExpressionMock($parentParams, $functorParams);
+            /** @var FunctorExpressionInterface<ExpressionInterface> $parentExpression */
+            $this->assertSame($result, $expression->expressionString($parentExpression));
+        } else {
+            $this->assertSame($result, $expression->expressionString());
+        }
+    }
+
+    /**
+     * @psalm-param FunctorParams $params
+     * @psalm-return \PHPUnit\Framework\MockObject\MockObject&FunctorInterface
+     */
+    protected function getFunctorMock(array $params): \PHPUnit\Framework\MockObject\MockObject
+    {
+        $methods = ['symbol', 'notation', 'arity', 'precedence'];
+        $functor = $this->getMockBuilder(FunctorInterface::class)
+            ->onlyMethods($methods)
+            ->getMock()
+        ;
+
+        foreach ($methods as $key) {
+            if (isset($params[$key])) {
+                $functor->expects($this->once())
+                    ->method($key)
+                    ->willReturn($params[$key])
+                ;
+            } else {
+                $functor->expects($this->never())
+                    ->method($key)
+                ;
+            }
+        }
+
+        return $functor;
+    }
+
+    /**
+     * @psalm-param FunctorParams $parentParams
+     * @psalm-param FunctorParams $functorParams
+     * @psalm-return \PHPUnit\Framework\MockObject\MockObject&FunctorExpressionInterface<ExpressionInterface>
+     */
+    protected function getParentFunctorExpressionMock(
+        array $parentParams,
+        array $functorParams
+    ): \PHPUnit\Framework\MockObject\MockObject {
+        $parentExpression = $this->getMockBuilder(FunctorExpressionInterface::class)
+            ->onlyMethods(['functor', 'arguments'])
+            ->getMock()
+        ;
+
+        $parentExpression->expects($this->never())
+            ->method('arguments')
+        ;
+
+        $notation = $functorParams['notation'] ?? null;
+        $arguments = $functorParams['arguments'] ?? [];
+
+        if (FunctorInterface::NOTATION_INFIX === $notation && count($arguments) > 1) {
+            $parentFunctor = $this->getFunctorMock($parentParams);
+
+            $parentExpression->expects($this->once())
+                ->method('functor')
+                ->willReturn($parentFunctor)
+            ;
+        } else {
+            $parentExpression->expects($this->never())
+                ->method('functor')
+            ;
+        }
+
+        return $parentExpression;
     }
 }

@@ -13,7 +13,7 @@ namespace Tailors\Logic\Validators;
 /**
  * @psalm-immutable
  * @psalm-template Arglist of array
- * @psalm-template ValidArglist of Arglist
+ * @psalm-template ValidArglist of array
  */
 interface ArglistValidatorInterface
 {

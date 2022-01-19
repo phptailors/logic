@@ -60,7 +60,12 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
 
         switch ($this->functor()->notation()) {
             case FunctorInterface::NOTATION_INFIX:
-                return '('.$this->expressionArgumentsString(' '.$symbol.' ').')';
+                $string = $this->expressionArgumentsString(' '.$symbol.' ');
+                if ($this->expressionStringRequiresParentheses($parent)) {
+                    return '('.$string.')';
+                }
+
+                    return $string;
 
             case FunctorInterface::NOTATION_SUFFIX:
                 return '('.$this->expressionArgumentsString(', ').')'.$symbol;
@@ -71,6 +76,16 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
             default:
                 return $symbol.'('.$this->expressionArgumentsString(', ').')';
         }
+    }
+
+    private function expressionStringRequiresParentheses(FunctorExpressionInterface $parent = null): bool
+    {
+        if (null === $parent) {
+            return false;
+        }
+
+        return (count($this->arguments()) > 1)
+                && ($parent->functor()->precedence() < $this->functor()->precedence());
     }
 
     private function expressionArgumentsString(string $sep): string
