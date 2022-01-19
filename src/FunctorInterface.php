@@ -11,7 +11,9 @@
 namespace Tailors\Logic;
 
 /**
- * Either a function or a predicate.
+ * Common interface for functions, predicates or connectives. A characteristic
+ * feature of a functor is that it yields non-terminal expressions when
+ * provided with arguments.
  *
  * @psalm-immutable
  *
