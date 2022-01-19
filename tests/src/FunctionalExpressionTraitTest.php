@@ -32,7 +32,7 @@ final class FunctionalExpressionTraitTest extends TestCase
      */
     public function getFunctionalExpression(FunctionalInterface $functional, array $arguments): ExpressionInterface
     {
-        return new /** @psalm-immutable */ class($functional, $arguments) implements ExpressionInterface {
+        return new /** @psalm-immutable */ class($functional, $arguments) implements ExpressionInterface, FunctionalExpressionInterface {
             use FunctionalExpressionTrait;
 
             /**

@@ -33,7 +33,7 @@ final class Variable implements VariableInterface
         return $this->symbol;
     }
 
-    public function expressionString(): string
+    public function expressionString(FunctionalExpressionInterface $parent = null): string
     {
         return $this->symbol;
     }

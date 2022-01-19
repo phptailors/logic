@@ -15,5 +15,9 @@ namespace Tailors\Logic;
  */
 interface ExpressionInterface
 {
-    public function expressionString(): string;
+    /**
+     * @psalm-template Argument of ExpressionInterface
+     * @psalm-param FunctionalExpressionInterface<Argument> $parent
+     */
+    public function expressionString(FunctionalExpressionInterface $parent = null): string;
 }

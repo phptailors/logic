@@ -11,6 +11,7 @@
 namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\FunctionalExpressionInterface;
 use Tailors\Logic\SymbolNotationTrait;
 
 /**
@@ -41,7 +42,7 @@ final class Falsum implements PredicateInterface, FormulaInterface
         return '⊥';
     }
 
-    public function expressionString(): string
+    public function expressionString(FunctionalExpressionInterface $parent = null): string
     {
         return $this->symbol();
     }

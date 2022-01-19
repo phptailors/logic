@@ -14,6 +14,7 @@ namespace Tailors\Logic;
  * @psalm-immutable
  * @psalm-template Functional of FunctionalInterface
  * @psalm-template Argument of ExpressionInterface
+ * @psalm-require-implements FunctionalExpressionInterface
  */
 trait FunctionalExpressionTrait
 {
@@ -40,7 +41,7 @@ trait FunctionalExpressionTrait
         return $this->functional;
     }
 
-    public function expressionString(): string
+    public function expressionString(FunctionalExpressionInterface $parent = null): string
     {
         $symbol = $this->functional()->symbol();
 
@@ -69,8 +70,10 @@ trait FunctionalExpressionTrait
      */
     private function expressionArgumentsList(): array
     {
-        return array_map(function (ExpressionInterface $arg) {
-            return $arg->expressionString();
+        $me = $this; // this tricks psalm to workaround ImpureFunctionCall below
+
+        return array_map(function (ExpressionInterface $arg) use ($me) {
+            return $arg->expressionString($me);
         }, $this->arguments());
     }
 }
