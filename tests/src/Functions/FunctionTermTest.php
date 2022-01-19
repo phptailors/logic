@@ -18,6 +18,8 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
  * @covers \Tailors\Logic\Functions\FunctionTerm
  *
+ * @uses \Tailors\Logic\AbstractFunctorExpression
+ *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
@@ -36,10 +38,6 @@ final class FunctionTermTest extends TestCase
         $this->assertImplementsInterface(TermInterface::class, FunctionTerm::class);
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     */
     public function testFunctionReturnsProvidedFunction(): void
     {
         $f = $this->getMockBuilder(FunctionInterface::class)->getMock();
@@ -49,10 +47,6 @@ final class FunctionTermTest extends TestCase
         $this->assertSame($f, $term->function());
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     */
     public function testFunctorReturnsProvidedFunction(): void
     {
         $f = $this->getMockBuilder(FunctionInterface::class)->getMock();
@@ -62,10 +56,6 @@ final class FunctionTermTest extends TestCase
         $this->assertSame($f, $term->functor());
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     */
     public function testArgumentsReturnsProvidedArguments(): void
     {
         $f = $this->getMockBuilder(FunctionInterface::class)->getMock();
@@ -93,13 +83,6 @@ final class FunctionTermTest extends TestCase
      * @dataProvider providerExpressionStringReturnsFunctionExpression
      *
      * @psalm-param array<string> $symbols
-     *
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsList
-     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionArgumentsString
-     * @uses \Tailors\Logic\AbstractFunctorExpression::expressionString
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
      */
     public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
     {
