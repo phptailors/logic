@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Tailors\Logic\FunctionalExpressionTrait | API Documentation</title>
+    <title>Tailors\Logic\FunctorInterface | API Documentation</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     </head>
 
-    <body id="class" data-name="class:Tailors_Logic_FunctionalExpressionTrait" data-root-path="../../">
+    <body id="class" data-name="class:Tailors_Logic_FunctorInterface" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -61,28 +61,73 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">trait</span></li>
-                        <li><a href="../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li>FunctionalExpressionTrait</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li>FunctorInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            FunctionalExpressionTrait
+            FunctorInterface
                 
         </h1>
     </div>
 
-    <p>        trait
-    <strong>FunctionalExpressionTrait</strong>
+    <p>        interface
+    <strong>FunctorInterface</strong>        implements
+        <a href="../../Tailors/Logic/SymbolInterface.html"><abbr title="Tailors\Logic\SymbolInterface">SymbolInterface</abbr></a>
 </p>
 
         
     
 
+            <div class="description">
+            <p>Common interface for functions, predicates or connectives. A characteristic
+feature of a functor is that it yields non-terminal expressions when
+provided with arguments.</p>                                </div>
     
     
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>NOTATION_PREFIX</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NOTATION_INFIX</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NOTATION_SUFFIX</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NOTATION_SYMBOL</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NOTATION_FUNCTION</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -90,32 +135,44 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_arguments">arguments</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Tailors/Logic/FunctionalInterface.html"><abbr title="Tailors\Logic\FunctionalInterface">FunctionalInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_functional">functional</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_expressionString">expressionString</a>()
+                    <a href="#method_symbol">symbol</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Tailors/Logic/SymbolInterface.html#method_symbol">
+<abbr title="Tailors\Logic\SymbolInterface">SymbolInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_arity">arity</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notation">notation</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_precedence">precedence</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -128,66 +185,11 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_arguments">
-        <div class="location">at line 33</div>
-        <code>                    array
-    <strong>arguments</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_functional">
-        <div class="location">at line 38</div>
-        <code>                    <a href="../../Tailors/Logic/FunctionalInterface.html"><abbr title="Tailors\Logic\FunctionalInterface">FunctionalInterface</abbr></a>
-    <strong>functional</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Tailors/Logic/FunctionalInterface.html"><abbr title="Tailors\Logic\FunctionalInterface">FunctionalInterface</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_expressionString">
-        <div class="location">at line 43</div>
+                    <h3 id="method_symbol">
+        <div class="location">in <a href="../../Tailors/Logic/SymbolInterface.html#method_symbol">
+<abbr title="Tailors\Logic\SymbolInterface">SymbolInterface</abbr></a> at line 18</div>
         <code>                    string
-    <strong>expressionString</strong>()
+    <strong>symbol</strong>()
         </code>
     </h3>
     <div class="details">
@@ -207,6 +209,101 @@
 
             
             
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arity">
+        <div class="location">at line 34</div>
+        <code>                    int
+    <strong>arity</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notation">
+        <div class="location">at line 39</div>
+        <code>                    int
+    <strong>notation</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_precedence">
+        <div class="location">at line 46</div>
+        <code>                    int
+    <strong>precedence</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://www.php.net/manual/en/language.operators.precedence.php">https://www.php.net/manual/en/language.operators.precedence.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
