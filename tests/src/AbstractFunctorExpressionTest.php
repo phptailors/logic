@@ -67,85 +67,42 @@ final class AbstractFunctorExpressionTest extends TestCase
 
         return [
             [
-                'f(a, b)',
+                '@ a b',
                 [
                     'notation'  => FunctorInterface::NOTATION_PREFIX,
-                    'symbol'    => 'f',
+                    'symbol'    => '@',
                     'arguments' => [$a, $b],
                 ],
             ],
             [
-                'a + b',
+                'a @ b',
                 [
                     'notation'  => FunctorInterface::NOTATION_INFIX,
-                    'symbol'    => '+',
+                    'symbol'    => '@',
                     'arguments' => [$a, $b],
                 ],
             ],
             [
-                '(a, b)f',
+                'a b @',
                 [
                     'notation'  => FunctorInterface::NOTATION_SUFFIX,
-                    'symbol'    => 'f',
+                    'symbol'    => '@',
                     'arguments' => [$a, $b],
                 ],
             ],
             [
-                'f',
+                '@',
                 [
                     'notation'  => FunctorInterface::NOTATION_SYMBOL,
-                    'symbol'    => 'f',
+                    'symbol'    => '@',
                     'arguments' => [$a, $b],
                 ],
             ],
             [
-                'f(a, b)',
+                '@ a b',
                 [
-                    'notation'  => FunctorInterface::NOTATION_PREFIX,
-                    'symbol'    => 'f',
-                    'arguments' => [$a, $b],
-                ],
-                [
-                ],
-            ],
-            [
-                'f(a, b)',
-                [
-                    'notation'  => FunctorInterface::NOTATION_PREFIX,
-                    'symbol'    => 'f',
-                    'arguments' => [$a, $b],
-                ],
-                [
-                    'arguments' => [$a, $b],
-                ],
-            ],
-            [
-                'a',
-                [
-                    'notation'  => FunctorInterface::NOTATION_INFIX,
-                    'symbol'    => '+',
-                    'arguments' => [$a],
-                ],
-                [
-                ],
-            ],
-            [
-                'a + b',
-                [
-                    'notation'   => FunctorInterface::NOTATION_INFIX,
-                    'symbol'     => '+',
-                    'arguments'  => [$a, $b],
-                    'precedence' => 2,
-                ],
-                [
-                    'precedence' => 2,
-                ],
-            ],
-            [
-                'a + b',
-                [
-                    'notation'   => FunctorInterface::NOTATION_INFIX,
-                    'symbol'     => '+',
+                    'notation'   => FunctorInterface::NOTATION_PREFIX,
+                    'symbol'     => '@',
                     'arguments'  => [$a, $b],
                     'precedence' => 1,
                 ],
@@ -154,10 +111,57 @@ final class AbstractFunctorExpressionTest extends TestCase
                 ],
             ],
             [
-                '(a + b)',
+                '@ a b',
+                [
+                    'notation'   => FunctorInterface::NOTATION_PREFIX,
+                    'symbol'     => '@',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 1,
+                ],
+                [
+                    'arguments'  => [$a, $b],
+                    'precedence' => 2,
+                ],
+            ],
+            [
+                'a',
+                [
+                    'notation'  => FunctorInterface::NOTATION_INFIX,
+                    'symbol'    => '@',
+                    'arguments' => [$a],
+                ],
+                [
+                ],
+            ],
+            [
+                'a @ b',
                 [
                     'notation'   => FunctorInterface::NOTATION_INFIX,
-                    'symbol'     => '+',
+                    'symbol'     => '@',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 2,
+                ],
+                [
+                    'precedence' => 2,
+                ],
+            ],
+            [
+                'a @ b',
+                [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
+                    'symbol'     => '@',
+                    'arguments'  => [$a, $b],
+                    'precedence' => 1,
+                ],
+                [
+                    'precedence' => 2,
+                ],
+            ],
+            [
+                '(a @ b)',
+                [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
+                    'symbol'     => '@',
                     'arguments'  => [$a, $b],
                     'precedence' => 2,
                 ],
@@ -242,7 +246,13 @@ final class AbstractFunctorExpressionTest extends TestCase
         $notation = $functorParams['notation'] ?? null;
         $arguments = $functorParams['arguments'] ?? [];
 
-        if (FunctorInterface::NOTATION_INFIX === $notation && count($arguments) > 1) {
+        $robustNotation = (
+            FunctorInterface::NOTATION_SYMBOL === $notation
+        ) || (
+            FunctorInterface::NOTATION_FUNCTION === $notation
+        );
+
+        if (!$robustNotation && count($arguments) > 1) {
             $parentFunctor = $this->getFunctorMock($parentParams);
 
             $parentExpression->expects($this->once())

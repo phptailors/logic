@@ -69,52 +69,64 @@ final class PredicateFormulaTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:array<string>, 1: string}>
+     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
      */
-    public function providerExpressionStringReturnsFunctionExpression(): array
+    public function providerExpressionStringReturnsString(): array
     {
         return [
-            [[], ''],
-            [['t1'], 't1'],
-            [['t1', 't2'], 't1, t2'],
+            [
+                '@',
+                '@',
+                [],
+            ],
+            [
+                '@ t1',
+                '@',
+                ['t1'],
+            ],
+            [
+                '@ t1 t2',
+                '@',
+                ['t1', 't2'],
+            ],
         ];
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsFunctionExpression
+     * @dataProvider providerExpressionStringReturnsString
      *
-     * @psalm-param array<string> $symbols
+     * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
+    public function testExpressionStringReturnsString(string $result, string $symbol, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
-            $term = $this->getMockBuilder(TermInterface::class)
+            $formula = $this->getMockBuilder(TermInterface::class)
                 ->onlyMethods(['expressionString'])
                 ->getMockForAbstractClass()
             ;
-            $term->expects($this->once())
+            $formula->expects($this->once())
                 ->method('expressionString')
                 ->willReturn($symbol)
             ;
 
-            return $term;
-        }, $symbols);
+            return $formula;
+        }, $arguments);
 
-        $p = $this->getMockBuilder(PredicateInterface::class)
+        $predicate = $this->getMockBuilder(PredicateInterface::class)
             ->onlyMethods(['symbol'])
             ->getMockForAbstractClass()
         ;
 
-        $p->expects($this->once())
+        $predicate->expects($this->once())
             ->method('symbol')
-            ->willReturn('p')
+            ->willReturn($symbol)
         ;
 
         /**
-         * @var PredicateInterface   $p
+         * @var PredicateInterface   $predicate
          * @var array<TermInterface> $arguments
          */
-        $term = new PredicateFormula($p, ...$arguments);
-        $this->assertSame("p({$arglist})", $term->expressionString());
+        $formula = new PredicateFormula($predicate, ...$arguments);
+        $this->assertSame($result, $formula->expressionString());
     }
 }

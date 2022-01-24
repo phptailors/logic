@@ -68,52 +68,64 @@ final class ConnectiveFormulaTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:array<string>, 1: string}>
+     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
      */
-    public function providerExpressionStringReturnsFunctionExpression(): array
+    public function providerExpressionStringsReturnsString(): array
     {
         return [
-            [[], ''],
-            [['t1'], 't1'],
-            [['t1', 't2'], 't1, t2'],
+            [
+                '@',
+                '@',
+                [],
+            ],
+            [
+                '@ f1',
+                '@',
+                ['f1'],
+            ],
+            [
+                '@ f1 f2',
+                '@',
+                ['f1', 'f2'],
+            ],
         ];
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsFunctionExpression
+     * @dataProvider providerExpressionStringsReturnsString
      *
-     * @psalm-param array<string> $symbols
+     * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
+    public function testExpressionStringsReturnsString(string $result, string $symbol, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
-            $term = $this->getMockBuilder(FormulaInterface::class)
+            $formula = $this->getMockBuilder(FormulaInterface::class)
                 ->onlyMethods(['expressionString'])
                 ->getMockForAbstractClass()
             ;
-            $term->expects($this->once())
+            $formula->expects($this->once())
                 ->method('expressionString')
                 ->willReturn($symbol)
             ;
 
-            return $term;
-        }, $symbols);
+            return $formula;
+        }, $arguments);
 
-        $p = $this->getMockBuilder(ConnectiveInterface::class)
+        $connective = $this->getMockBuilder(ConnectiveInterface::class)
             ->onlyMethods(['symbol'])
             ->getMockForAbstractClass()
         ;
 
-        $p->expects($this->once())
+        $connective->expects($this->once())
             ->method('symbol')
-            ->willReturn('p')
+            ->willReturn($symbol)
         ;
 
         /**
-         * @var ConnectiveInterface     $p
+         * @var ConnectiveInterface     $connective
          * @var array<FormulaInterface> $arguments
          */
-        $term = new ConnectiveFormula($p, ...$arguments);
-        $this->assertSame("p({$arglist})", $term->expressionString());
+        $formula = new ConnectiveFormula($connective, ...$arguments);
+        $this->assertSame($result, $formula->expressionString());
     }
 }

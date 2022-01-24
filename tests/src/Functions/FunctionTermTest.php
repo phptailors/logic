@@ -68,23 +68,35 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:array<string>, 1: string}>
+     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
      */
-    public function providerExpressionStringReturnsFunctionExpression(): array
+    public function providerExpressionStringReturnsString(): array
     {
         return [
-            [[], ''],
-            [['t1'], 't1'],
-            [['t1', 't2'], 't1, t2'],
+            [
+                '@',
+                '@',
+                [],
+            ],
+            [
+                '@ t1',
+                '@',
+                ['t1'],
+            ],
+            [
+                '@ t1 t2',
+                '@',
+                ['t1', 't2'],
+            ],
         ];
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsFunctionExpression
+     * @dataProvider providerExpressionStringReturnsString
      *
-     * @psalm-param array<string> $symbols
+     * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringReturnsFunctionExpression(array $symbols, string $arglist): void
+    public function testExpressionStringReturnsString(string $result, string $symbol, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
             $term = $this->getMockBuilder(TermInterface::class)
@@ -97,23 +109,23 @@ final class FunctionTermTest extends TestCase
             ;
 
             return $term;
-        }, $symbols);
+        }, $arguments);
 
-        $f = $this->getMockBuilder(FunctionInterface::class)
+        $function = $this->getMockBuilder(FunctionInterface::class)
             ->onlyMethods(['symbol'])
             ->getMockForAbstractClass()
         ;
 
-        $f->expects($this->once())
+        $function->expects($this->once())
             ->method('symbol')
-            ->willReturn('f')
+            ->willReturn($symbol)
         ;
 
         /**
-         * @var FunctionInterface    $f
+         * @var FunctionInterface    $function
          * @var array<TermInterface> $arguments
          */
-        $term = new FunctionTerm($f, ...$arguments);
-        $this->assertSame("f({$arglist})", $term->expressionString());
+        $term = new FunctionTerm($function, ...$arguments);
+        $this->assertSame($result, $term->expressionString());
     }
 }

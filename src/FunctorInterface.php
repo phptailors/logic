@@ -26,6 +26,7 @@ interface FunctorInterface extends SymbolInterface
     public const NOTATION_INFIX = 1;
     public const NOTATION_SUFFIX = 2;
     public const NOTATION_SYMBOL = 3;
+    public const NOTATION_FUNCTION = 4;
 
     /**
      * @psalm-return Arity
