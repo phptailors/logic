@@ -11,6 +11,8 @@
 namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\FunctorInterface;
+use Tailors\Logic\FunctorMockConstructor;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
@@ -21,6 +23,8 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
+ *
+ * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
  */
@@ -68,24 +72,28 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
+     * @psalm-return array<array-key, array{
+     *  0: string,
+     *  1: FunctorMockParams,
+     *  2: list<string>,
+     * }>
      */
     public function providerExpressionStringReturnsString(): array
     {
         return [
             [
-                '@',
-                '@',
+                '@()',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 [],
             ],
             [
-                '@ t1',
-                '@',
+                '@(t1)',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 ['t1'],
             ],
             [
-                '@ t1 t2',
-                '@',
+                '@(t1, t2)',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 ['t1', 't2'],
             ],
         ];
@@ -94,9 +102,10 @@ final class FunctionTermTest extends TestCase
     /**
      * @dataProvider providerExpressionStringReturnsString
      *
+     * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringReturnsString(string $result, string $symbol, array $arguments): void
+    public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
             $term = $this->getMockBuilder(TermInterface::class)
@@ -111,15 +120,8 @@ final class FunctionTermTest extends TestCase
             return $term;
         }, $arguments);
 
-        $function = $this->getMockBuilder(FunctionInterface::class)
-            ->onlyMethods(['symbol'])
-            ->getMockForAbstractClass()
-        ;
-
-        $function->expects($this->once())
-            ->method('symbol')
-            ->willReturn($symbol)
-        ;
+        $mockCtor = new FunctorMockConstructor($this, FunctionInterface::class, ['apply']);
+        $function = $mockCtor->getMock($functorParams);
 
         /**
          * @var FunctionInterface    $function

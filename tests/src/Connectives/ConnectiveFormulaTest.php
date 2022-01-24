@@ -12,6 +12,8 @@ namespace Tailors\Logic\Connectives;
 
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\FunctorInterface;
+use Tailors\Logic\FunctorMockConstructor;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
@@ -21,6 +23,8 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
+ *
+ * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
  */
@@ -68,35 +72,40 @@ final class ConnectiveFormulaTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
+     * @psalm-return array<array-key, array{
+     *  0: string,
+     *  1: FunctorMockParams,
+     *  2: list<string>,
+     * }>
      */
-    public function providerExpressionStringsReturnsString(): array
+    public function providerExpressionStringReturnsString(): array
     {
         return [
             [
                 '@',
-                '@',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_PREFIX],
                 [],
             ],
             [
-                '@ f1',
-                '@',
-                ['f1'],
+                '@ t1',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_PREFIX],
+                ['t1'],
             ],
             [
-                '@ f1 f2',
-                '@',
-                ['f1', 'f2'],
+                't1 @ t2',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_INFIX],
+                ['t1', 't2'],
             ],
         ];
     }
 
     /**
-     * @dataProvider providerExpressionStringsReturnsString
+     * @dataProvider providerExpressionStringReturnsString
      *
+     * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringsReturnsString(string $result, string $symbol, array $arguments): void
+    public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
             $formula = $this->getMockBuilder(FormulaInterface::class)
@@ -111,15 +120,8 @@ final class ConnectiveFormulaTest extends TestCase
             return $formula;
         }, $arguments);
 
-        $connective = $this->getMockBuilder(ConnectiveInterface::class)
-            ->onlyMethods(['symbol'])
-            ->getMockForAbstractClass()
-        ;
-
-        $connective->expects($this->once())
-            ->method('symbol')
-            ->willReturn($symbol)
-        ;
+        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply']);
+        $connective = $mockCtor->getMock($functorParams);
 
         /**
          * @var ConnectiveInterface     $connective

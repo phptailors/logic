@@ -12,6 +12,8 @@ namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\FunctorInterface;
+use Tailors\Logic\FunctorMockConstructor;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
@@ -22,6 +24,8 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
+ *
+ * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
  */
@@ -69,24 +73,28 @@ final class PredicateFormulaTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array-key, array{0:string, 1: string, 2: array<string>}>
+     * @psalm-return array<array-key, array{
+     *  0: string,
+     *  1: FunctorMockParams,
+     *  2: list<string>,
+     * }>
      */
     public function providerExpressionStringReturnsString(): array
     {
         return [
             [
-                '@',
-                '@',
+                '@()',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 [],
             ],
             [
-                '@ t1',
-                '@',
+                '@(t1)',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 ['t1'],
             ],
             [
-                '@ t1 t2',
-                '@',
+                '@(t1, t2)',
+                ['symbol' => '@', 'notation' => FunctorInterface::NOTATION_FUNCTION],
                 ['t1', 't2'],
             ],
         ];
@@ -95,9 +103,10 @@ final class PredicateFormulaTest extends TestCase
     /**
      * @dataProvider providerExpressionStringReturnsString
      *
+     * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
-    public function testExpressionStringReturnsString(string $result, string $symbol, array $arguments): void
+    public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
             $formula = $this->getMockBuilder(TermInterface::class)
@@ -112,15 +121,8 @@ final class PredicateFormulaTest extends TestCase
             return $formula;
         }, $arguments);
 
-        $predicate = $this->getMockBuilder(PredicateInterface::class)
-            ->onlyMethods(['symbol'])
-            ->getMockForAbstractClass()
-        ;
-
-        $predicate->expects($this->once())
-            ->method('symbol')
-            ->willReturn($symbol)
-        ;
+        $mockCtor = new FunctorMockConstructor($this, PredicateInterface::class, ['apply']);
+        $predicate = $mockCtor->getMock($functorParams);
 
         /**
          * @var PredicateInterface   $predicate

@@ -18,17 +18,21 @@ use PHPUnit\Framework\TestCase;
  *
  * @psalm-suppress MissingThrowsDocblock
  *
- * @internal
- *
+ * @psalm-import-type Arity from FunctorInterface
  * @psalm-import-type Precedence from FunctorInterface
  *
- * @psalm-type FunctorParams = array{
+ * @psalm-type FunctorMockParams = array{
  *      symbol?: string,
+ *      arity?: Arity,
  *      notation?: FunctorInterface::NOTATION_*,
- *      arity?: 0|positive-int,
  *      precedence?: Precedence,
- *      arguments?: array<ExpressionInterface>,
  *  }
+ *
+ * @psalm-type FunctorTestParams = FunctorMockParams & array{
+ *      arguments?: array<ExpressionInterface>
+ * }
+ *
+ * @internal
  */
 final class AbstractFunctorExpressionTest extends TestCase
 {
@@ -40,8 +44,8 @@ final class AbstractFunctorExpressionTest extends TestCase
     /**
      * @psalm-return array<array-key, array{
      *      0: string,
-     *      1: FunctorParams,
-     *      2?: FunctorParams
+     *      1: FunctorTestParams,
+     *      2?: FunctorTestParams
      *  }>
      */
     public function providerExpressionString(): array
@@ -175,12 +179,12 @@ final class AbstractFunctorExpressionTest extends TestCase
     /**
      * @dataProvider providerExpressionString
      *
-     * @psalm-param FunctorParams $functorParams
-     * @psalm-param FunctorParams $parentParams
+     * @psalm-param FunctorTestParams $functorParams
+     * @psalm-param FunctorTestParams $parentParams
      */
     public function testExpressionString(string $result, array $functorParams, array $parentParams = null): void
     {
-        $functor = $this->getFunctorMock($functorParams);
+        $functor = (new FunctorMockConstructor($this))->getMock($functorParams);
 
         /** @var \PHPUnit\Framework\MockObject\MockObject&AbstractFunctorExpression */
         $expression = $this->getMockBuilder(AbstractFunctorExpression::class)
@@ -198,36 +202,8 @@ final class AbstractFunctorExpressionTest extends TestCase
     }
 
     /**
-     * @psalm-param FunctorParams $params
-     * @psalm-return \PHPUnit\Framework\MockObject\MockObject&FunctorInterface
-     */
-    protected function getFunctorMock(array $params): \PHPUnit\Framework\MockObject\MockObject
-    {
-        $methods = ['symbol', 'notation', 'arity', 'precedence'];
-        $functor = $this->getMockBuilder(FunctorInterface::class)
-            ->onlyMethods($methods)
-            ->getMock()
-        ;
-
-        foreach ($methods as $key) {
-            if (isset($params[$key])) {
-                $functor->expects($this->once())
-                    ->method($key)
-                    ->willReturn($params[$key])
-                ;
-            } else {
-                $functor->expects($this->never())
-                    ->method($key)
-                ;
-            }
-        }
-
-        return $functor;
-    }
-
-    /**
-     * @psalm-param FunctorParams $parentParams
-     * @psalm-param FunctorParams $functorParams
+     * @psalm-param FunctorTestParams $parentParams
+     * @psalm-param FunctorTestParams $functorParams
      * @psalm-return \PHPUnit\Framework\MockObject\MockObject&FunctorExpressionInterface<ExpressionInterface>
      */
     protected function getParentFunctorExpressionMock(
@@ -253,7 +229,7 @@ final class AbstractFunctorExpressionTest extends TestCase
         );
 
         if (!$robustNotation && count($arguments) > 1) {
-            $parentFunctor = $this->getFunctorMock($parentParams);
+            $parentFunctor = (new FunctorMockConstructor($this))->getMock($parentParams);
 
             $parentExpression->expects($this->once())
                 ->method('functor')
