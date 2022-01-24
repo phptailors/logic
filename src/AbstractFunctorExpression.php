@@ -64,34 +64,52 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
             return $symbol;
         }
 
-        if (FunctorInterface::NOTATION_FUNCTION === $notation) {
-            $sep = ', ';
-        } elseif (FunctorInterface::NOTATION_INFIX === $notation) {
-            $sep = ' '.$symbol.' ';
-        } else {
-            // prefix or suffix notation
-            $sep = ' ';
+        $sep = $this->expressionStringArgumentSeparator($notation, $symbol);
+        $arguments = implode($sep, $this->expressionArgumentsList());
+        $expression = $this->expressionStringAssemble($notation, $symbol, $arguments);
+
+        return $this->expressionStringRequiresParentheses($parent) ? ('('.$expression.')') : $expression;
+    }
+
+    /**
+     * @psalm-param FunctorInterface::NOTATION_* $notation
+     */
+    private function expressionStringArgumentSeparator(int $notation, string $symbol): string
+    {
+        switch ($notation) {
+            case FunctorInterface::NOTATION_FUNCTION:
+                return ', ';
+
+            case FunctorInterface::NOTATION_INFIX:
+                return ' '.$symbol.' ';
+
+            default:
+                return ' ';
         }
+    }
 
-        $arguments = $this->expressionArgumentsString($sep);
-
+    /**
+     * @psalm-param FunctorInterface::NOTATION_* $notation
+     */
+    private function expressionStringAssemble(int $notation, string $symbol, string $arguments): string
+    {
         if (FunctorInterface::NOTATION_FUNCTION === $notation) {
             return $symbol.'('.$arguments.')';
         }
 
-        if ('' !== $arguments) {
-            if (FunctorInterface::NOTATION_PREFIX === $notation) {
-                $expression = implode(' ', [$symbol, $arguments]);
-            } elseif (FunctorInterface::NOTATION_SUFFIX === $notation) {
-                $expression = implode(' ', [$arguments, $symbol]);
-            } else {
-                $expression = $arguments;
-            }
-
-            return $this->expressionStringRequiresParentheses($parent) ? ('('.$expression.')') : $expression;
+        if ('' === $arguments) {
+            return $symbol;
         }
 
-        return $symbol;
+        if (FunctorInterface::NOTATION_PREFIX === $notation) {
+            $expression = $symbol.' '.$arguments;
+        } elseif (FunctorInterface::NOTATION_SUFFIX === $notation) {
+            $expression = $arguments.' '.$symbol;
+        } else {
+            $expression = $arguments;
+        }
+
+        return $expression;
     }
 
     private function expressionStringRequiresParentheses(FunctorExpressionInterface $parent = null): bool
@@ -100,13 +118,7 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
             return false;
         }
 
-        return (count($this->arguments()) > 1)
-                && ($parent->functor()->precedence() < $this->functor()->precedence());
-    }
-
-    private function expressionArgumentsString(string $sep): string
-    {
-        return implode($sep, $this->expressionArgumentsList());
+        return (count($this->arguments()) > 1) && ($parent->functor()->precedence() < $this->functor()->precedence());
     }
 
     /**
