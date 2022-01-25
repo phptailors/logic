@@ -22,4 +22,14 @@ trait FunctionNotationTrait
     {
         return FunctorInterface::NOTATION_FUNCTION;
     }
+
+    /**
+     * @psalm-return 0
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    final public function precedence(): int
+    {
+        return 0;
+    }
 }

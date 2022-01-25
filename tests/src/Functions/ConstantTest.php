@@ -105,4 +105,11 @@ final class ConstantTest extends TestCase
     {
         $this->assertSame(0, (new Constant(0))->precedence());
     }
+
+    public function testEvaluateReturnsValue(): void
+    {
+        $this->assertSame(12, (new Constant(12))->evaluate());
+        $this->assertSame(12, (new Constant(12))->evaluate([]));
+        $this->assertSame(12, (new Constant(12))->evaluate(['x' => 123]));
+    }
 }

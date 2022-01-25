@@ -31,10 +31,20 @@ final class Sum extends AbstractNumericFunction
     }
 
     /**
+     * @psalm-return 7
+     *
+     * @see https://www.php.net/manual/en/language.operators.precedence.php
+     */
+    public function precedence(): int
+    {
+        return 7;
+    }
+
+    /**
      * @psalm-param ValidArglist $arguments
      * @psalm-return Number
      */
-    public function applyImpl(array $arguments)
+    protected function applyImpl(array $arguments)
     {
         return array_reduce(
             $arguments,
@@ -51,15 +61,5 @@ final class Sum extends AbstractNumericFunction
             },
             0
         );
-    }
-
-    /**
-     * @psalm-return 7
-     *
-     * @see https://www.php.net/manual/en/language.operators.precedence.php
-     */
-    public function precedence(): int
-    {
-        return 7;
     }
 }

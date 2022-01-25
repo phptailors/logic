@@ -15,4 +15,16 @@ namespace Tailors\Logic;
  */
 interface FormulaInterface extends ExpressionInterface
 {
+    /**
+     * @psalm-param array<string,mixed> $environment
+     *
+     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     */
+    public function evaluate(array $environment = []): bool;
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     */
+    public function where(array $environment): FormulaInterface;
 }

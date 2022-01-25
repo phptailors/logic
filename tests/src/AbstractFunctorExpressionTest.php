@@ -193,6 +193,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 1,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -205,6 +206,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 1,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'arguments'  => [$a, $b],
                     'precedence' => 2,
                 ],
@@ -217,6 +219,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'arguments' => [$a],
                 ],
                 [
+                    'notation' => FunctorInterface::NOTATION_INFIX,
                 ],
             ],
             [
@@ -228,6 +231,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -240,6 +244,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 1,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -252,6 +257,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 1,
                 ],
             ],
@@ -264,6 +270,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -276,6 +283,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 1,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -288,6 +296,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 1,
                 ],
             ],
@@ -300,6 +309,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -312,6 +322,7 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 1,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 2,
                 ],
             ],
@@ -324,7 +335,19 @@ final class AbstractFunctorExpressionTest extends TestCase
                     'precedence' => 2,
                 ],
                 [
+                    'notation'   => FunctorInterface::NOTATION_INFIX,
                     'precedence' => 1,
+                ],
+            ],
+            [
+                'a @ b',
+                [
+                    'notation'  => FunctorInterface::NOTATION_INFIX,
+                    'symbol'    => '@',
+                    'arguments' => [$a, $b],
+                ],
+                [
+                    'notation' => FunctorInterface::NOTATION_FUNCTION,
                 ],
             ],
         ];
@@ -371,27 +394,12 @@ final class AbstractFunctorExpressionTest extends TestCase
             ->method('arguments')
         ;
 
-        $notation = $functorParams['notation'] ?? null;
-        $arguments = $functorParams['arguments'] ?? [];
+        $parentFunctor = (new FunctorMockConstructor($this))->getMock($parentParams);
 
-        $robustNotation = (
-            FunctorInterface::NOTATION_SYMBOL === $notation
-        ) || (
-            FunctorInterface::NOTATION_FUNCTION === $notation
-        );
-
-        if (!$robustNotation && count($arguments) > 1) {
-            $parentFunctor = (new FunctorMockConstructor($this))->getMock($parentParams);
-
-            $parentExpression->expects($this->once())
-                ->method('functor')
-                ->willReturn($parentFunctor)
-            ;
-        } else {
-            $parentExpression->expects($this->never())
-                ->method('functor')
-            ;
-        }
+        $parentExpression->expects($this->once())
+            ->method('functor')
+            ->willReturn($parentFunctor)
+        ;
 
         return $parentExpression;
     }

@@ -35,4 +35,13 @@ final class FunctionNotationTraitTest extends TestCase
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_FUNCTION, $trait->notation());
     }
+
+    public function testPrecedence(): void
+    {
+        $trait = new class() {
+            use FunctionNotationTrait;
+        };
+        /** @psalm-suppress RedundantConditionGivenDocblockType */
+        $this->assertSame(0, $trait->precedence());
+    }
 }

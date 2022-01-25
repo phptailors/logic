@@ -10,6 +10,9 @@
 
 namespace Tailors\Logic\Predicates;
 
+use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\TermInterface;
+
 /**
  * @psalm-immutable
  */
@@ -18,4 +21,6 @@ interface BasicPredicatesInterface
     public function tee(): Tee;
 
     public function falsum(): Falsum;
+
+    public function bool(TermInterface $t1): FormulaInterface;
 }

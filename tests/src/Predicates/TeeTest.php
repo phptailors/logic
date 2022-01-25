@@ -78,4 +78,18 @@ final class TeeTest extends TestCase
     {
         $this->assertSame(0, (new Tee())->precedence());
     }
+
+    public function testEvaluateReturnsTrue(): void
+    {
+        $this->assertTrue((new Tee())->evaluate());
+        $this->assertTrue((new Tee())->evaluate([]));
+        $this->assertTrue((new Tee())->evaluate(['x' => 123]));
+    }
+
+    public function testWhereReturnsThis(): void
+    {
+        $falsum = new Tee();
+        $this->assertSame($falsum, $falsum->where([]));
+        $this->assertSame($falsum, $falsum->where(['x' => 123]));
+    }
 }

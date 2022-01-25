@@ -10,7 +10,6 @@
 
 namespace Tailors\Logic\Predicates;
 
-use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\TermInterface;
 
 /**
@@ -18,7 +17,7 @@ use Tailors\Logic\TermInterface;
  */
 trait BinaryPredicateTrait
 {
-    public function with(TermInterface $t1, TermInterface $t2, TermInterface ...$t): FormulaInterface
+    public function with(TermInterface $t1, TermInterface $t2, TermInterface ...$t): PredicateFormula
     {
         return new PredicateFormula($this, $t1, $t2, ...$t);
     }

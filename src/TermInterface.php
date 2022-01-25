@@ -15,4 +15,12 @@ namespace Tailors\Logic;
  */
 interface TermInterface extends ExpressionInterface
 {
+    /**
+     * @psalm-param array<string,mixed> $environment
+     *
+     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     *
+     * @return mixed
+     */
+    public function evaluate(array $environment = []);
 }

@@ -78,4 +78,18 @@ final class FalsumTest extends TestCase
     {
         $this->assertSame(0, (new Falsum())->precedence());
     }
+
+    public function testEvaluateReturnsFalse(): void
+    {
+        $this->assertFalse((new Falsum())->evaluate());
+        $this->assertFalse((new Falsum())->evaluate([]));
+        $this->assertFalse((new Falsum())->evaluate(['x' => 123]));
+    }
+
+    public function testWhereReturnsThis(): void
+    {
+        $falsum = new Falsum();
+        $this->assertSame($falsum, $falsum->where([]));
+        $this->assertSame($falsum, $falsum->where(['x' => 123]));
+    }
 }

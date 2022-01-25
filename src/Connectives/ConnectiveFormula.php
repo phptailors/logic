@@ -12,6 +12,7 @@ namespace Tailors\Logic\Connectives;
 
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\QuantifiedFormula;
 
 /**
  * @psalm-immutable
@@ -27,5 +28,31 @@ final class ConnectiveFormula extends AbstractFunctorExpression implements Formu
     public function connective(): ConnectiveInterface
     {
         return $this->functor();
+    }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     *
+     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     */
+    public function evaluate(array $environment = []): bool
+    {
+        $arguments = array_map(
+            function (FormulaInterface $arg) use ($environment): bool {
+                return $arg->evaluate($environment);
+            },
+            $this->arguments()
+        );
+
+        return $this->connective()->apply(...$arguments);
+    }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     */
+    public function where(array $environment): QuantifiedFormula
+    {
+        return new QuantifiedFormula($this, $environment);
     }
 }

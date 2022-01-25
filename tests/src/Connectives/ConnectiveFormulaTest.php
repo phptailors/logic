@@ -10,10 +10,12 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\FunctorMockConstructor;
+use Tailors\Logic\QuantifiedFormula;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
@@ -120,7 +122,7 @@ final class ConnectiveFormulaTest extends TestCase
             return $formula;
         }, $arguments);
 
-        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply']);
+        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply' => true]);
         $connective = $mockCtor->getMock($functorParams);
 
         /**
@@ -129,5 +131,102 @@ final class ConnectiveFormulaTest extends TestCase
          */
         $formula = new ConnectiveFormula($connective, ...$arguments);
         $this->assertSame($result, $formula->expressionString());
+    }
+
+    /**
+     * @psalm-return array<array-key, array{
+     *  0: bool,
+     *  1: FunctorMockParams,
+     *  2: list<bool>,
+     *  3: array<string,mixed>
+     * }>
+     */
+    public function providerEvaluateReturnsBool(): array
+    {
+        return [
+            [
+                false,
+                [],
+                [],
+                [],
+            ],
+            [
+                true,
+                [],
+                [],
+                [],
+            ],
+            [
+                false,
+                [],
+                [true, false, true],
+                ['x' => 123],
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider providerEvaluateReturnsBool
+     * @psalm-param FunctorMockParams $functorParams
+     * @psalm-param list<bool> $arguments
+     * @psalm-param array<string, mixed> $environment
+     */
+    public function testEvaluateReturnsBool(
+        bool $result,
+        array $functorParams,
+        array $arguments,
+        array $environment
+    ): void {
+        $terms = array_map(
+            /**
+             * @param mixed $argument
+             * @psalm-return MockObject&FormulaInterface
+             */
+            function ($argument) use ($environment): MockObject {
+                /** @psalm-var  MockObject&FormulaInterface */
+                $term = $this->getMockBuilder(FormulaInterface::class)
+                    ->onlyMethods(['evaluate'])
+                    ->getMockForAbstractClass()
+                            ;
+                $term->expects($this->once())
+                    ->method('evaluate')
+                    ->with($environment)
+                    ->willReturn($argument)
+                    ;
+
+                return $term;
+            },
+            $arguments
+        );
+
+        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply' => false]);
+        $connective = $mockCtor->getMock($functorParams);
+
+        $connective->expects($this->once())
+            ->method('apply')
+            ->with(...$arguments)
+            ->willReturn($result)
+        ;
+
+        /**
+         * @var ConnectiveInterface     $connective
+         * @var array<FormulaInterface> $arguments
+         */
+        $formula = new ConnectiveFormula($connective, ...$terms);
+        $this->assertSame($result, $formula->evaluate($environment));
+    }
+
+    /**
+     * @uses \Tailors\Logic\QuantifiedFormula::__construct
+     * @uses \Tailors\Logic\QuantifiedFormula::environment
+     */
+    public function testWhereReturnsQuantifiedFormula(): void
+    {
+        $terms = [$this->getMockBuilder(FormulaInterface::class)->getMock()];
+        $connective = $this->getMockBuilder(ConnectiveInterface::class)->getMock();
+        $formula = new ConnectiveFormula($connective, ...$terms);
+        $quantified = $formula->where(['x' => 123]);
+        $this->assertInstanceOf(QuantifiedFormula::class, $quantified);
+        $this->assertSame(['x' => 123], $quantified->environment());
     }
 }

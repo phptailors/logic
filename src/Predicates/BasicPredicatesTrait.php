@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Predicates;
 
+use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\BasicValidatorsInterface;
 
 /**
@@ -32,7 +34,8 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  *
  * @psalm-type BasicPredicatesMap = array {
  *  tee: Tee,
- *  falsum: Falsum
+ *  falsum: Falsum,
+ *  bool: BoolValue,
  * }
  */
 trait BasicPredicatesTrait
@@ -52,6 +55,11 @@ trait BasicPredicatesTrait
         return $this->basicPredicates['falsum'];
     }
 
+    public function bool(TermInterface $t1): FormulaInterface
+    {
+        return $this->basicPredicates['bool']->with($t1);
+    }
+
     /**
      * @psalm-return BasicPredicatesMap
      */
@@ -60,6 +68,7 @@ trait BasicPredicatesTrait
         return [
             'tee'    => new Tee(),
             'falsum' => new Falsum(),
+            'bool'   => new BoolValue(),
         ];
     }
 }

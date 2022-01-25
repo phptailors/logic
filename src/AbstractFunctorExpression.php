@@ -118,7 +118,12 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
             return false;
         }
 
-        return (count($this->arguments()) > 1) && ($parent->functor()->precedence() < $this->functor()->precedence());
+        $parentFunctor = $parent->functor();
+        if (FunctorInterface::NOTATION_FUNCTION === $parentFunctor->notation()) {
+            return false;
+        }
+
+        return (count($this->arguments()) > 1) && ($parentFunctor->precedence() < $this->functor()->precedence());
     }
 
     /**

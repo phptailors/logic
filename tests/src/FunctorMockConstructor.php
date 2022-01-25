@@ -31,10 +31,10 @@ use PHPUnit\Framework\TestCase;
 final class FunctorMockConstructor
 {
     public const DEFAULT_METHODS = [
-        'arity',
-        'notation',
-        'precedence',
-        'symbol',
+        'arity'      => true,
+        'notation'   => true,
+        'precedence' => true,
+        'symbol'     => true,
     ];
 
     /** @var TestCase */
@@ -43,21 +43,21 @@ final class FunctorMockConstructor
     /** @var class-string<MockedType> */
     private $class;
 
-    /** @var array<string> */
+    /** @var array<string,bool> */
     private $methods;
 
     /**
      * @psalm-param class-string<MockedType> $class
-     * @psalm-param array<string> $methods
+     * @psalm-param array<string,bool> $methods
      */
     public function __construct(
         TestCase $test,
         string $class = FunctorInterface::class,
-        array $methods = null
+        array $methods = []
     ) {
         $this->test = $test;
         $this->class = $class;
-        $this->methods = array_unique(array_merge(self::DEFAULT_METHODS, ($methods ?? [])));
+        $this->methods = array_merge(self::DEFAULT_METHODS, $methods);
     }
 
     /**
@@ -67,17 +67,17 @@ final class FunctorMockConstructor
     public function getMock(array $params): MockObject
     {
         $functor = $this->test->getMockBuilder($this->class)
-            ->onlyMethods($this->methods)
+            ->onlyMethods(array_keys($this->methods))
             ->getMock()
         ;
 
-        foreach ($this->methods as $key) {
+        foreach ($this->methods as $key => $flag) {
             if (isset($params[$key])) {
                 $functor->expects($this->test->once())
                     ->method($key)
                     ->willReturn($params[$key])
                 ;
-            } else {
+            } elseif ($flag) {
                 $functor->expects($this->test->never())
                     ->method($key)
                 ;

@@ -56,4 +56,20 @@ final class Tee implements PredicateInterface, FormulaInterface
     {
         return 0;
     }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     */
+    public function evaluate(array $environment = []): bool
+    {
+        return $this->apply();
+    }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     */
+    public function where(array $environment): self
+    {
+        return $this;
+    }
 }

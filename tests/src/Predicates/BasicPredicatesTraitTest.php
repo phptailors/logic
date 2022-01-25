@@ -11,6 +11,7 @@
 namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\BasicValidatorsInterface;
 
 /**
@@ -38,6 +39,23 @@ final class BasicPredicatesTraitTest extends TestCase
     {
         $predicates = $this->getBasicPredicatesObject();
         $this->assertInstanceOf(Tee::class, $predicates->tee());
+    }
+
+    /**
+     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
+     * @uses \Tailors\Logic\Predicates\PredicateFormula::__construct
+     * @uses \Tailors\Logic\Predicates\UnaryPredicateTrait::with
+     */
+    public function testBool(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)
+            ->getMock()
+        ;
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->bool($t1);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1], $formula->arguments());
     }
 
     protected function getBasicPredicatesObject(): BasicPredicatesInterface

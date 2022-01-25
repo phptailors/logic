@@ -12,6 +12,7 @@ namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
+use Tailors\Logic\QuantifiedFormula;
 use Tailors\Logic\TermInterface;
 
 /**
@@ -28,5 +29,32 @@ final class PredicateFormula extends AbstractFunctorExpression implements Formul
     public function predicate(): PredicateInterface
     {
         return $this->functor();
+    }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     *
+     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     */
+    public function evaluate(array $environment = []): bool
+    {
+        $arguments = array_map(
+            /** @return mixed */
+            function (TermInterface $arg) use ($environment) {
+                return $arg->evaluate($environment);
+            },
+            $this->arguments()
+        );
+
+        return $this->predicate()->apply(...$arguments);
+    }
+
+    /**
+     * @psalm-param array<string,mixed> $environment
+     */
+    public function where(array $environment): QuantifiedFormula
+    {
+        return new QuantifiedFormula($this, $environment);
     }
 }

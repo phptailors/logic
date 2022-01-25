@@ -11,6 +11,7 @@
 namespace Tailors\Logic;
 
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
@@ -45,5 +46,21 @@ final class VariableTest extends TestCase
     {
         $x = new Variable('x');
         $this->assertSame('x', $x->expressionString());
+    }
+
+    public function testEvaluateReturnsValue(): void
+    {
+        $x = new Variable('x');
+        $this->assertSame(10, $x->evaluate(['x' => 10]));
+    }
+
+    public function testEvaluateThrowsUndefinedVariableException(): void
+    {
+        $x = new Variable('x');
+
+        $this->expectException(UndefinedVariableException::class);
+        $this->expectExceptionMessage('undefined variable: x');
+
+        $x->evaluate(['y' => 10]);
     }
 }
