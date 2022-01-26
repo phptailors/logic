@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Tailors\Logic\FormulaInterface | API Documentation</title>
+    <title>Tailors\Logic\QuantifiedFormula | API Documentation</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     </head>
 
-    <body id="class" data-name="class:Tailors_Logic_FormulaInterface" data-root-path="../../">
+    <body id="class" data-name="class:Tailors_Logic_QuantifiedFormula" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -61,22 +61,22 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li>FormulaInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li>QuantifiedFormula</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            FormulaInterface
+            QuantifiedFormula
                 
         </h1>
     </div>
 
-    <p>        interface
-    <strong>FormulaInterface</strong>        implements
-        <a href="../../Tailors/Logic/ExpressionInterface.html"><abbr title="Tailors\Logic\ExpressionInterface">ExpressionInterface</abbr></a>
+    <p>final         class
+    <strong>QuantifiedFormula</strong>        implements
+        <a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a>
 </p>
 
         
@@ -91,6 +91,39 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a> $formula, array $environment)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_formula">formula</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_environment">environment</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
@@ -98,8 +131,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Tailors/Logic/ExpressionInterface.html#method_expressionString">
-<abbr title="Tailors\Logic\ExpressionInterface">ExpressionInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -130,9 +162,98 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 31</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a> $formula, array $environment)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a></td>
+                <td>$formula</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$environment</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_formula">
+        <div class="location">at line 37</div>
+        <code>                    <a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a>
+    <strong>formula</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_environment">
+        <div class="location">at line 45</div>
+        <code>                    array
+    <strong>environment</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_expressionString">
-        <div class="location">in <a href="../../Tailors/Logic/ExpressionInterface.html#method_expressionString">
-<abbr title="Tailors\Logic\ExpressionInterface">ExpressionInterface</abbr></a> at line 22</div>
+        <div class="location">at line 54</div>
         <code>                    string
     <strong>expressionString</strong>(<a href="../../Tailors/Logic/FunctorExpressionInterface.html"><abbr title="Tailors\Logic\FunctorExpressionInterface">FunctorExpressionInterface</abbr></a> $parent = null)
         </code>
@@ -170,7 +291,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location">at line 24</div>
+        <div class="location">at line 65</div>
         <code>                    bool
     <strong>evaluate</strong>(array $environment = [])
         </code>
@@ -221,7 +342,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_where">
-        <div class="location">at line 29</div>
+        <div class="location">at line 73</div>
         <code>                    <a href="../../Tailors/Logic/FormulaInterface.html"><abbr title="Tailors\Logic\FormulaInterface">FormulaInterface</abbr></a>
     <strong>where</strong>(array $environment)
         </code>

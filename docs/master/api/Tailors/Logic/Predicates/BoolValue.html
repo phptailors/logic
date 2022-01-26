@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Tailors\Logic\Functions\Sub | API Documentation</title>
+    <title>Tailors\Logic\Predicates\BoolValue | API Documentation</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     </head>
 
-    <body id="class" data-name="class:Tailors_Logic_Functions_Sub" data-root-path="../../../">
+    <body id="class" data-name="class:Tailors_Logic_Predicates_BoolValue" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -62,20 +62,20 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li><a href="../../../Tailors/Logic/Functions.html">Functions</a></li><li class="backslash">\</li><li>Sub</li>
+                        <li><a href="../../../Tailors.html">Tailors</a></li><li class="backslash">\</li><li><a href="../../../Tailors/Logic.html">Logic</a></li><li class="backslash">\</li><li><a href="../../../Tailors/Logic/Predicates.html">Predicates</a></li><li class="backslash">\</li><li>BoolValue</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Sub
+            BoolValue
                 
         </h1>
     </div>
 
     <p>final         class
-    <strong>Sub</strong>        extends <a href="../../../Tailors/Logic/Functions/AbstractNumericFunction.html"><abbr title="Tailors\Logic\Functions\AbstractNumericFunction">AbstractNumericFunction</abbr></a>
+    <strong>BoolValue</strong>        extends <a href="../../../Tailors/Logic/Predicates/AbstractPredicate.html"><abbr title="Tailors\Logic\Predicates\AbstractPredicate">AbstractPredicate</abbr></a>
 </p>
 
         
@@ -88,12 +88,12 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Tailors/Logic/InfixNotationTrait.html"><abbr title="Tailors\Logic\InfixNotationTrait">InfixNotationTrait</abbr></a>    </div>
+                    <a href="../../../Tailors/Logic/FunctionNotationTrait.html"><abbr title="Tailors\Logic\FunctionNotationTrait">FunctionNotationTrait</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Tailors/Logic/Functions/BinaryFunctionTrait.html"><abbr title="Tailors\Logic\Functions\BinaryFunctionTrait">BinaryFunctionTrait</abbr></a>    </div>
+                    <a href="../../../Tailors/Logic/Predicates/UnaryPredicateTrait.html"><abbr title="Tailors\Logic\Predicates\UnaryPredicateTrait">UnaryPredicateTrait</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
             </div>
@@ -105,19 +105,19 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_apply">apply</a>(...$arguments)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Functions/AbstractFunction.html#method_apply">
-<abbr title="Tailors\Logic\Functions\AbstractFunction">AbstractFunction</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Predicates/AbstractPredicate.html#method_apply">
+<abbr title="Tailors\Logic\Predicates\AbstractPredicate">AbstractPredicate</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_applyImpl">applyImpl</a>(array $arguments)
@@ -135,20 +135,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Functions/AbstractNumericFunction.html#method_validate">
-<abbr title="Tailors\Logic\Functions\AbstractNumericFunction">AbstractNumericFunction</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Tailors/Logic/Validators/NumbersArglistValidatorInterface.html"><abbr title="Tailors\Logic\Validators\NumbersArglistValidatorInterface">NumbersArglistValidatorInterface</abbr></a> $numbersArglistValidator)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Functions/AbstractNumericFunction.html#method___construct">
-<abbr title="Tailors\Logic\Functions\AbstractNumericFunction">AbstractNumericFunction</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -159,20 +146,32 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/InfixNotationTrait.html#method_notation">
-<abbr title="Tailors\Logic\InfixNotationTrait">InfixNotationTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/FunctionNotationTrait.html#method_notation">
+<abbr title="Tailors\Logic\FunctionNotationTrait">FunctionNotationTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Tailors/Logic/Functions/FunctionTerm.html"><abbr title="Tailors\Logic\Functions\FunctionTerm">FunctionTerm</abbr></a>
+                    int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_with">with</a>(<a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t1, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t2, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> ...$t)
+                    <a href="#method_precedence">precedence</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Functions/BinaryFunctionTrait.html#method_with">
-<abbr title="Tailors\Logic\Functions\BinaryFunctionTrait">BinaryFunctionTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/FunctionNotationTrait.html#method_precedence">
+<abbr title="Tailors\Logic\FunctionNotationTrait">FunctionNotationTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Tailors/Logic/Predicates/PredicateFormula.html"><abbr title="Tailors\Logic\Predicates\PredicateFormula">PredicateFormula</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_with">with</a>(<a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t1, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> ...$t)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Predicates/UnaryPredicateTrait.html#method_with">
+<abbr title="Tailors\Logic\Predicates\UnaryPredicateTrait">UnaryPredicateTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -183,8 +182,8 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Functions/BinaryFunctionTrait.html#method_arity">
-<abbr title="Tailors\Logic\Functions\BinaryFunctionTrait">BinaryFunctionTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Tailors/Logic/Predicates/UnaryPredicateTrait.html#method_arity">
+<abbr title="Tailors\Logic\Predicates\UnaryPredicateTrait">UnaryPredicateTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -192,17 +191,6 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_symbol">symbol</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_precedence">precedence</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -216,9 +204,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_apply">
-        <div class="location">in <a href="../../../Tailors/Logic/Functions/AbstractFunction.html#method_apply">
-<abbr title="Tailors\Logic\Functions\AbstractFunction">AbstractFunction</abbr></a> at line 31</div>
-        <code>final                    
+        <div class="location">in <a href="../../../Tailors/Logic/Predicates/AbstractPredicate.html#method_apply">
+<abbr title="Tailors\Logic\Predicates\AbstractPredicate">AbstractPredicate</abbr></a> at line 27</div>
+        <code>final                    bool
     <strong>apply</strong>(...$arguments)
         </code>
     </h3>
@@ -238,6 +226,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
                             <h4>Exceptions</h4>
 
@@ -255,8 +252,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_applyImpl">
-        <div class="location">at line 47</div>
-        <code>            protected        
+        <div class="location">at line 37</div>
+        <code>            protected        bool
     <strong>applyImpl</strong>(array $arguments)
         </code>
     </h3>
@@ -276,6 +273,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -284,8 +290,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validate">
-        <div class="location">in <a href="../../../Tailors/Logic/Functions/AbstractNumericFunction.html#method_validate">
-<abbr title="Tailors\Logic\Functions\AbstractNumericFunction">AbstractNumericFunction</abbr></a> at line 43</div>
+        <div class="location">at line 48</div>
         <code>            protected        void
     <strong>validate</strong>(array $arguments)
         </code>
@@ -331,39 +336,9 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">in <a href="../../../Tailors/Logic/Functions/AbstractNumericFunction.html#method___construct">
-<abbr title="Tailors\Logic\Functions\AbstractNumericFunction">AbstractNumericFunction</abbr></a> at line 32</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../Tailors/Logic/Validators/NumbersArglistValidatorInterface.html"><abbr title="Tailors\Logic\Validators\NumbersArglistValidatorInterface">NumbersArglistValidatorInterface</abbr></a> $numbersArglistValidator)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Tailors/Logic/Validators/NumbersArglistValidatorInterface.html"><abbr title="Tailors\Logic\Validators\NumbersArglistValidatorInterface">NumbersArglistValidatorInterface</abbr></a></td>
-                <td>$numbersArglistValidator</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_notation">
-        <div class="location">in <a href="../../../Tailors/Logic/InfixNotationTrait.html#method_notation">
-<abbr title="Tailors\Logic\InfixNotationTrait">InfixNotationTrait</abbr></a> at line 21</div>
+        <div class="location">in <a href="../../../Tailors/Logic/FunctionNotationTrait.html#method_notation">
+<abbr title="Tailors\Logic\FunctionNotationTrait">FunctionNotationTrait</abbr></a> at line 21</div>
         <code>final                    int
     <strong>notation</strong>()
         </code>
@@ -390,115 +365,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_with">
-        <div class="location">in <a href="../../../Tailors/Logic/Functions/BinaryFunctionTrait.html#method_with">
-<abbr title="Tailors\Logic\Functions\BinaryFunctionTrait">BinaryFunctionTrait</abbr></a> at line 21</div>
-        <code>                    <a href="../../../Tailors/Logic/Functions/FunctionTerm.html"><abbr title="Tailors\Logic\Functions\FunctionTerm">FunctionTerm</abbr></a>
-    <strong>with</strong>(<a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t1, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t2, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> ...$t)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a></td>
-                <td>$t1</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a></td>
-                <td>$t2</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a></td>
-                <td>...$t</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Tailors/Logic/Functions/FunctionTerm.html"><abbr title="Tailors\Logic\Functions\FunctionTerm">FunctionTerm</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_arity">
-        <div class="location">in <a href="../../../Tailors/Logic/Functions/BinaryFunctionTrait.html#method_arity">
-<abbr title="Tailors\Logic\Functions\BinaryFunctionTrait">BinaryFunctionTrait</abbr></a> at line 29</div>
-        <code>                    int
-    <strong>arity</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_symbol">
-        <div class="location">at line 28</div>
-        <code>                    string
-    <strong>symbol</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_precedence">
-        <div class="location">at line 38</div>
-        <code>                    int
+        <div class="location">in <a href="../../../Tailors/Logic/FunctionNotationTrait.html#method_precedence">
+<abbr title="Tailors\Logic\FunctionNotationTrait">FunctionNotationTrait</abbr></a> at line 31</div>
+        <code>final                    int
     <strong>precedence</strong>()
         </code>
     </h3>
@@ -530,6 +400,107 @@
             </tr>
             </table>
 
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_with">
+        <div class="location">in <a href="../../../Tailors/Logic/Predicates/UnaryPredicateTrait.html#method_with">
+<abbr title="Tailors\Logic\Predicates\UnaryPredicateTrait">UnaryPredicateTrait</abbr></a> at line 20</div>
+        <code>                    <a href="../../../Tailors/Logic/Predicates/PredicateFormula.html"><abbr title="Tailors\Logic\Predicates\PredicateFormula">PredicateFormula</abbr></a>
+    <strong>with</strong>(<a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> $t1, <a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a> ...$t)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a></td>
+                <td>$t1</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Tailors/Logic/TermInterface.html"><abbr title="Tailors\Logic\TermInterface">TermInterface</abbr></a></td>
+                <td>...$t</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Tailors/Logic/Predicates/PredicateFormula.html"><abbr title="Tailors\Logic\Predicates\PredicateFormula">PredicateFormula</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arity">
+        <div class="location">in <a href="../../../Tailors/Logic/Predicates/UnaryPredicateTrait.html#method_arity">
+<abbr title="Tailors\Logic\Predicates\UnaryPredicateTrait">UnaryPredicateTrait</abbr></a> at line 28</div>
+        <code>                    int
+    <strong>arity</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_symbol">
+        <div class="location">at line 29</div>
+        <code>                    string
+    <strong>symbol</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
                     </div>
     </div>
 
