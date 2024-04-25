@@ -83,6 +83,6 @@ final class ComparatorArglistValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('arguments 2, 4 and 6 provided to foo are not comparable values');
 
-        $validator->validate('foo', [1, 'x', 1.1, 'y', false, new \StdClass()]);
+        $validator->validate('foo', [1, 'x', 1.1, 'y', false, new \stdClass()]);
     }
 }

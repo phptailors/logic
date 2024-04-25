@@ -83,6 +83,6 @@ final class NumbersArglistValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('arguments 2, 4 and 6 provided to foo are not numbers');
 
-        $validator->validate('foo', [1, 'x', 1.1, 'y', -0.9, new \StdClass()]);
+        $validator->validate('foo', [1, 'x', 1.1, 'y', -0.9, new \stdClass()]);
     }
 }

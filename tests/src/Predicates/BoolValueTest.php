@@ -99,7 +99,7 @@ final class BoolValueTest extends TestCase
             ],
             [
                 true,
-                [new \StdClass()],
+                [new \stdClass()],
             ],
             [
                 true,
