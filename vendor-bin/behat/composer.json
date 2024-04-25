@@ -1,0 +1,9 @@
+{
+    "require-dev": {
+        "behat/behat": "^3.14"
+    },
+    "scripts": {
+        "post-install-cmd": ["@php ../symlink.php"],
+        "post-update-cmd":  ["@php ../symlink.php"]
+    }
+}

@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-    backupGlobals="false"
-    colors="true"
-    bootstrap="tests/bootstrap.php"
-    failOnRisky="true"
-    failOnWarning="true"
-    forceCoversAnnotation="true"
-    beStrictAboutChangesToGlobalState="true"
-    beStrictAboutCoversAnnotation="true"
-    verbose="true"
->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd" backupGlobals="false" colors="true" bootstrap="tests/bootstrap.php" failOnRisky="true" failOnWarning="true" beStrictAboutChangesToGlobalState="true" cacheDirectory=".phpunit.cache" requireCoverageMetadata="true" beStrictAboutCoverageMetadata="true">
   <coverage>
-    <include>
-      <directory>./src</directory>
-    </include>
-    <exclude>
-      <directory suffix="Test.php">./tests</directory>
-      <directory>./behat</directory>
-      <directory>./vendor</directory>
-    </exclude>
     <report>
       <clover outputFile="build/logs/clover.xml"/>
       <html outputDirectory="build/logs/html"/>
@@ -34,4 +14,14 @@
       <directory suffix="Test.php">./tests/</directory>
     </testsuite>
   </testsuites>
+  <source>
+    <include>
+      <directory>./src</directory>
+    </include>
+    <exclude>
+      <directory suffix="Test.php">./tests</directory>
+      <directory>./behat</directory>
+      <directory>./vendor</directory>
+    </exclude>
+  </source>
 </phpunit>

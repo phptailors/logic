@@ -25,9 +25,11 @@ jobs:
           php-version: 7.4
           coverage: none
 
-      - run: composer update --no-interaction --no-progress --no-ansi
+      - run: |
+          composer update --no-interaction --no-progress --no-ansi;
+          composer bin behat update --no-interaction --no-progress --no-ansi
 
-      - run: vendor/bin/behat -c docs/behat.yml
+      - run: bin/behat -c docs/behat.yml
 
 
   build-docs:
