@@ -3,7 +3,7 @@
 /*
  * This file is part of phptailors/logic.
  *
- * Copyright (c) Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+ * Copyright (c) Paweł Tomulik <pawel@tomulik.pl>
  *
  * View the LICENSE file for full copyright and license information.
  */
@@ -17,7 +17,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
- * @author Paweł Tomulik <ptomulik@meil.pw.edu.pl>
+ * @author Paweł Tomulik <pawel@tomulik.pl>
  * @covers \Tailors\Logic\Connectives\Disjunction
  *
  * @psalm-suppress MissingThrowsDocblock
