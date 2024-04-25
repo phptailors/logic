@@ -48,6 +48,7 @@ composer.lock
 *.bak
 *~
 .~lock.*
+.phpactor.json
 
 # IDE - VSCode
 .vscode/*
