@@ -185,7 +185,7 @@ class DocExampleContext implements Context
     }
 
     /**
-     * @Then I should see PHPunit stdout from :file
+     * @Then I should see PHPUnit stdout from :file
      */
     public function iShouldSeePhpUnitStdoutFrom(?string $file = null)
     {

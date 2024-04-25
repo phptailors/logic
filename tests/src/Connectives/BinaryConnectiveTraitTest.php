@@ -43,7 +43,7 @@ final class BinaryConnectiveTraitTest extends TestCase
         $t2 = $this->getMockBuilder(FormulaInterface::class)
             ->getMock()
         ;
-        /** @var \PHPunit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
+        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
         $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
             ->getMockForAbstractClass()
         ;
@@ -55,7 +55,7 @@ final class BinaryConnectiveTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPunit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
+        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
         $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
             ->getMockForAbstractClass()
         ;

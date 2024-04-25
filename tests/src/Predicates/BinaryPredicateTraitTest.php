@@ -43,7 +43,7 @@ final class BinaryPredicateTraitTest extends TestCase
         $t2 = $this->getMockBuilder(TermInterface::class)
             ->getMock()
         ;
-        /** @var \PHPunit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
+        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
         $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
             ->getMockForAbstractClass()
         ;
@@ -55,7 +55,7 @@ final class BinaryPredicateTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPunit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
+        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
         $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
             ->getMockForAbstractClass()
         ;
