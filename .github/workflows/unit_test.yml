@@ -18,10 +18,6 @@ jobs:
           - ubuntu-latest
           - windows-latest
         php-version:
-          - 7.4
-          - 8.0
-          - 8.1
-          - 8.2
           - 8.3
         dependencies:
           - lowest
@@ -29,7 +25,7 @@ jobs:
 
     name: logic (${{ matrix.os }}:PHP-${{ matrix.php-version }}:${{ matrix.dependencies }})
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
@@ -49,7 +45,7 @@ jobs:
       - run: bin/phpunit
 
       - name: Send code coverage report to Codecov.io
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
