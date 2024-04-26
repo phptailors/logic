@@ -18,6 +18,7 @@ if (!file_exists($target)) {
 }
 
 $basename = basename($target);
+$linkname = $argv[2] ?? $basename;
 
 $bindir = __DIR__.'/../bin';
 if (!file_exists($bindir)) {
@@ -26,19 +27,19 @@ if (!file_exists($bindir)) {
 }
 $bindir = realpath($bindir);
 
-$binfile = "{$bindir}/{$basename}";
-if (file_exists($binfile)) {
-    fwrite(STDERR, "warning: '{$binfile}' already exists\n");
-    if (!is_link("{$binfile}")) {
-        fwrite(STDOUT, "warning: '{$binfile}' is not a symlink, exiting\n");
+$linkfile = "{$bindir}/{$linkname}";
+if (file_exists($linkfile)) {
+    fwrite(STDERR, "warning: '{$linkfile}' already exists\n");
+    if (!is_link("{$linkfile}")) {
+        fwrite(STDOUT, "warning: '{$linkfile}' is not a symlink, exiting\n");
         exit(2);
     }
-    fwrite(STDERR, "warning: unlinking '{$binfile}'\n");
-    unlink($binfile);
+    fwrite(STDERR, "warning: unlinking '{$linkfile}'\n");
+    unlink($linkfile);
 }
 
 
 fwrite(STDOUT, "info: cd '{$bindir}'\n");
 chdir($bindir);
-fwrite(STDOUT, "info: ln -s '../{$reldir}/{$target}' '{$basename}'\n");
-symlink("../{$reldir}/{$target}", $basename);
+fwrite(STDOUT, "info: ln -s '../{$reldir}/{$target}' '{$linkname}'\n");
+symlink("../{$reldir}/{$target}", $linkname);

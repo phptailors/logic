@@ -3,7 +3,7 @@
         "behat/behat": "^3.14"
     },
     "scripts": {
-        "post-install-cmd": ["@php ../symlink.php"],
-        "post-update-cmd":  ["@php ../symlink.php"]
+        "post-install-cmd": ["@php ../symlink-bin.php vendor/bin/behat"],
+        "post-update-cmd":  ["@php ../symlink-bin.php vendor/bin/behat"]
     }
 }
