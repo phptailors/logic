@@ -10,13 +10,13 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
- *
- * @covers \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
  *
@@ -34,7 +34,10 @@ use PHPUnit\Framework\TestCase;
  * }
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(AbstractFunctorExpression::class)]
 final class AbstractFunctorExpressionTest extends TestCase
 {
     public function setUp(): void
@@ -354,11 +357,10 @@ final class AbstractFunctorExpressionTest extends TestCase
     }
 
     /**
-     * @dataProvider providerExpressionString
-     *
      * @psalm-param FunctorTestParams $functorParams
      * @psalm-param FunctorTestParams $parentParams
      */
+    #[DataProvider('providerExpressionString')]
     public function testExpressionString(string $result, array $functorParams, ?array $parentParams = null): void
     {
         $functor = (new FunctorMockConstructor($this))->getMock($functorParams);

@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Connectives\BasicConnectivesTrait;
 use Tailors\Logic\Functions\BasicFunctionsTrait;
@@ -20,12 +21,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Logic
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Logic::class)]
 final class LogicTest extends TestCase
 {
     use ImplementsInterfaceTrait;

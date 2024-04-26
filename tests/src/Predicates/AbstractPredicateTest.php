@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Predicates;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Predicates\AbstractPredicate
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(AbstractPredicate::class)]
 final class AbstractPredicateTest extends TestCase
 {
     use ImplementsInterfaceTrait;

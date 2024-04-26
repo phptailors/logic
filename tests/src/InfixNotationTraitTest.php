@@ -10,17 +10,19 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\InfixNotationTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(InfixNotationTrait::class)]
 final class InfixNotationTraitTest extends TestCase
 {
     public function setUp(): void

@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\BasicValidatorsInterface;
@@ -17,12 +18,13 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\BasicFunctionsTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(BasicFunctionsTrait::class)]
 final class BasicFunctionsTraitTest extends TestCase
 {
     public function setUp(): void

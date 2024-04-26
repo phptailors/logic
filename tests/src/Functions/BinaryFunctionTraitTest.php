@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\TermInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\BinaryFunctionTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(BinaryFunctionTrait::class)]
 final class BinaryFunctionTraitTest extends TestCase
 {
     public function setUp(): void

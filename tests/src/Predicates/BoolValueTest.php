@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Predicates;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Exceptions\InvalidArgumentException;
 use Tailors\Logic\FunctionNotationTrait;
@@ -21,12 +23,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Predicates\BoolValue
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(BoolValue::class)]
 final class BoolValueTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -116,12 +119,11 @@ final class BoolValueTest extends TestCase
     }
 
     /**
-     * @dataProvider providerApplyReturnsBool
-     *
      * @uses \Tailors\Logic\Predicates\AbstractPredicate::apply
      *
      * @palm-param list $arguments
      */
+    #[DataProvider('providerApplyReturnsBool')]
     public function testApplyReturnsBool(bool $result, array $arguments): void
     {
         $bool = new BoolValue();

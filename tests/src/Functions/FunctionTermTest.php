@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FunctorInterface;
@@ -20,8 +22,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\FunctionTerm
- *
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -29,7 +29,10 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(FunctionTerm::class)]
 final class FunctionTermTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -102,11 +105,10 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsString
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
+    #[DataProvider('providerExpressionStringReturnsString')]
     public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
@@ -160,14 +162,13 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     * @dataProvider providerEvaluateReturnsValue
-     *
      * @param mixed $result
      *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
      * @psalm-param array<string, mixed> $environment
      */
+    #[DataProvider('providerEvaluateReturnsValue')]
     public function testEvaluateReturnsValue(
         $result,
         array $functorParams,

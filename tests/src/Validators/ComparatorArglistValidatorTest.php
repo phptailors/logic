@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic\Validators;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Exceptions\InvalidArgumentException;
 use Tailors\PHPUnit\ExtendsClassTrait;
@@ -18,12 +19,13 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Validators\ComparatorArglistValidator
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(ComparatorArglistValidator::class)]
 final class ComparatorArglistValidatorTest extends TestCase
 {
     use ImplementsInterfaceTrait;

@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Connectives\BasicConnectivesTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(BasicConnectivesTrait::class)]
 final class BasicConnectivesTraitTest extends TestCase
 {
     public function setUp(): void

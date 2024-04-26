@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
@@ -20,14 +22,15 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\Sub
- *
  * @psalm-import-type Number from Sub
  *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Sub::class)]
 final class SubTest extends TestCase
 {
     use ExtendsClassTrait;
@@ -93,8 +96,6 @@ final class SubTest extends TestCase
     }
 
     /**
-     * @dataProvider providerApplyReturnsSubtractedArguments
-     *
      * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
      * @uses \Tailors\Logic\Functions\AbstractNumericFunction::validate
      * @uses \Tailors\Logic\Functions\AbstractFunction::apply
@@ -106,6 +107,7 @@ final class SubTest extends TestCase
      *
      * @param mixed $result
      */
+    #[DataProvider('providerApplyReturnsSubtractedArguments')]
     public function testApplyReturnsSubtractedArguments($result, array $arguments): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)

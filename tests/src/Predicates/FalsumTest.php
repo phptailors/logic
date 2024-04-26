@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic\Predicates;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\FunctorInterface;
@@ -18,12 +19,13 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Predicates\Falsum
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Falsum::class)]
 final class FalsumTest extends TestCase
 {
     use ImplementsInterfaceTrait;

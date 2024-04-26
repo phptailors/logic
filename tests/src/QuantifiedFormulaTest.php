@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -17,12 +18,13 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\QuantifiedFormula
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(QuantifiedFormula::class)]
 final class QuantifiedFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;

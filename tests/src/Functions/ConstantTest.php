@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\SymbolNotationTrait;
@@ -20,12 +22,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\Constant
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Constant::class)]
 final class ConstantTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -87,10 +90,9 @@ final class ConstantTest extends TestCase
     }
 
     /**
-     * @dataProvider providerExpressionString
-     *
      * @param mixed $value
      */
+    #[DataProvider('providerExpressionString')]
     public function testExpressionString($value, string $result): void
     {
         $const = new Constant($value);

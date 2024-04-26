@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\InfixNotationTrait;
@@ -19,12 +21,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Connectives\Conjunction
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Conjunction::class)]
 final class ConjunctionTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -92,12 +95,11 @@ final class ConjunctionTest extends TestCase
     }
 
     /**
-     * @dataProvider providerApplyReturnsConjunctionOfArguments
-     *
      * @psalm-param array<bool> $arguments
      *
      * @param mixed $result
      */
+    #[DataProvider('providerApplyReturnsConjunctionOfArguments')]
     public function testApplyReturnsConjunctionOfArguments(bool $result, array $arguments): void
     {
         $this->assertSame($result, (new Conjunction())->apply(...$arguments));

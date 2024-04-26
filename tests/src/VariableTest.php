@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Exceptions\UndefinedVariableException;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -17,12 +18,13 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Variable
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Variable::class)]
 final class VariableTest extends TestCase
 {
     use ImplementsInterfaceTrait;

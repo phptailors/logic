@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Predicates;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\TermInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Predicates\UnaryPredicateTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(UnaryPredicateTrait::class)]
 final class UnaryPredicateTraitTest extends TestCase
 {
     public function setUp(): void

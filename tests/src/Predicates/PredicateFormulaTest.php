@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Predicates;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
@@ -22,8 +24,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Predicates\PredicateFormula
- *
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -31,7 +31,10 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(PredicateFormula::class)]
 final class PredicateFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -104,11 +107,10 @@ final class PredicateFormulaTest extends TestCase
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsString
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
+    #[DataProvider('providerExpressionStringReturnsString')]
     public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $terms = array_map(
@@ -175,12 +177,11 @@ final class PredicateFormulaTest extends TestCase
     }
 
     /**
-     * @dataProvider providerEvaluateReturnsBool
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
      * @psalm-param array<string, mixed> $environment
      */
+    #[DataProvider('providerEvaluateReturnsBool')]
     public function testEvaluateReturnsBool(
         bool $result,
         array $functorParams,

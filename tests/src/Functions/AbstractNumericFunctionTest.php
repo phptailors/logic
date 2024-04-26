@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
@@ -17,12 +18,13 @@ use Tailors\PHPUnit\ExtendsClassTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Functions\AbstractNumericFunction
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(AbstractNumericFunction::class)]
 final class AbstractNumericFunctionTest extends TestCase
 {
     use ExtendsClassTrait;

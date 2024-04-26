@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Validators;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Validators\BasicValidators
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(BasicValidators::class)]
 final class BasicValidatorsTest extends TestCase
 {
     use ImplementsInterfaceTrait;

@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\InfixNotationTrait;
@@ -19,12 +21,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Connectives\Disjunction
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(Disjunction::class)]
 final class DisjunctionTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -92,12 +95,11 @@ final class DisjunctionTest extends TestCase
     }
 
     /**
-     * @dataProvider providerApplyReturnsDisjunctionOfArguments
-     *
      * @psalm-param array<bool> $arguments
      *
      * @param mixed $result
      */
+    #[DataProvider('providerApplyReturnsDisjunctionOfArguments')]
     public function testApplyReturnsDisjunctionOfArguments(bool $result, array $arguments): void
     {
         $this->assertSame($result, (new Disjunction())->apply(...$arguments));

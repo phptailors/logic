@@ -10,18 +10,20 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Connectives\UnaryConnectiveTrait
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(UnaryConnectiveTrait::class)]
 final class UnaryConnectiveTraitTest extends TestCase
 {
     public function setUp(): void

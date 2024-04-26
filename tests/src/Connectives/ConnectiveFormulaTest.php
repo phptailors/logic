@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic\Connectives;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\FormulaInterface;
@@ -21,8 +23,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @covers \Tailors\Logic\Connectives\ConnectiveFormula
- *
  * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -30,7 +30,10 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
+ *
+ * @coversNothing
  */
+#[CoversClass(ConnectiveFormula::class)]
 final class ConnectiveFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -103,11 +106,10 @@ final class ConnectiveFormulaTest extends TestCase
     }
 
     /**
-     * @dataProvider providerExpressionStringReturnsString
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param array<string> $arguments
      */
+    #[DataProvider('providerExpressionStringReturnsString')]
     public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
@@ -167,12 +169,11 @@ final class ConnectiveFormulaTest extends TestCase
     }
 
     /**
-     * @dataProvider providerEvaluateReturnsBool
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list<bool> $arguments
      * @psalm-param array<string, mixed> $environment
      */
+    #[DataProvider('providerEvaluateReturnsBool')]
     public function testEvaluateReturnsBool(
         bool $result,
         array $functorParams,
