@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\InfixNotationTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -32,6 +33,7 @@ final class InfixNotationTraitTest extends TestCase
         $trait = new class() {
             use InfixNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_INFIX, $trait->notation());
     }

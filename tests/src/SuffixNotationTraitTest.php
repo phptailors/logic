@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\SuffixNotationTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -32,6 +33,7 @@ final class SuffixNotationTraitTest extends TestCase
         $trait = new class() {
             use SuffixNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SUFFIX, $trait->notation());
     }

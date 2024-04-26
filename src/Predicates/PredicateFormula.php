@@ -11,12 +11,15 @@
 namespace Tailors\Logic\Predicates;
 
 use Tailors\Logic\AbstractFunctorExpression;
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\QuantifiedFormula;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ *
  * @template-extends AbstractFunctorExpression<PredicateInterface,TermInterface>
  */
 final class PredicateFormula extends AbstractFunctorExpression implements FormulaInterface
@@ -34,8 +37,8 @@ final class PredicateFormula extends AbstractFunctorExpression implements Formul
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     * @throws InvalidArgumentException
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = []): bool
     {

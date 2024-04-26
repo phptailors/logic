@@ -14,15 +14,18 @@ namespace Tailors\Logic\Validators;
  * Asserts that all the $arguments are numbers.
  *
  * @psalm-immutable
+ *
  * @psalm-type Comparable = int|float|bool
  * @psalm-type Arglist = list
  * @psalm-type ValidArglist = list<Comparable>
+ *
  * @template-extends AbstractArglistValidator<Arglist,ValidArglist>
  */
 final class ComparatorArglistValidator extends AbstractArglistValidator implements ComparatorArglistValidatorInterface
 {
     /**
      * @param mixed $value
+     *
      * @psalm-assert-if-true Comparable $value
      */
     protected function isValid($value, int $index): bool

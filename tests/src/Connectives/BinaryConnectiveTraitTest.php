@@ -15,6 +15,7 @@ use Tailors\Logic\FormulaInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Connectives\BinaryConnectiveTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -43,7 +44,8 @@ final class BinaryConnectiveTraitTest extends TestCase
         $t2 = $this->getMockBuilder(FormulaInterface::class)
             ->getMock()
         ;
-        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
+
+        /** @var BinaryConnectiveTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
         $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
             ->getMockForAbstractClass()
         ;
@@ -55,7 +57,7 @@ final class BinaryConnectiveTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryConnectiveTraitTestObject */
+        /** @var BinaryConnectiveTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
         $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
             ->getMockForAbstractClass()
         ;

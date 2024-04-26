@@ -12,7 +12,9 @@ namespace Tailors\Logic\Functions;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-template Ret
+ *
  * @template-implements FunctionInterface<Ret>
  */
 abstract class BinaryFunctionTraitTestObject implements FunctionInterface

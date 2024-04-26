@@ -10,10 +10,13 @@
 
 namespace Tailors\Logic\Functions;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+
 /**
  * @psalm-immutable
  *
  * @psalm-type Arglist = list
+ *
  * @psalm-template Arity of 0|positive-int
  * @psalm-template Ret
  * @psalm-template ValidArglist of Arglist
@@ -24,9 +27,10 @@ abstract class AbstractFunction implements FunctionInterface
 {
     /**
      * @psalm-param mixed $arguments
+     *
      * @psalm-return Ret
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     final public function apply(...$arguments)
     {
@@ -38,15 +42,17 @@ abstract class AbstractFunction implements FunctionInterface
 
     /**
      * @psalm-param ValidArglist $arguments
+     *
      * @psalm-return Ret
      */
     abstract protected function applyImpl(array $arguments);
 
     /**
      * @psalm-param Arglist $arguments
+     *
      * @psalm-assert ValidArglist $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     abstract protected function validate(array $arguments): void;
 }

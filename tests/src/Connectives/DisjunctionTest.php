@@ -18,6 +18,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Connectives\Disjunction
  *
  * @psalm-suppress MissingThrowsDocblock

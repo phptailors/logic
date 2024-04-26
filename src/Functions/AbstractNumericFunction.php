@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
 use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
 
 /**
@@ -20,6 +21,7 @@ use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
  * @psalm-type Number = int|float
  * @psalm-type Arglist = list
  * @psalm-type ValidArglist = list<Number>
+ *
  * @template-extends AbstractFunction<Arity,Number,ValidArglist>
  */
 abstract class AbstractNumericFunction extends AbstractFunction
@@ -36,9 +38,10 @@ abstract class AbstractNumericFunction extends AbstractFunction
 
     /**
      * @psalm-param Arglist $arguments
+     *
      * @psalm-assert ValidArglist $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function validate(array $arguments): void
     {

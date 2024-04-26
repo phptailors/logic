@@ -14,6 +14,7 @@ use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-require-implements FunctionInterface
  */
 trait BinaryFunctionTrait

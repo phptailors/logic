@@ -10,6 +10,4 @@
 
 namespace Tailors\Logic\Exceptions;
 
-class InvalidArgumentException extends \InvalidArgumentException
-{
-}
+class InvalidArgumentException extends \InvalidArgumentException {}

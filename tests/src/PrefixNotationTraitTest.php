@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\PrefixNotationTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -32,6 +33,7 @@ final class PrefixNotationTraitTest extends TestCase
         $trait = new class() {
             use PrefixNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_PREFIX, $trait->notation());
     }

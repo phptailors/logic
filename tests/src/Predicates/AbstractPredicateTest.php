@@ -15,6 +15,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\AbstractPredicate
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -43,7 +44,8 @@ final class AbstractPredicateTest extends TestCase
                 'symbol',
                 'validate',
                 'precedence',
-            ])->getMock();
+            ])->getMock()
+        ;
 
         $func->expects($this->never())
             ->method('arity')

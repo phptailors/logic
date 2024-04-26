@@ -15,6 +15,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @coversNothing
  *
  * @psalm-suppress MissingThrowsDocblock

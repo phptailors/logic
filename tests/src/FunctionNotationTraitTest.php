@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\FunctionNotationTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -32,6 +33,7 @@ final class FunctionNotationTraitTest extends TestCase
         $trait = new class() {
             use FunctionNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_FUNCTION, $trait->notation());
     }
@@ -41,6 +43,7 @@ final class FunctionNotationTraitTest extends TestCase
         $trait = new class() {
             use FunctionNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(0, $trait->precedence());
     }

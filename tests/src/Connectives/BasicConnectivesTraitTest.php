@@ -15,6 +15,7 @@ use Tailors\Logic\FormulaInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Connectives\BasicConnectivesTrait
  *
  * @psalm-suppress MissingThrowsDocblock

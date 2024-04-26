@@ -17,6 +17,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\Falsum
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -45,6 +46,7 @@ final class FalsumTest extends TestCase
     public function testArity(): void
     {
         $falsum = new Falsum();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(0, $falsum->arity());
     }
@@ -70,6 +72,7 @@ final class FalsumTest extends TestCase
     public function testNotation(): void
     {
         $falsum = new Falsum();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $falsum->notation());
     }

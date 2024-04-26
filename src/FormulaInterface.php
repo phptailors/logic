@@ -10,6 +10,9 @@
 
 namespace Tailors\Logic;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
+
 /**
  * @psalm-immutable
  */
@@ -18,8 +21,8 @@ interface FormulaInterface extends ExpressionInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     * @throws InvalidArgumentException
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = []): bool;
 

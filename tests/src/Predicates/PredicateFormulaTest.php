@@ -21,6 +21,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\PredicateFormula
  *
  * @uses \Tailors\Logic\AbstractFunctorExpression
@@ -119,11 +120,11 @@ final class PredicateFormulaTest extends TestCase
                 $term = $this->getMockBuilder(TermInterface::class)
                     ->onlyMethods(['expressionString'])
                     ->getMockForAbstractClass()
-                            ;
+                ;
                 $term->expects($this->once())
                     ->method('expressionString')
                     ->willReturn($symbol)
-                    ;
+                ;
 
                 return $term;
             },
@@ -175,6 +176,7 @@ final class PredicateFormulaTest extends TestCase
 
     /**
      * @dataProvider providerEvaluateReturnsBool
+     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
      * @psalm-param array<string, mixed> $environment
@@ -188,6 +190,7 @@ final class PredicateFormulaTest extends TestCase
         $terms = array_map(
             /**
              * @param mixed $argument
+             *
              * @psalm-return MockObject&TermInterface
              */
             function ($argument) use ($environment): MockObject {
@@ -195,12 +198,12 @@ final class PredicateFormulaTest extends TestCase
                 $term = $this->getMockBuilder(TermInterface::class)
                     ->onlyMethods(['evaluate'])
                     ->getMockForAbstractClass()
-                            ;
+                ;
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
                     ->willReturn($argument)
-                    ;
+                ;
 
                 return $term;
             },

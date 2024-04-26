@@ -19,6 +19,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\Sum
  *
  * @psalm-import-type Number from Sum

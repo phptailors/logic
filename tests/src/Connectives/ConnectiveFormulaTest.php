@@ -20,6 +20,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Connectives\ConnectiveFormula
  *
  * @uses \Tailors\Logic\AbstractFunctorExpression
@@ -167,6 +168,7 @@ final class ConnectiveFormulaTest extends TestCase
 
     /**
      * @dataProvider providerEvaluateReturnsBool
+     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list<bool> $arguments
      * @psalm-param array<string, mixed> $environment
@@ -180,6 +182,7 @@ final class ConnectiveFormulaTest extends TestCase
         $terms = array_map(
             /**
              * @param mixed $argument
+             *
              * @psalm-return MockObject&FormulaInterface
              */
             function ($argument) use ($environment): MockObject {
@@ -187,12 +190,12 @@ final class ConnectiveFormulaTest extends TestCase
                 $term = $this->getMockBuilder(FormulaInterface::class)
                     ->onlyMethods(['evaluate'])
                     ->getMockForAbstractClass()
-                            ;
+                ;
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
                     ->willReturn($argument)
-                    ;
+                ;
 
                 return $term;
             },

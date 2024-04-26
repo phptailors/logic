@@ -12,6 +12,7 @@ namespace Tailors\Logic;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-template Argument of ExpressionInterface
  */
 interface FunctorExpressionInterface

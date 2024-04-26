@@ -20,6 +20,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\BoolValue
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -60,6 +61,7 @@ final class BoolValueTest extends TestCase
     public function testArity(): void
     {
         $bool = new BoolValue();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(1, $bool->arity());
     }
@@ -146,6 +148,7 @@ final class BoolValueTest extends TestCase
     public function testNotation(): void
     {
         $bool = new BoolValue();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_FUNCTION, $bool->notation());
     }

@@ -35,7 +35,7 @@ final class Variable implements VariableInterface
         return $this->symbol;
     }
 
-    public function expressionString(FunctorExpressionInterface $parent = null): string
+    public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->symbol;
     }
@@ -43,9 +43,9 @@ final class Variable implements VariableInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws UndefinedVariableException
-     *
      * @return mixed
+     *
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = [])
     {

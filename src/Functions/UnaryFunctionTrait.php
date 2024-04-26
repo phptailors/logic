@@ -14,6 +14,7 @@ use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ *
  * @pslam-require-implements FunctionInterface
  */
 trait UnaryFunctionTrait

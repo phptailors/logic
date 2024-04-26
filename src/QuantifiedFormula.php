@@ -10,6 +10,9 @@
 
 namespace Tailors\Logic;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
+
 /**
  * @psalm-immutable
  */
@@ -49,9 +52,10 @@ final class QuantifiedFormula implements FormulaInterface
 
     /**
      * @psalm-template Argument of ExpressionInterface
+     *
      * @psalm-param FunctorExpressionInterface<Argument> $parent
      */
-    public function expressionString(FunctorExpressionInterface $parent = null): string
+    public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->formula()->expressionString($parent);
     }
@@ -59,8 +63,8 @@ final class QuantifiedFormula implements FormulaInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     * @throws InvalidArgumentException
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = []): bool
     {

@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -28,7 +29,6 @@ use PHPUnit\Framework\TestCase;
  *      notation?: FunctorInterface::NOTATION_*,
  *      precedence?: Precedence,
  *  }
- *
  * @psalm-type FunctorTestParams = FunctorMockParams & array{
  *      arguments?: array<ExpressionInterface>
  * }
@@ -359,11 +359,11 @@ final class AbstractFunctorExpressionTest extends TestCase
      * @psalm-param FunctorTestParams $functorParams
      * @psalm-param FunctorTestParams $parentParams
      */
-    public function testExpressionString(string $result, array $functorParams, array $parentParams = null): void
+    public function testExpressionString(string $result, array $functorParams, ?array $parentParams = null): void
     {
         $functor = (new FunctorMockConstructor($this))->getMock($functorParams);
 
-        /** @var MockObject&AbstractFunctorExpression */
+        /** @var AbstractFunctorExpression&MockObject */
         $expression = $this->getMockBuilder(AbstractFunctorExpression::class)
             ->setConstructorArgs([$functor, $functorParams['arguments'] ?? []])
             ->getMockForAbstractClass()
@@ -371,6 +371,7 @@ final class AbstractFunctorExpressionTest extends TestCase
 
         if (null !== $parentParams) {
             $parentExpression = $this->getParentFunctorExpressionMock($parentParams, $functorParams);
+
             /** @var FunctorExpressionInterface<ExpressionInterface> $parentExpression */
             $this->assertSame($result, $expression->expressionString($parentExpression));
         } else {
@@ -381,6 +382,7 @@ final class AbstractFunctorExpressionTest extends TestCase
     /**
      * @psalm-param FunctorTestParams $parentParams
      * @psalm-param FunctorTestParams $functorParams
+     *
      * @psalm-return MockObject&FunctorExpressionInterface<ExpressionInterface>
      */
     protected function getParentFunctorExpressionMock(array $parentParams, array $functorParams): MockObject

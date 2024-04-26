@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\SymbolNotationTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -32,6 +33,7 @@ final class SymbolNotationTraitTest extends TestCase
         $trait = new class() {
             use SymbolNotationTrait;
         };
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $trait->notation());
     }

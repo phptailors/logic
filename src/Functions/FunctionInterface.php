@@ -21,6 +21,7 @@ interface FunctionInterface extends FunctorInterface
 {
     /**
      * @psalm-param mixed $arguments
+     *
      * @psalm-return Ret
      */
     public function apply(...$arguments);

@@ -12,6 +12,7 @@ namespace Tailors\Logic\Connectives;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-template Ret
  */
 abstract class UnaryConnectiveTraitTestObject implements ConnectiveInterface

@@ -10,6 +10,8 @@
 
 namespace Tailors\Logic;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+
 /**
  * @psalm-immutable
  */
@@ -18,9 +20,9 @@ interface TermInterface extends ExpressionInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     *
      * @return mixed
+     *
+     * @throws InvalidArgumentException
      */
     public function evaluate(array $environment = []);
 }

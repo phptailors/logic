@@ -19,6 +19,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\FunctionTerm
  *
  * @uses \Tailors\Logic\AbstractFunctorExpression
@@ -162,6 +163,7 @@ final class FunctionTermTest extends TestCase
      * @dataProvider providerEvaluateReturnsValue
      *
      * @param mixed $result
+     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
      * @psalm-param array<string, mixed> $environment
@@ -175,6 +177,7 @@ final class FunctionTermTest extends TestCase
         $terms = array_map(
             /**
              * @param mixed $argument
+             *
              * @psalm-return MockObject&TermInterface
              */
             function ($argument) use ($environment): MockObject {
@@ -182,12 +185,12 @@ final class FunctionTermTest extends TestCase
                 $term = $this->getMockBuilder(TermInterface::class)
                     ->onlyMethods(['evaluate'])
                     ->getMockForAbstractClass()
-                            ;
+                ;
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
                     ->willReturn($argument)
-                    ;
+                ;
 
                 return $term;
             },

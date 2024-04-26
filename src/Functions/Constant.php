@@ -27,6 +27,7 @@ final class Constant implements FunctionInterface, TermInterface
 
     /**
      * @var mixed
+     *
      * @psalm-var T
      */
     private $value;
@@ -51,6 +52,7 @@ final class Constant implements FunctionInterface, TermInterface
 
     /**
      * @param mixed $arguments
+     *
      * @psalm-return T
      */
     public function apply(...$arguments)
@@ -63,7 +65,7 @@ final class Constant implements FunctionInterface, TermInterface
         return 'const';
     }
 
-    public function expressionString(FunctorExpressionInterface $parent = null): string
+    public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         // FIXME: make it better
         return var_export($this->value, true);

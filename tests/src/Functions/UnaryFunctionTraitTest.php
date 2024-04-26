@@ -15,6 +15,7 @@ use Tailors\Logic\TermInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\UnaryFunctionTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -40,6 +41,7 @@ final class UnaryFunctionTraitTest extends TestCase
         $t1 = $this->getMockBuilder(TermInterface::class)
             ->getMock()
         ;
+
         /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryFunctionTraitTestObject */
         $unary = $this->getMockBuilder(UnaryFunctionTraitTestObject::class)
             ->getMockForAbstractClass()

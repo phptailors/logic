@@ -10,8 +10,11 @@
 
 namespace Tailors\Logic\Validators;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+
 /**
  * @psalm-immutable
+ *
  * @psalm-template Arglist of array
  * @psalm-template ValidArglist of array
  */
@@ -19,9 +22,10 @@ interface ArglistValidatorInterface
 {
     /**
      * @psalm-param Arglist $arguments
+     *
      * @psalm-assert ValidArglist $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function validate(string $symbol, array $arguments): void;
 }

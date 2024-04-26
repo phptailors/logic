@@ -10,6 +10,4 @@
 
 namespace Tailors\Logic\Exceptions;
 
-class UndefinedVariableException extends \Exception
-{
-}
+class UndefinedVariableException extends \Exception {}

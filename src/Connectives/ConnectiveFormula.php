@@ -11,11 +11,14 @@
 namespace Tailors\Logic\Connectives;
 
 use Tailors\Logic\AbstractFunctorExpression;
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\QuantifiedFormula;
 
 /**
  * @psalm-immutable
+ *
  * @template-extends AbstractFunctorExpression<ConnectiveInterface,FormulaInterface>
  */
 final class ConnectiveFormula extends AbstractFunctorExpression implements FormulaInterface
@@ -33,8 +36,8 @@ final class ConnectiveFormula extends AbstractFunctorExpression implements Formu
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
+     * @throws InvalidArgumentException
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = []): bool
     {

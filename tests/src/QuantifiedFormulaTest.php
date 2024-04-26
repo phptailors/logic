@@ -16,6 +16,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\QuantifiedFormula
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -52,7 +53,7 @@ final class QuantifiedFormulaTest extends TestCase
 
     public function testExpressionStringReturnsString(): void
     {
-        /** @var MockObject&FormulaInterface */
+        /** @var FormulaInterface&MockObject */
         $formula = $this->getMockBuilder(FormulaInterface::class)
             ->onlyMethods(['expressionString'])
             ->getMockForAbstractClass()
@@ -69,7 +70,7 @@ final class QuantifiedFormulaTest extends TestCase
 
     public function testEvaluateInvokesFormulasEvaluate(): void
     {
-        /** @var MockObject&FormulaInterface */
+        /** @var FormulaInterface&MockObject */
         $formula = $this->getMockBuilder(FormulaInterface::class)
             ->onlyMethods(['evaluate'])
             ->getMockForAbstractClass()

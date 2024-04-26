@@ -62,6 +62,7 @@ final class FunctorMockConstructor
 
     /**
      * @psalm-param FunctorMockParams $params
+     *
      * @psalm-return MockObject&MockedType
      */
     public function getMock(array $params): MockObject

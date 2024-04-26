@@ -15,6 +15,7 @@ use Tailors\Logic\TermInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\BinaryPredicateTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -43,7 +44,8 @@ final class BinaryPredicateTraitTest extends TestCase
         $t2 = $this->getMockBuilder(TermInterface::class)
             ->getMock()
         ;
-        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
+
+        /** @var BinaryPredicateTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
         $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
             ->getMockForAbstractClass()
         ;
@@ -55,7 +57,7 @@ final class BinaryPredicateTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject & BinaryPredicateTraitTestObject */
+        /** @var BinaryPredicateTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
         $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
             ->getMockForAbstractClass()
         ;

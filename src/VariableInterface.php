@@ -13,6 +13,4 @@ namespace Tailors\Logic;
 /**
  * @psalm-immutable
  */
-interface VariableInterface extends SymbolInterface, TermInterface
-{
-}
+interface VariableInterface extends SymbolInterface, TermInterface {}

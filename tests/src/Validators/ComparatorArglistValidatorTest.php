@@ -17,6 +17,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Validators\ComparatorArglistValidator
  *
  * @psalm-suppress MissingThrowsDocblock

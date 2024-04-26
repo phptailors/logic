@@ -12,6 +12,7 @@ namespace Tailors\Logic\Predicates;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-template Ret
  */
 abstract class BinaryPredicateTraitTestObject implements PredicateInterface

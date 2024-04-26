@@ -12,8 +12,10 @@ namespace Tailors\Logic;
 
 /**
  * @psalm-immutable
+ *
  * @psalm-template Functor of FunctorInterface
  * @psalm-template Argument of ExpressionInterface
+ *
  * @template-implements FunctorExpressionInterface<Argument>
  */
 abstract class AbstractFunctorExpression implements FunctorExpressionInterface
@@ -54,7 +56,7 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
         return $this->functor;
     }
 
-    public function expressionString(FunctorExpressionInterface $parent = null): string
+    public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         $symbol = $this->functor()->symbol();
         $notation = $this->functor()->notation();
@@ -112,7 +114,7 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
         return $expression;
     }
 
-    private function expressionStringRequiresParentheses(FunctorExpressionInterface $parent = null): bool
+    private function expressionStringRequiresParentheses(?FunctorExpressionInterface $parent = null): bool
     {
         if (null === $parent) {
             return false;

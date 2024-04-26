@@ -15,6 +15,7 @@ use Tailors\Logic\TermInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\UnaryPredicateTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -40,6 +41,7 @@ final class UnaryPredicateTraitTest extends TestCase
         $t1 = $this->getMockBuilder(TermInterface::class)
             ->getMock()
         ;
+
         /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryPredicateTraitTestObject */
         $unary = $this->getMockBuilder(UnaryPredicateTraitTestObject::class)
             ->getMockForAbstractClass()

@@ -17,7 +17,8 @@ interface ExpressionInterface
 {
     /**
      * @psalm-template Argument of ExpressionInterface
+     *
      * @psalm-param FunctorExpressionInterface<Argument> $parent
      */
-    public function expressionString(FunctorExpressionInterface $parent = null): string;
+    public function expressionString(?FunctorExpressionInterface $parent = null): string;
 }

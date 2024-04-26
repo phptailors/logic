@@ -41,9 +41,10 @@ final class BoolValue extends AbstractPredicate
 
     /**
      * @psalm-param Arglist $arguments
+     *
      * @psalm-assert ValidArglist $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function validate(array $arguments): void
     {

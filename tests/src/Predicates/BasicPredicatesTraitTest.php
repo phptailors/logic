@@ -16,6 +16,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\BasicPredicatesTrait
  *
  * @psalm-suppress MissingThrowsDocblock

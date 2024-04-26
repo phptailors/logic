@@ -42,7 +42,7 @@ final class Falsum implements PredicateInterface, FormulaInterface
         return '⊥';
     }
 
-    public function expressionString(FunctorExpressionInterface $parent = null): string
+    public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->symbol();
     }

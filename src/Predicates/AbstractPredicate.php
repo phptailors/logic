@@ -10,10 +10,13 @@
 
 namespace Tailors\Logic\Predicates;
 
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+
 /**
  * @psalm-immutable
  *
  * @psalm-type Arglist = list
+ *
  * @psalm-template Arity of 0|positive-int
  * @psalm-template ValidArglist of Arglist
  */
@@ -22,7 +25,7 @@ abstract class AbstractPredicate implements PredicateInterface
     /**
      * @param mixed $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     final public function apply(...$arguments): bool
     {
@@ -39,9 +42,10 @@ abstract class AbstractPredicate implements PredicateInterface
 
     /**
      * @psalm-param Arglist $arguments
+     *
      * @psalm-assert ValidArglist $arguments
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     abstract protected function validate(array $arguments): void;
 }

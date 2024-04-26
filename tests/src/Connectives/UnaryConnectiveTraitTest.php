@@ -15,6 +15,7 @@ use Tailors\Logic\FormulaInterface;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Connectives\UnaryConnectiveTrait
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -40,6 +41,7 @@ final class UnaryConnectiveTraitTest extends TestCase
         $t1 = $this->getMockBuilder(FormulaInterface::class)
             ->getMock()
         ;
+
         /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryConnectiveTraitTestObject */
         $unary = $this->getMockBuilder(UnaryConnectiveTraitTestObject::class)
             ->getMockForAbstractClass()

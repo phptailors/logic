@@ -19,6 +19,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\Sub
  *
  * @psalm-import-type Number from Sub

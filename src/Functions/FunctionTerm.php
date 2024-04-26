@@ -11,10 +11,13 @@
 namespace Tailors\Logic\Functions;
 
 use Tailors\Logic\AbstractFunctorExpression;
+use Tailors\Logic\Exceptions\InvalidArgumentException;
+use Tailors\Logic\Exceptions\UndefinedVariableException;
 use Tailors\Logic\TermInterface;
 
 /**
  * @psalm-immutable
+ *
  * @template-extends AbstractFunctorExpression<FunctionInterface, TermInterface>
  */
 final class FunctionTerm extends AbstractFunctorExpression implements TermInterface
@@ -32,10 +35,10 @@ final class FunctionTerm extends AbstractFunctorExpression implements TermInterf
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @throws \Tailors\Logic\Exceptions\InvalidArgumentException
-     * @throws \Tailors\Logic\Exceptions\UndefinedVariableException
-     *
      * @return mixed
+     *
+     * @throws InvalidArgumentException
+     * @throws UndefinedVariableException
      */
     public function evaluate(array $environment = [])
     {

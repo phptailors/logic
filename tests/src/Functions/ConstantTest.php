@@ -19,6 +19,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\Constant
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -53,6 +54,7 @@ final class ConstantTest extends TestCase
     public function testArity(): void
     {
         $const = new Constant(1);
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(0, $const->arity());
     }
@@ -60,6 +62,7 @@ final class ConstantTest extends TestCase
     public function testApply(): void
     {
         $const = new Constant(123);
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(123, $const->apply());
         $this->assertSame(123, $const->apply('x'));
@@ -97,6 +100,7 @@ final class ConstantTest extends TestCase
     public function testNotation(): void
     {
         $const = new Constant(0);
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $const->notation());
     }

@@ -17,6 +17,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Predicates\Tee
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -45,6 +46,7 @@ final class TeeTest extends TestCase
     public function testArity(): void
     {
         $tee = new Tee();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(0, $tee->arity());
     }
@@ -70,6 +72,7 @@ final class TeeTest extends TestCase
     public function testNotation(): void
     {
         $tee = new Tee();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(FunctorInterface::NOTATION_SYMBOL, $tee->notation());
     }

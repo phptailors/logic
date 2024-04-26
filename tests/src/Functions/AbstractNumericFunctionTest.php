@@ -16,6 +16,7 @@ use Tailors\PHPUnit\ExtendsClassTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
+ *
  * @covers \Tailors\Logic\Functions\AbstractNumericFunction
  *
  * @psalm-suppress MissingThrowsDocblock

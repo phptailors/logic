@@ -42,6 +42,7 @@ final class Sum extends AbstractNumericFunction
 
     /**
      * @psalm-param ValidArglist $arguments
+     *
      * @psalm-return Number
      */
     protected function applyImpl(array $arguments)
@@ -51,6 +52,7 @@ final class Sum extends AbstractNumericFunction
             /**
              * @psalm-param Number $result
              * @psalm-param Number $arg
+             *
              * @psalm-return Number
              *
              * @param mixed $result
