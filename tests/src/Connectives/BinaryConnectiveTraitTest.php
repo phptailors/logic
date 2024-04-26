@@ -22,8 +22,6 @@ use Tailors\Logic\FormulaInterface;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(BinaryConnectiveTrait::class)]
 #[UsesMethod(AbstractFunctorExpression::class, '__construct')]

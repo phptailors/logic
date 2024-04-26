@@ -29,8 +29,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(FunctionTerm::class)]
 #[UsesClass(AbstractFunctorExpression::class)]
@@ -84,7 +82,7 @@ final class FunctionTermTest extends TestCase
      *  2: list<string>,
      * }>
      */
-    public function providerExpressionStringReturnsString(): array
+    public static function providerExpressionStringReturnsString(): array
     {
         return [
             [
@@ -144,7 +142,7 @@ final class FunctionTermTest extends TestCase
      *  3: array<string,mixed>
      * }>
      */
-    public function providerEvaluateReturnsValue(): array
+    public static function providerEvaluateReturnsValue(): array
     {
         return [
             [

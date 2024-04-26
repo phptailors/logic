@@ -21,8 +21,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Variable::class)]
 final class VariableTest extends TestCase

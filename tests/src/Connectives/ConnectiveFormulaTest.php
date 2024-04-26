@@ -31,8 +31,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(ConnectiveFormula::class)]
 #[UsesClass(AbstractFunctorExpression::class)]
@@ -88,7 +86,7 @@ final class ConnectiveFormulaTest extends TestCase
      *  2: list<string>,
      * }>
      */
-    public function providerExpressionStringReturnsString(): array
+    public static function providerExpressionStringReturnsString(): array
     {
         return [
             [
@@ -148,7 +146,7 @@ final class ConnectiveFormulaTest extends TestCase
      *  3: array<string,mixed>
      * }>
      */
-    public function providerEvaluateReturnsBool(): array
+    public static function providerEvaluateReturnsBool(): array
     {
         return [
             [

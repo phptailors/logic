@@ -27,8 +27,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(BoolValue::class)]
 #[UsesMethod(AbstractPredicate::class, 'apply')]
@@ -77,7 +75,7 @@ final class BoolValueTest extends TestCase
      *  1: list
      *  }>
      */
-    public function providerApplyReturnsBool(): array
+    public static function providerApplyReturnsBool(): array
     {
         return [
             [

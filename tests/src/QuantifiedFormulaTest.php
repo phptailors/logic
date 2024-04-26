@@ -21,8 +21,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(QuantifiedFormula::class)]
 final class QuantifiedFormulaTest extends TestCase

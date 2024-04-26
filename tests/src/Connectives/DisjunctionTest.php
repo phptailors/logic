@@ -26,8 +26,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Disjunction::class)]
 #[UsesMethod(ConnectiveFormula::class, '__construct')]

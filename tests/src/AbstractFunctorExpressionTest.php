@@ -34,8 +34,6 @@ use PHPUnit\Framework\TestCase;
  * }
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(AbstractFunctorExpression::class)]
 final class AbstractFunctorExpressionTest extends TestCase

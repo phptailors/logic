@@ -31,8 +31,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Sum::class)]
 #[UsesClass(AbstractArglistValidator::class)]

@@ -19,8 +19,6 @@ use PHPUnit\Framework\TestCase;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(FunctionNotationTrait::class)]
 final class FunctionNotationTraitTest extends TestCase

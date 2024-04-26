@@ -21,8 +21,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(AbstractArglistValidator::class)]
 final class AbstractArglistValidatorTest extends TestCase

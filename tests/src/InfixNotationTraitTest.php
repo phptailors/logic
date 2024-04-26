@@ -19,8 +19,6 @@ use PHPUnit\Framework\TestCase;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(InfixNotationTrait::class)]
 final class InfixNotationTraitTest extends TestCase

@@ -23,8 +23,6 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(BasicPredicatesTrait::class)]
 #[UsesMethod(AbstractFunctorExpression::class, '__construct')]

@@ -10,6 +10,7 @@
 
 namespace Tailors\Logic;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
@@ -19,9 +20,8 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
+#[CoversNothing()]
 final class FunctorInterfaceTest extends TestCase
 {
     use ImplementsInterfaceTrait;

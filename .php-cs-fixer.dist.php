@@ -42,6 +42,10 @@ $config
         // needed for psalm
         'phpdoc_to_comment' => false,
         'no_superfluous_phpdoc_tags' => false,
+
+        // PHPUnit
+        'php_unit_test_class_requires_covers' => false,
+        'php_unit_attributes' => true,
     ])
 ;
 

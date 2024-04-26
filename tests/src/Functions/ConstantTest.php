@@ -25,8 +25,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Constant::class)]
 final class ConstantTest extends TestCase
@@ -81,7 +79,7 @@ final class ConstantTest extends TestCase
     /**
      * @psalm-return array<array-key, array{0: mixed, 1: string}>
      */
-    public function providerExpressionString(): array
+    public static function providerExpressionString(): array
     {
         return [
             [123, '123'],

@@ -20,8 +20,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(BasicValidators::class)]
 final class BasicValidatorsTest extends TestCase

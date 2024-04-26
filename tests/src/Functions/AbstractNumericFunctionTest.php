@@ -22,8 +22,6 @@ use Tailors\PHPUnit\ExtendsClassTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(AbstractNumericFunction::class)]
 #[UsesMethod(AbstractFunction::class, 'apply')]

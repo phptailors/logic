@@ -20,8 +20,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(AbstractPredicate::class)]
 final class AbstractPredicateTest extends TestCase

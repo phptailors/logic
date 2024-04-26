@@ -22,8 +22,6 @@ use Tailors\Logic\TermInterface;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(BinaryPredicateTrait::class)]
 #[UsesMethod(AbstractFunctorExpression::class, '__construct')]

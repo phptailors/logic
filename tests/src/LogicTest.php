@@ -27,8 +27,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Logic::class)]
 #[UsesMethod(AbstractNumericFunction::class, '__construct')]

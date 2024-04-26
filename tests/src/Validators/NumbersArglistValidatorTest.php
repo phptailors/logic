@@ -23,8 +23,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @psalm-suppress MissingThrowsDocblock
  *
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(NumbersArglistValidator::class)]
 #[UsesMethod(AbstractArglistValidator::class, 'report')]
