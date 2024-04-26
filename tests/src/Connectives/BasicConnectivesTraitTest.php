@@ -11,7 +11,9 @@
 namespace Tailors\Logic\Connectives;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 
 /**
@@ -24,6 +26,12 @@ use Tailors\Logic\FormulaInterface;
  * @coversNothing
  */
 #[CoversClass(BasicConnectivesTrait::class)]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
+#[UsesMethod(AbstractFunctorExpression::class, 'functor')]
+#[UsesMethod(BinaryConnectiveTrait::class, 'with')]
+#[UsesMethod(ConnectiveFormula::class, '__construct')]
+#[UsesMethod(ConnectiveFormula::class, 'connective')]
 final class BasicConnectivesTraitTest extends TestCase
 {
     public function setUp(): void
@@ -31,14 +39,6 @@ final class BasicConnectivesTraitTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    /**
-     * @uses \Tailors\Logic\Connectives\BinaryConnectiveTrait::with
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     */
     public function testAnd(): void
     {
         $connectives = $this->getBasicConnectivesObject();
@@ -54,14 +54,6 @@ final class BasicConnectivesTraitTest extends TestCase
         $this->assertSame([$f1, $f2], $formula->arguments());
     }
 
-    /**
-     * @uses \Tailors\Logic\Connectives\BinaryConnectiveTrait::with
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     */
     public function testOr(): void
     {
         $connectives = $this->getBasicConnectivesObject();

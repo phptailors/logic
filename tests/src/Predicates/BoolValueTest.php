@@ -12,6 +12,7 @@ namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Exceptions\InvalidArgumentException;
 use Tailors\Logic\FunctionNotationTrait;
@@ -30,6 +31,7 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @coversNothing
  */
 #[CoversClass(BoolValue::class)]
+#[UsesMethod(AbstractPredicate::class, 'apply')]
 final class BoolValueTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -119,8 +121,6 @@ final class BoolValueTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Predicates\AbstractPredicate::apply
-     *
      * @palm-param list $arguments
      */
     #[DataProvider('providerApplyReturnsBool')]
@@ -130,9 +130,6 @@ final class BoolValueTest extends TestCase
         $this->assertSame($result, $bool->apply(...$arguments));
     }
 
-    /**
-     * @uses \Tailors\Logic\Predicates\AbstractPredicate::apply
-     */
     public function testApplyThrowsInvalidArgumentException(): void
     {
         $bool = new BoolValue();

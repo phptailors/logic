@@ -11,7 +11,9 @@
 namespace Tailors\Logic\Connectives;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 
 /**
@@ -24,6 +26,11 @@ use Tailors\Logic\FormulaInterface;
  * @coversNothing
  */
 #[CoversClass(BinaryConnectiveTrait::class)]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
+#[UsesMethod(AbstractFunctorExpression::class, 'functor')]
+#[UsesMethod(ConnectiveFormula::class, '__construct')]
+#[UsesMethod(ConnectiveFormula::class, 'connective')]
 final class BinaryConnectiveTraitTest extends TestCase
 {
     public function setUp(): void
@@ -31,13 +38,6 @@ final class BinaryConnectiveTraitTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    /**
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::connective
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     */
     public function testWith(): void
     {
         $t1 = $this->getMockBuilder(FormulaInterface::class)

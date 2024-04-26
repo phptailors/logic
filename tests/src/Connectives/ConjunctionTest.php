@@ -12,7 +12,9 @@ namespace Tailors\Logic\Connectives;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\InfixNotationTrait;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -28,6 +30,8 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @coversNothing
  */
 #[CoversClass(Conjunction::class)]
+#[UsesMethod(ConnectiveFormula::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
 final class ConjunctionTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -59,10 +63,6 @@ final class ConjunctionTest extends TestCase
         $this->assertSame('&&', $sub->symbol());
     }
 
-    /**
-     * @uses \Tailors\Logic\Connectives\ConnectiveFormula::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     */
     public function testWithReturnsConnectiveFormula(): void
     {
         $t1 = $this->getMockBuilder(FormulaInterface::class)->getMock();

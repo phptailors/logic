@@ -11,10 +11,13 @@
 namespace Tailors\Logic;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Connectives\BasicConnectivesTrait;
+use Tailors\Logic\Functions\AbstractNumericFunction;
 use Tailors\Logic\Functions\BasicFunctionsTrait;
 use Tailors\Logic\Predicates\BasicPredicatesTrait;
+use Tailors\Logic\Validators\BasicValidators;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 use Tailors\PHPUnit\UsesTraitTrait;
 
@@ -28,6 +31,11 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @coversNothing
  */
 #[CoversClass(Logic::class)]
+#[UsesMethod(AbstractNumericFunction::class, '__construct')]
+#[UsesMethod(BasicValidators::class, '__construct')]
+#[UsesMethod(BasicValidators::class, 'numbersArglist')]
+#[UsesMethod(Variable::class, '__construct')]
+#[UsesMethod(Variable::class, 'symbol')]
 final class LogicTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -58,13 +66,6 @@ final class LogicTest extends TestCase
         $this->assertUsesTrait(BasicConnectivesTrait::class, Logic::class);
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Validators\BasicValidators::__construct
-     * @uses \Tailors\Logic\Validators\BasicValidators::numbersArglist
-     * @uses \Tailors\Logic\Variable::__construct
-     * @uses \Tailors\Logic\Variable::symbol
-     */
     public function testVar(): void
     {
         $logic = new Logic();

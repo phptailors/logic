@@ -12,9 +12,13 @@ namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
+use Tailors\Logic\Validators\AbstractArglistValidator;
+use Tailors\Logic\Validators\NumbersArglistValidator;
 use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
 use Tailors\PHPUnit\UsesTraitTrait;
@@ -31,6 +35,11 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @coversNothing
  */
 #[CoversClass(Sum::class)]
+#[UsesClass(AbstractArglistValidator::class)]
+#[UsesClass(NumbersArglistValidator::class)]
+#[UsesMethod(AbstractFunction::class, 'apply')]
+#[UsesMethod(AbstractNumericFunction::class, '__construct')]
+#[UsesMethod(AbstractNumericFunction::class, 'validate')]
 final class SumTest extends TestCase
 {
     use ExtendsClassTrait;
@@ -57,7 +66,7 @@ final class SumTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
+     * #[UsesMethod(\Tailors\Logic\Functions\AbstractNumericFunction::class, '__construct')].
      */
     public function testSymbolReturnsPlusSign(): void
     {
@@ -67,9 +76,9 @@ final class SumTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
+     * #[UsesMethod(\Tailors\Logic\Functions\AbstractNumericFunction::class, '__construct')]
+     * #[UsesMethod(\Tailors\Logic\Functions\FunctionTerm::class, '__construct')]
+     * #[UsesMethod(\Tailors\Logic\AbstractFunctorExpression::class, '__construct')].
      */
     public function testWithReturnsFunctionTerm(): void
     {
@@ -96,12 +105,6 @@ final class SumTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::validate
-     * @uses \Tailors\Logic\Functions\AbstractFunction::apply
-     * @uses \Tailors\Logic\Validators\NumbersArglistValidator
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator
-     *
      * @psalm-param Number $result
      * @psalm-param array<Number> $arguments
      *
@@ -123,9 +126,6 @@ final class SumTest extends TestCase
         $this->assertSame($result, (new Sum($validator))->apply(...$arguments));
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     */
     public function testPrecedenceReturnValue(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)

@@ -11,7 +11,9 @@
 namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\BasicValidatorsInterface;
 
@@ -25,6 +27,10 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  * @coversNothing
  */
 #[CoversClass(BasicPredicatesTrait::class)]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
+#[UsesMethod(PredicateFormula::class, '__construct')]
+#[UsesMethod(UnaryPredicateTrait::class, 'with')]
 final class BasicPredicatesTraitTest extends TestCase
 {
     public function setUp(): void
@@ -44,12 +50,6 @@ final class BasicPredicatesTraitTest extends TestCase
         $this->assertInstanceOf(Tee::class, $predicates->tee());
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\Predicates\PredicateFormula::__construct
-     * @uses \Tailors\Logic\Predicates\UnaryPredicateTrait::with
-     */
     public function testBool(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)

@@ -12,8 +12,10 @@ namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\FunctorMockConstructor;
 use Tailors\Logic\TermInterface;
@@ -21,8 +23,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
- *
- * @uses \Tailors\Logic\AbstractFunctorExpression
  *
  * @psalm-suppress MissingThrowsDocblock
  *
@@ -33,6 +33,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @coversNothing
  */
 #[CoversClass(FunctionTerm::class)]
+#[UsesClass(AbstractFunctorExpression::class)]
 final class FunctionTermTest extends TestCase
 {
     use ImplementsInterfaceTrait;

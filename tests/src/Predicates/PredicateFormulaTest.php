@@ -12,8 +12,11 @@ namespace Tailors\Logic\Predicates;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\FunctorMockConstructor;
@@ -24,8 +27,6 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
  *
- * @uses \Tailors\Logic\AbstractFunctorExpression
- *
  * @psalm-suppress MissingThrowsDocblock
  *
  * @psalm-import-type FunctorMockParams from FunctorMockConstructor
@@ -35,6 +36,9 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @coversNothing
  */
 #[CoversClass(PredicateFormula::class)]
+#[UsesClass(AbstractFunctorExpression::class)]
+#[UsesMethod(QuantifiedFormula::class, '__construct')]
+#[UsesMethod(QuantifiedFormula::class, 'environment')]
 final class PredicateFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -228,10 +232,6 @@ final class PredicateFormulaTest extends TestCase
         $this->assertSame($result, $formula->evaluate($environment));
     }
 
-    /**
-     * @uses \Tailors\Logic\QuantifiedFormula::__construct
-     * @uses \Tailors\Logic\QuantifiedFormula::environment
-     */
     public function testWhereReturnsQuantifiedFormula(): void
     {
         $terms = [$this->getMockBuilder(TermInterface::class)->getMock()];

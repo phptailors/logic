@@ -11,6 +11,7 @@
 namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
@@ -25,6 +26,7 @@ use Tailors\PHPUnit\ExtendsClassTrait;
  * @coversNothing
  */
 #[CoversClass(AbstractNumericFunction::class)]
+#[UsesMethod(AbstractFunction::class, 'apply')]
 final class AbstractNumericFunctionTest extends TestCase
 {
     use ExtendsClassTrait;
@@ -39,9 +41,6 @@ final class AbstractNumericFunctionTest extends TestCase
         $this->assertExtendsClass(AbstractFunction::class, AbstractNumericFunction::class);
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractFunction::apply
-     */
     public function testApplyUsesProvidedValidator(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)

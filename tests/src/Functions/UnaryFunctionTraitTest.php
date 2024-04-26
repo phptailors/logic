@@ -11,7 +11,9 @@
 namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\TermInterface;
 
 /**
@@ -24,6 +26,11 @@ use Tailors\Logic\TermInterface;
  * @coversNothing
  */
 #[CoversClass(UnaryFunctionTrait::class)]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
+#[UsesMethod(AbstractFunctorExpression::class, 'functor')]
+#[UsesMethod(FunctionTerm::class, '__construct')]
+#[UsesMethod(FunctionTerm::class, 'function')]
 final class UnaryFunctionTraitTest extends TestCase
 {
     public function setUp(): void
@@ -31,13 +38,6 @@ final class UnaryFunctionTraitTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::function
-     */
     public function testWith(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)

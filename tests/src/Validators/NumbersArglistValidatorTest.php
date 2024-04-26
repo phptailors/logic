@@ -11,6 +11,7 @@
 namespace Tailors\Logic\Validators;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\Exceptions\InvalidArgumentException;
 use Tailors\PHPUnit\ExtendsClassTrait;
@@ -26,6 +27,10 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  * @coversNothing
  */
 #[CoversClass(NumbersArglistValidator::class)]
+#[UsesMethod(AbstractArglistValidator::class, 'report')]
+#[UsesMethod(AbstractArglistValidator::class, 'reportMultiple')]
+#[UsesMethod(AbstractArglistValidator::class, 'reportSingle')]
+#[UsesMethod(AbstractArglistValidator::class, 'validate')]
 final class NumbersArglistValidatorTest extends TestCase
 {
     use ImplementsInterfaceTrait;
@@ -49,9 +54,6 @@ final class NumbersArglistValidatorTest extends TestCase
         $this->assertExtendsClass(AbstractArglistValidator::class, NumbersArglistValidator::class);
     }
 
-    /**
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::validate
-     */
     public function testValidateSuccess(): void
     {
         $validator = new NumbersArglistValidator();
@@ -59,11 +61,6 @@ final class NumbersArglistValidatorTest extends TestCase
         $this->assertNull($validator->validate('foo', [1, 1.2]));
     }
 
-    /**
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::validate
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::report
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::reportSingle
-     */
     public function testValidateSingleArgumentFailure(): void
     {
         $validator = new NumbersArglistValidator();
@@ -74,11 +71,6 @@ final class NumbersArglistValidatorTest extends TestCase
         $validator->validate('foo', [1, 1.2, true]);
     }
 
-    /**
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::validate
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::report
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator::reportMultiple
-     */
     public function testValidateMultipleArgumentsFailure(): void
     {
         $validator = new NumbersArglistValidator();

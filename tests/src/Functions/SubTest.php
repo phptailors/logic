@@ -12,9 +12,14 @@ namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
+use Tailors\Logic\Validators\AbstractArglistValidator;
+use Tailors\Logic\Validators\NumbersArglistValidator;
 use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
 use Tailors\PHPUnit\UsesTraitTrait;
@@ -31,6 +36,13 @@ use Tailors\PHPUnit\UsesTraitTrait;
  * @coversNothing
  */
 #[CoversClass(Sub::class)]
+#[UsesClass(AbstractArglistValidator::class)]
+#[UsesClass(NumbersArglistValidator::class)]
+#[UsesMethod(AbstractFunction::class, 'apply')]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractNumericFunction::class, '__construct')]
+#[UsesMethod(AbstractNumericFunction::class, 'validate')]
+#[UsesMethod(FunctionTerm::class, '__construct')]
 final class SubTest extends TestCase
 {
     use ExtendsClassTrait;
@@ -56,9 +68,6 @@ final class SubTest extends TestCase
         $this->assertUsesTrait(BinaryFunctionTrait::class, Sub::class);
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     */
     public function testSymbolReturnsMinusSign(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)->getMock();
@@ -66,11 +75,6 @@ final class SubTest extends TestCase
         $this->assertSame('-', $sub->symbol());
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     */
     public function testWithReturnsFunctionTerm(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)->getMock();
@@ -96,12 +100,6 @@ final class SubTest extends TestCase
     }
 
     /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::validate
-     * @uses \Tailors\Logic\Functions\AbstractFunction::apply
-     * @uses \Tailors\Logic\Validators\NumbersArglistValidator
-     * @uses \Tailors\Logic\Validators\AbstractArglistValidator
-     *
      * @psalm-param Number $result
      * @psalm-param array<Number> $arguments
      *
@@ -123,9 +121,6 @@ final class SubTest extends TestCase
         $this->assertSame($result, (new Sub($validator))->apply(...$arguments));
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     */
     public function testPrecedenceReturnValue(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)

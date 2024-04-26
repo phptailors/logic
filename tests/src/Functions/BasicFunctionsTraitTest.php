@@ -11,7 +11,9 @@
 namespace Tailors\Logic\Functions;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\BasicValidatorsInterface;
 
@@ -25,6 +27,14 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  * @coversNothing
  */
 #[CoversClass(BasicFunctionsTrait::class)]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
+#[UsesMethod(AbstractFunctorExpression::class, 'functor')]
+#[UsesMethod(AbstractNumericFunction::class, '__construct')]
+#[UsesMethod(BinaryFunctionTrait::class, 'with')]
+#[UsesMethod(Constant::class, '__construct')]
+#[UsesMethod(FunctionTerm::class, '__construct')]
+#[UsesMethod(FunctionTerm::class, 'function')]
 final class BasicFunctionsTraitTest extends TestCase
 {
     public function setUp(): void
@@ -32,26 +42,12 @@ final class BasicFunctionsTraitTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    /**
-     * @uses \Tailors\Logic\Functions\Constant::__construct
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     */
     public function testConst(): void
     {
         $functions = $this->getBasicFunctionsObject();
         $this->assertInstanceOf(Constant::class, $functions->const('x'));
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\BinaryFunctionTrait::with
-     * @uses \Tailors\Logic\Functions\Constant::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::function
-     */
     public function testSub(): void
     {
         $functions = $this->getBasicFunctionsObject();
@@ -68,16 +64,6 @@ final class BasicFunctionsTraitTest extends TestCase
         $this->assertSame([$t1, $t2], $term->arguments());
     }
 
-    /**
-     * @uses \Tailors\Logic\AbstractFunctorExpression::__construct
-     * @uses \Tailors\Logic\AbstractFunctorExpression::functor
-     * @uses \Tailors\Logic\AbstractFunctorExpression::arguments
-     * @uses \Tailors\Logic\Functions\AbstractNumericFunction::__construct
-     * @uses \Tailors\Logic\Functions\BinaryFunctionTrait::with
-     * @uses \Tailors\Logic\Functions\Constant::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::__construct
-     * @uses \Tailors\Logic\Functions\FunctionTerm::function
-     */
     public function testSum(): void
     {
         $functions = $this->getBasicFunctionsObject();
