@@ -1,0 +1,9 @@
+{
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.54.0"
+    },
+    "scripts": {
+        "post-install-cmd": ["@php ../symlink-bin.php vendor/bin/php-cs-fixer"],
+        "post-update-cmd":  ["@php ../symlink-bin.php vendor/bin/php-cs-fixer"]
+    }
+}
