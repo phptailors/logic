@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "rector/rector": "^1.0",
+        "phpunit/phpunit": "^11.0.1",
+        "phptailors/phpunit-inheritance": "^3"
+    },
+    "scripts": {
+        "post-install-cmd": ["@php ../symlink-bin.php vendor/bin/rector"],
+        "post-update-cmd":  ["@php ../symlink-bin.php vendor/bin/rector"]
+    }
+}
