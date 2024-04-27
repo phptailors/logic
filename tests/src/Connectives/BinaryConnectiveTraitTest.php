@@ -38,17 +38,10 @@ final class BinaryConnectiveTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(FormulaInterface::class)
-            ->getMock()
-        ;
-        $t2 = $this->getMockBuilder(FormulaInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(FormulaInterface::class);
+        $t2 = $this->createMock(FormulaInterface::class);
 
-        /** @var BinaryConnectiveTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryConnectiveTraitTestObject();
         $formula = $binary->with($t1, $t2);
         $this->assertInstanceOf(ConnectiveFormula::class, $formula);
         $this->assertSame($binary, $formula->connective());
@@ -57,10 +50,7 @@ final class BinaryConnectiveTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var BinaryConnectiveTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryConnectiveTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryConnectiveTraitTestObject();
         $this->assertSame(2, $binary->arity());
     }
 }

@@ -43,10 +43,15 @@ final class AbstractArglistValidatorTest extends TestCase
             ->onlyMethods(['isValid'])
             ->getMock()
         ;
+        $matcher = $this->exactly(2);
 
-        $validator->expects($this->exactly(2))
-            ->method('isValid')
-            ->withConsecutive(['x', 0], ['y', 1])
+        $validator->expects($matcher)
+            ->method('isValid')->willReturnCallback(function () use ($matcher) {
+            return match ($matcher->numberOfInvocations()) {
+                1 => ['x', 0],
+                2 => ['y', 1],
+            };
+        })
             ->willReturn(true)
         ;
 
@@ -59,10 +64,19 @@ final class AbstractArglistValidatorTest extends TestCase
             ->onlyMethods(['isValid'])
             ->getMock()
         ;
+        $matcher = $this->exactly(6);
 
-        $validator->expects($this->exactly(6))
-            ->method('isValid')
-            ->withConsecutive(['u', 0], ['v', 1], ['w', 2], ['x', 3], ['y', 4], ['z', 5])
+        $validator->expects($matcher)
+            ->method('isValid')->willReturnCallback(function () use ($matcher) {
+            return match ($matcher->numberOfInvocations()) {
+                1 => ['u', 0],
+                2 => ['v', 1],
+                3 => ['w', 2],
+                4 => ['x', 3],
+                5 => ['y', 4],
+                6 => ['z', 5],
+            };
+        })
             ->willReturnOnConsecutiveCalls(true, true, false, true, true, true)
         ;
 
@@ -78,10 +92,19 @@ final class AbstractArglistValidatorTest extends TestCase
             ->onlyMethods(['isValid'])
             ->getMock()
         ;
+        $matcher = $this->exactly(6);
 
-        $validator->expects($this->exactly(6))
-            ->method('isValid')
-            ->withConsecutive(['u', 0], ['v', 1], ['w', 2], ['x', 3], ['y', 4], ['z', 5])
+        $validator->expects($matcher)
+            ->method('isValid')->willReturnCallback(function () use ($matcher) {
+            return match ($matcher->numberOfInvocations()) {
+                1 => ['u', 0],
+                2 => ['v', 1],
+                3 => ['w', 2],
+                4 => ['x', 3],
+                5 => ['y', 4],
+                6 => ['z', 5],
+            };
+        })
             ->willReturnOnConsecutiveCalls(true, false, true, false, true, false)
         ;
 

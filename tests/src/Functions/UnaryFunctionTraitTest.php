@@ -38,14 +38,9 @@ final class UnaryFunctionTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(TermInterface::class);
 
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryFunctionTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryFunctionTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryFunctionTraitTestObject();
         $term = $unary->with($t1);
         $this->assertInstanceOf(FunctionTerm::class, $term);
         $this->assertSame($unary, $term->function());
@@ -54,10 +49,7 @@ final class UnaryFunctionTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryFunctionTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryFunctionTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryFunctionTraitTestObject();
         $this->assertSame(1, $unary->arity());
     }
 }

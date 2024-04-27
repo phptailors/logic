@@ -13,7 +13,27 @@ namespace Tailors\Logic\Connectives;
 /**
  * @psalm-immutable
  */
-abstract class BinaryConnectiveTraitTestObject implements ConnectiveInterface
+final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
 {
     use BinaryConnectiveTrait;
+
+    public function symbol(): string
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function notation(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function precedence(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function apply(bool ...$arguments): bool
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
 }

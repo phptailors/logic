@@ -15,7 +15,27 @@ namespace Tailors\Logic\Connectives;
  *
  * @psalm-template Ret
  */
-abstract class UnaryConnectiveTraitTestObject implements ConnectiveInterface
+final class UnaryConnectiveTraitTestObject implements ConnectiveInterface
 {
     use UnaryConnectiveTrait;
+
+    public function symbol(): string
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function notation(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function precedence(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function apply(bool ...$arguments): bool
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
 }

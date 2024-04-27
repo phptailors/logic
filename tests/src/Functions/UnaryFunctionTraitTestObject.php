@@ -17,7 +17,27 @@ namespace Tailors\Logic\Functions;
  *
  * @template-implements FunctionInterface<Ret>
  */
-abstract class UnaryFunctionTraitTestObject implements FunctionInterface
+final class UnaryFunctionTraitTestObject implements FunctionInterface
 {
     use UnaryFunctionTrait;
+
+    public function symbol(): string
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function notation(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function precedence(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function apply(...$arguments)
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
 }

@@ -54,10 +54,7 @@ final class QuantifiedFormulaTest extends TestCase
     public function testExpressionStringReturnsString(): void
     {
         /** @var FormulaInterface&MockObject */
-        $formula = $this->getMockBuilder(FormulaInterface::class)
-            ->onlyMethods(['expressionString'])
-            ->getMockForAbstractClass()
-        ;
+        $formula = $this->createMock(FormulaInterface::class);
 
         $formula->expects($this->once())
             ->method('expressionString')
@@ -71,10 +68,7 @@ final class QuantifiedFormulaTest extends TestCase
     public function testEvaluateInvokesFormulasEvaluate(): void
     {
         /** @var FormulaInterface&MockObject */
-        $formula = $this->getMockBuilder(FormulaInterface::class)
-            ->onlyMethods(['evaluate'])
-            ->getMockForAbstractClass()
-        ;
+        $formula = $this->createMock(FormulaInterface::class);
 
         $formula->expects($this->once())
             ->method('evaluate')

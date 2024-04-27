@@ -38,17 +38,10 @@ final class BinaryPredicateTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
-        $t2 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(TermInterface::class);
+        $t2 = $this->createMock(TermInterface::class);
 
-        /** @var BinaryPredicateTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryPredicateTraitTestObject();
         $formula = $binary->with($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame($binary, $formula->predicate());
@@ -57,10 +50,7 @@ final class BinaryPredicateTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var BinaryPredicateTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryPredicateTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryPredicateTraitTestObject();
         $this->assertSame(2, $binary->arity());
     }
 }

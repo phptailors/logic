@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\FunctorInterface;
-use Tailors\Logic\FunctorMockConstructor;
+use Tailors\Logic\GetFunctorMockTrait;
 use Tailors\Logic\QuantifiedFormula;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -40,6 +40,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 final class PredicateFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
+    use GetFunctorMockTrait;
 
     public function setUp(): void
     {
@@ -121,10 +122,7 @@ final class PredicateFormulaTest extends TestCase
              */
             function (string $symbol): MockObject {
                 /** @psalm-var  MockObject&TermInterface */
-                $term = $this->getMockBuilder(TermInterface::class)
-                    ->onlyMethods(['expressionString'])
-                    ->getMockForAbstractClass()
-                ;
+                $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('expressionString')
                     ->willReturn($symbol)
@@ -135,8 +133,7 @@ final class PredicateFormulaTest extends TestCase
             $arguments
         );
 
-        $mockCtor = new FunctorMockConstructor($this, PredicateInterface::class, ['apply' => true]);
-        $predicate = $mockCtor->getMock($functorParams);
+        $predicate = $this->getFunctorMock($functorParams, PredicateInterface::class, ['apply' => true]);
 
         /**
          * @var PredicateInterface   $predicate
@@ -198,10 +195,7 @@ final class PredicateFormulaTest extends TestCase
              */
             function ($argument) use ($environment): MockObject {
                 /** @psalm-var  MockObject&TermInterface */
-                $term = $this->getMockBuilder(TermInterface::class)
-                    ->onlyMethods(['evaluate'])
-                    ->getMockForAbstractClass()
-                ;
+                $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
@@ -213,8 +207,7 @@ final class PredicateFormulaTest extends TestCase
             $arguments
         );
 
-        $mockCtor = new FunctorMockConstructor($this, PredicateInterface::class, ['apply' => false]);
-        $predicate = $mockCtor->getMock($functorParams);
+        $predicate = $this->getFunctorMock($functorParams, PredicateInterface::class, ['apply' => false]);
 
         $predicate->expects($this->once())
             ->method('apply')

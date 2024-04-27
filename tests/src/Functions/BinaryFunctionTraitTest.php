@@ -38,17 +38,10 @@ final class BinaryFunctionTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
-        $t2 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(TermInterface::class);
+        $t2 = $this->createMock(TermInterface::class);
 
-        /** @var BinaryFunctionTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryFunctionTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryFunctionTraitTestObject();
         $term = $binary->with($t1, $t2);
         $this->assertInstanceOf(FunctionTerm::class, $term);
         $this->assertSame($binary, $term->function());
@@ -57,10 +50,7 @@ final class BinaryFunctionTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var BinaryFunctionTraitTestObject&\PHPUnit\Framework\MockObject\MockObject */
-        $binary = $this->getMockBuilder(BinaryFunctionTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $binary = new BinaryFunctionTraitTestObject();
         $this->assertSame(2, $binary->arity());
     }
 }

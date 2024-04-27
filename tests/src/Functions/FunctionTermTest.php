@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FunctorInterface;
 use Tailors\Logic\FunctorMockConstructor;
+use Tailors\Logic\GetFunctorMockTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
@@ -35,6 +36,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 final class FunctionTermTest extends TestCase
 {
     use ImplementsInterfaceTrait;
+    use GetFunctorMockTrait;
 
     public function setUp(): void
     {
@@ -111,10 +113,7 @@ final class FunctionTermTest extends TestCase
     public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
-            $term = $this->getMockBuilder(TermInterface::class)
-                ->onlyMethods(['expressionString'])
-                ->getMockForAbstractClass()
-            ;
+            $term = $this->createMock(TermInterface::class);
             $term->expects($this->once())
                 ->method('expressionString')
                 ->willReturn($symbol)
@@ -123,8 +122,7 @@ final class FunctionTermTest extends TestCase
             return $term;
         }, $arguments);
 
-        $mockCtor = new FunctorMockConstructor($this, FunctionInterface::class, ['apply' => true]);
-        $function = $mockCtor->getMock($functorParams);
+        $function = $this->getFunctorMock($functorParams, FunctionInterface::class, ['apply' => true]);
 
         /**
          * @var FunctionInterface    $function
@@ -182,10 +180,7 @@ final class FunctionTermTest extends TestCase
              */
             function ($argument) use ($environment): MockObject {
                 /** @psalm-var  MockObject&TermInterface */
-                $term = $this->getMockBuilder(TermInterface::class)
-                    ->onlyMethods(['evaluate'])
-                    ->getMockForAbstractClass()
-                ;
+                $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
@@ -197,8 +192,7 @@ final class FunctionTermTest extends TestCase
             $arguments
         );
 
-        $mockCtor = new FunctorMockConstructor($this, FunctionInterface::class, ['apply' => false]);
-        $function = $mockCtor->getMock($functorParams);
+        $function = $this->getFunctorMock($functorParams, FunctionInterface::class, ['apply' => false]);
 
         $function->expects($this->once())
             ->method('apply')

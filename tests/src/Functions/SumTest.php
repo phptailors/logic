@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
+use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\Logic\Validators\AbstractArglistValidator;
@@ -36,8 +37,11 @@ use Tailors\PHPUnit\UsesTraitTrait;
 #[UsesClass(AbstractArglistValidator::class)]
 #[UsesClass(NumbersArglistValidator::class)]
 #[UsesMethod(AbstractFunction::class, 'apply')]
+#[UsesMethod(AbstractFunctorExpression::class, '__construct')]
+#[UsesMethod(AbstractNumericFunction::class, '__construct')]
 #[UsesMethod(AbstractNumericFunction::class, '__construct')]
 #[UsesMethod(AbstractNumericFunction::class, 'validate')]
+#[UsesMethod(FunctionTerm::class, '__construct')]
 final class SumTest extends TestCase
 {
     use ExtendsClassTrait;
@@ -63,9 +67,6 @@ final class SumTest extends TestCase
         $this->assertUsesTrait(BinaryFunctionTrait::class, Sub::class);
     }
 
-    /**
-     * #[UsesMethod(\Tailors\Logic\Functions\AbstractNumericFunction::class, '__construct')].
-     */
     public function testSymbolReturnsPlusSign(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)->getMock();
@@ -73,11 +74,6 @@ final class SumTest extends TestCase
         $this->assertSame('+', $sum->symbol());
     }
 
-    /**
-     * #[UsesMethod(\Tailors\Logic\Functions\AbstractNumericFunction::class, '__construct')]
-     * #[UsesMethod(\Tailors\Logic\Functions\FunctionTerm::class, '__construct')]
-     * #[UsesMethod(\Tailors\Logic\AbstractFunctorExpression::class, '__construct')].
-     */
     public function testWithReturnsFunctionTerm(): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)->getMock();

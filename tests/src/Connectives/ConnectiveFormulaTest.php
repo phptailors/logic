@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FormulaInterface;
 use Tailors\Logic\FunctorInterface;
-use Tailors\Logic\FunctorMockConstructor;
+use Tailors\Logic\GetFunctorMockTrait;
 use Tailors\Logic\QuantifiedFormula;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
 
@@ -39,6 +39,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
 final class ConnectiveFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
+    use GetFunctorMockTrait;
 
     public function setUp(): void
     {
@@ -115,10 +116,7 @@ final class ConnectiveFormulaTest extends TestCase
     public function testExpressionStringReturnsString(string $result, array $functorParams, array $arguments): void
     {
         $arguments = array_map(function (string $symbol) {
-            $formula = $this->getMockBuilder(FormulaInterface::class)
-                ->onlyMethods(['expressionString'])
-                ->getMockForAbstractClass()
-            ;
+            $formula = $this->createMock(FormulaInterface::class);
             $formula->expects($this->once())
                 ->method('expressionString')
                 ->willReturn($symbol)
@@ -127,8 +125,7 @@ final class ConnectiveFormulaTest extends TestCase
             return $formula;
         }, $arguments);
 
-        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply' => true]);
-        $connective = $mockCtor->getMock($functorParams);
+        $connective = $this->getFunctorMock($functorParams, ConnectiveInterface::class, ['apply' => true]);
 
         /**
          * @var ConnectiveInterface     $connective
@@ -190,10 +187,7 @@ final class ConnectiveFormulaTest extends TestCase
              */
             function ($argument) use ($environment): MockObject {
                 /** @psalm-var  MockObject&FormulaInterface */
-                $term = $this->getMockBuilder(FormulaInterface::class)
-                    ->onlyMethods(['evaluate'])
-                    ->getMockForAbstractClass()
-                ;
+                $term = $this->createMock(FormulaInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')
                     ->with($environment)
@@ -205,8 +199,7 @@ final class ConnectiveFormulaTest extends TestCase
             $arguments
         );
 
-        $mockCtor = new FunctorMockConstructor($this, ConnectiveInterface::class, ['apply' => false]);
-        $connective = $mockCtor->getMock($functorParams);
+        $connective = $this->getFunctorMock($functorParams, ConnectiveInterface::class, ['apply' => false]);
 
         $connective->expects($this->once())
             ->method('apply')

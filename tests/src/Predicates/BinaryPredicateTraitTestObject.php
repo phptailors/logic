@@ -15,7 +15,27 @@ namespace Tailors\Logic\Predicates;
  *
  * @psalm-template Ret
  */
-abstract class BinaryPredicateTraitTestObject implements PredicateInterface
+final class BinaryPredicateTraitTestObject implements PredicateInterface
 {
     use BinaryPredicateTrait;
+
+    public function symbol(): string
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function notation(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function precedence(): int
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
+
+    public function apply(...$arguments): bool
+    {
+        throw new \BadMethodCallException('not implemented');
+    }
 }

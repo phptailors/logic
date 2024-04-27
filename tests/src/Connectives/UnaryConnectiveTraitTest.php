@@ -38,14 +38,9 @@ final class UnaryConnectiveTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(FormulaInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(FormulaInterface::class);
 
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryConnectiveTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryConnectiveTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryConnectiveTraitTestObject();
         $term = $unary->with($t1);
         $this->assertInstanceOf(ConnectiveFormula::class, $term);
         $this->assertSame($unary, $term->connective());
@@ -54,10 +49,7 @@ final class UnaryConnectiveTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryConnectiveTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryConnectiveTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryConnectiveTraitTestObject();
         $this->assertSame(1, $unary->arity());
     }
 }

@@ -38,14 +38,9 @@ final class UnaryPredicateTraitTest extends TestCase
 
     public function testWith(): void
     {
-        $t1 = $this->getMockBuilder(TermInterface::class)
-            ->getMock()
-        ;
+        $t1 = $this->createMock(TermInterface::class);
 
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryPredicateTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryPredicateTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryPredicateTraitTestObject();
         $term = $unary->with($t1);
         $this->assertInstanceOf(PredicateFormula::class, $term);
         $this->assertSame($unary, $term->predicate());
@@ -54,10 +49,7 @@ final class UnaryPredicateTraitTest extends TestCase
 
     public function testArity(): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject&UnaryPredicateTraitTestObject */
-        $unary = $this->getMockBuilder(UnaryPredicateTraitTestObject::class)
-            ->getMockForAbstractClass()
-        ;
+        $unary = new UnaryPredicateTraitTestObject();
         $this->assertSame(1, $unary->arity());
     }
 }
