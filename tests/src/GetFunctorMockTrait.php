@@ -29,12 +29,9 @@ use PHPUnit\Framework\MockObject\Rule\InvokedCount;
  */
 trait GetFunctorMockTrait
 {
-    abstract protected function getMockBuilder(string $className): MockBuilder;
-    abstract protected function once(): InvokedCount;
-    abstract protected function never(): InvokedCount;
-
     /**
      * @psalm-template<MockedType> of FunctorInterface
+     *
      * @psalm-param FunctorMockParams $params
      * @psalm-param class-string<MockedType> $class
      * @psalm-param array<string,bool> $methods
@@ -53,23 +50,29 @@ trait GetFunctorMockTrait
         $methods = array_merge($defaultMethods, $methods);
 
         $functor = $this->getMockBuilder($class)
-                        ->onlyMethods(array_keys($methods))
-                        ->getMock()
-                    ;
+            ->onlyMethods(array_keys($methods))
+            ->getMock()
+        ;
 
         foreach ($methods as $key => $flag) {
             if (isset($params[$key])) {
                 $functor->expects($this->once())
-                        ->method($key)
-                        ->willReturn($params[$key])
-                    ;
+                    ->method($key)
+                    ->willReturn($params[$key])
+                ;
             } elseif ($flag) {
                 $functor->expects($this->never())
-                        ->method($key)
-                    ;
+                    ->method($key)
+                ;
             }
         }
 
         return $functor;
     }
+
+    abstract protected function getMockBuilder(string $className): MockBuilder;
+
+    abstract protected function once(): InvokedCount;
+
+    abstract protected function never(): InvokedCount;
 }

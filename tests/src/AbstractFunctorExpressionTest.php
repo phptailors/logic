@@ -363,7 +363,7 @@ final class AbstractFunctorExpressionTest extends TestCase
 
         $arguments = array_map(fn (string $symbol) => $this->getSymbolExpressionMock($symbol), $functorParams['arguments'] ?? []);
 
-        $expression = new class ($functor, $arguments) extends AbstractFunctorExpression { };
+        $expression = new class($functor, $arguments) extends AbstractFunctorExpression {};
 
         if (null !== $parentParams) {
             $parentExpression = $this->getParentFunctorExpressionMock($parentParams, $functorParams);
