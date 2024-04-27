@@ -2,8 +2,7 @@
     "require-dev": {
         "behat/behat": "^3.14"
     },
-    "scripts": {
-        "post-install-cmd": ["@php ../symlink-bin.php vendor/bin/behat"],
-        "post-update-cmd":  ["@php ../symlink-bin.php vendor/bin/behat"]
+    "config": {
+        "bin-dir": "../../bin"
     }
 }
