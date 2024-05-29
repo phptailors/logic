@@ -15,15 +15,14 @@ use Tailors\Logic\Exceptions\InvalidArgumentException;
 /**
  * @psalm-immutable
  *
- * @psalm-template Arglist of list
  * @psalm-template ValidArglist of list
  *
- * @template-implements ArglistValidatorInterface<Arglist,ValidArglist>
+ * @template-implements ArglistValidatorInterface<ValidArglist>
  */
 abstract class AbstractArglistValidator implements ArglistValidatorInterface
 {
     /**
-     * @psalm-param Arglist $arguments
+     * @psalm-param list $arguments
      *
      * @psalm-assert ValidArglist $arguments
      *

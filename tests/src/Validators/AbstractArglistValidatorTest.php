@@ -39,46 +39,32 @@ final class AbstractArglistValidatorTest extends TestCase
 
     public function testValidateSuccess(): void
     {
-        $validator = $this->getMockBuilder(AbstractArglistValidator::class)
-            ->onlyMethods(['isValid'])
-            ->getMock()
-        ;
-        $matcher = $this->exactly(2);
-
-        $validator->expects($matcher)
-            ->method('isValid')->willReturnCallback(function () use ($matcher) {
-                return match ($matcher->numberOfInvocations()) {
-                    1 => ['x', 0],
-                    2 => ['y', 1],
-                };
-            })
-            ->willReturn(true)
-        ;
+        $validator = new
+            /**
+             * @psalm-immutable
+             * @template-extends AbstractArglistValidator<list>
+             */
+            class extends AbstractArglistValidator {
+            protected function isValid($value, int $index): bool {
+                return true;
+            }
+        };
 
         $this->assertNull($validator->validate('foo', ['x', 'y']));
     }
 
     public function testValidateSingleArgumentFailure(): void
     {
-        $validator = $this->getMockBuilder(AbstractArglistValidator::class)
-            ->onlyMethods(['isValid'])
-            ->getMock()
-        ;
-        $matcher = $this->exactly(6);
-
-        $validator->expects($matcher)
-            ->method('isValid')->willReturnCallback(function () use ($matcher) {
-                return match ($matcher->numberOfInvocations()) {
-                    1 => ['u', 0],
-                    2 => ['v', 1],
-                    3 => ['w', 2],
-                    4 => ['x', 3],
-                    5 => ['y', 4],
-                    6 => ['z', 5],
-                };
-            })
-            ->willReturnOnConsecutiveCalls(true, true, false, true, true, true)
-        ;
+        $validator = new
+            /**
+             * @psalm-immutable
+             * @template-extends AbstractArglistValidator<list>
+             */
+            class extends AbstractArglistValidator {
+            protected function isValid($value, int $index): bool {
+                return $index !== 2;
+            }
+        };
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('argument 3 provided to foo is invalid');
@@ -88,25 +74,16 @@ final class AbstractArglistValidatorTest extends TestCase
 
     public function testValidateMultipleArgumentsFailure(): void
     {
-        $validator = $this->getMockBuilder(AbstractArglistValidator::class)
-            ->onlyMethods(['isValid'])
-            ->getMock()
-        ;
-        $matcher = $this->exactly(6);
-
-        $validator->expects($matcher)
-            ->method('isValid')->willReturnCallback(function () use ($matcher) {
-                return match ($matcher->numberOfInvocations()) {
-                    1 => ['u', 0],
-                    2 => ['v', 1],
-                    3 => ['w', 2],
-                    4 => ['x', 3],
-                    5 => ['y', 4],
-                    6 => ['z', 5],
-                };
-            })
-            ->willReturnOnConsecutiveCalls(true, false, true, false, true, false)
-        ;
+        $validator = new
+            /**
+             * @psalm-immutable
+             * @template-extends AbstractArglistValidator<list>
+             */
+            class extends AbstractArglistValidator {
+            protected function isValid($value, int $index): bool {
+                return $index !== 1 && $index !== 3 && $index !== 5;
+            }
+        };
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('arguments 2, 4 and 6 provided to foo are invalid');

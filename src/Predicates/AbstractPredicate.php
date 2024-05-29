@@ -15,10 +15,8 @@ use Tailors\Logic\Exceptions\InvalidArgumentException;
 /**
  * @psalm-immutable
  *
- * @psalm-type Arglist = list
- *
  * @psalm-template Arity of 0|positive-int
- * @psalm-template ValidArglist of Arglist
+ * @psalm-template ValidArglist of list
  */
 abstract class AbstractPredicate implements PredicateInterface
 {
@@ -41,7 +39,7 @@ abstract class AbstractPredicate implements PredicateInterface
     abstract protected function applyImpl(array $arguments): bool;
 
     /**
-     * @psalm-param Arglist $arguments
+     * @psalm-param list $arguments
      *
      * @psalm-assert ValidArglist $arguments
      *

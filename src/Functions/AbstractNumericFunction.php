@@ -19,7 +19,6 @@ use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
  * @psalm-template Arity of 0|positive-int
  *
  * @psalm-type Number = int|float
- * @psalm-type Arglist = list
  * @psalm-type ValidArglist = list<Number>
  *
  * @template-extends AbstractFunction<Arity,Number,ValidArglist>
@@ -37,7 +36,7 @@ abstract class AbstractNumericFunction extends AbstractFunction
     }
 
     /**
-     * @psalm-param Arglist $arguments
+     * @psalm-param list $arguments
      *
      * @psalm-assert ValidArglist $arguments
      *

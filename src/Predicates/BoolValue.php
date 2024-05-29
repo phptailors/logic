@@ -16,7 +16,6 @@ use Tailors\Logic\FunctionNotationTrait;
 /**
  * @psalm-immutable
  *
- * @psalm-type Arglist = list
  * @psalm-type ValidArglist = non-empty-list
  *
  * @template-extends AbstractPredicate<1,ValidArglist>
@@ -40,7 +39,7 @@ final class BoolValue extends AbstractPredicate
     }
 
     /**
-     * @psalm-param Arglist $arguments
+     * @psalm-param list $arguments
      *
      * @psalm-assert ValidArglist $arguments
      *

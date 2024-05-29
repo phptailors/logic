@@ -15,11 +15,9 @@ use Tailors\Logic\Exceptions\InvalidArgumentException;
 /**
  * @psalm-immutable
  *
- * @psalm-type Arglist = list
- *
  * @psalm-template Arity of 0|positive-int
  * @psalm-template Ret
- * @psalm-template ValidArglist of Arglist
+ * @psalm-template ValidArglist of list
  *
  * @template-implements FunctionInterface<Ret>
  */
@@ -48,7 +46,7 @@ abstract class AbstractFunction implements FunctionInterface
     abstract protected function applyImpl(array $arguments);
 
     /**
-     * @psalm-param Arglist $arguments
+     * @psalm-param list $arguments
      *
      * @psalm-assert ValidArglist $arguments
      *

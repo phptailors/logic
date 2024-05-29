@@ -14,9 +14,8 @@ namespace Tailors\Logic\Validators;
  * @psalm-immutable
  *
  * @psalm-type Number = int|float
- * @psalm-type Arglist = list
  * @psalm-type ValidArglist = list<Number>
  *
- * @template-implements ArglistValidatorInterface<Arglist,ValidArglist>
+ * @template-extends ArglistValidatorInterface<ValidArglist>
  */
 interface NumbersArglistValidatorInterface extends ArglistValidatorInterface {}

@@ -14,9 +14,8 @@ namespace Tailors\Logic\Validators;
  * @psalm-immutable
  *
  * @psalm-type Comparable = int|float|bool
- * @psalm-type Arglist = array
- * @psalm-type ValidArglist = array<Comparable>
+ * @psalm-type ValidArglist = list<Comparable>
  *
- * @template-implements ArglistValidatorInterface<Arglist, ValidArglist>
+ * @template-extends ArglistValidatorInterface<ValidArglist>
  */
 interface ComparatorArglistValidatorInterface extends ArglistValidatorInterface {}

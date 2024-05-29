@@ -50,6 +50,7 @@ final class UnaryPredicateTraitTest extends TestCase
     public function testArity(): void
     {
         $unary = new UnaryPredicateTraitTestObject();
+        /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(1, $unary->arity());
     }
 }
