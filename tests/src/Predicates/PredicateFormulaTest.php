@@ -29,7 +29,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  *
  * @psalm-suppress MissingThrowsDocblock
  *
- * @psalm-import-type FunctorMockParams from FunctorMockConstructor
+ * @psalm-import-type FunctorMockParams from GetFunctorMockTrait
  *
  * @internal
  */
@@ -121,7 +121,6 @@ final class PredicateFormulaTest extends TestCase
              * @psalm-return MockObject&TermInterface
              */
             function (string $symbol): MockObject {
-                /** @psalm-var  MockObject&TermInterface */
                 $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('expressionString')
@@ -194,7 +193,6 @@ final class PredicateFormulaTest extends TestCase
              * @psalm-return MockObject&TermInterface
              */
             function ($argument) use ($environment): MockObject {
-                /** @psalm-var  MockObject&TermInterface */
                 $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')

@@ -28,7 +28,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  *
  * @psalm-suppress MissingThrowsDocblock
  *
- * @psalm-import-type FunctorMockParams from FunctorMockConstructor
+ * @psalm-import-type FunctorMockParams from GetFunctorMockTrait
  *
  * @internal
  */
@@ -186,7 +186,6 @@ final class ConnectiveFormulaTest extends TestCase
              * @psalm-return MockObject&FormulaInterface
              */
             function ($argument) use ($environment): MockObject {
-                /** @psalm-var  MockObject&FormulaInterface */
                 $term = $this->createMock(FormulaInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')

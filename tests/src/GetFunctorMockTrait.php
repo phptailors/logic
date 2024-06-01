@@ -30,7 +30,7 @@ use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 trait GetFunctorMockTrait
 {
     /**
-     * @psalm-template<MockedType> of FunctorInterface
+     * @psalm-template MockedType of FunctorInterface
      *
      * @psalm-param FunctorMockParams $params
      * @psalm-param class-string<MockedType> $class
@@ -40,6 +40,9 @@ trait GetFunctorMockTrait
      */
     public function getFunctorMock(array $params, string $class = FunctorInterface::class, array $methods = []): MockObject
     {
+        /**
+         * @var array<string,true>
+         */
         static $defaultMethods = [
             'arity'      => true,
             'notation'   => true,

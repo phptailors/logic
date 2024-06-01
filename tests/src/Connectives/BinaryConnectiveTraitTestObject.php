@@ -17,21 +17,33 @@ final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
 {
     use BinaryConnectiveTrait;
 
+    /**
+     * @throws \BadMethodCallException
+     */
     public function symbol(): string
     {
         throw new \BadMethodCallException('not implemented');
     }
 
+    /**
+     * @throws \BadMethodCallException
+     */
     public function notation(): int
     {
         throw new \BadMethodCallException('not implemented');
     }
 
+    /**
+     * @throws \BadMethodCallException
+     */
     public function precedence(): int
     {
         throw new \BadMethodCallException('not implemented');
     }
 
+    /**
+     * @throws \BadMethodCallException
+     */
     public function apply(bool ...$arguments): bool
     {
         throw new \BadMethodCallException('not implemented');

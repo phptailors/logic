@@ -17,7 +17,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
 use Tailors\Logic\FunctorInterface;
-use Tailors\Logic\FunctorMockConstructor;
 use Tailors\Logic\GetFunctorMockTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ImplementsInterfaceTrait;
@@ -27,7 +26,7 @@ use Tailors\PHPUnit\ImplementsInterfaceTrait;
  *
  * @psalm-suppress MissingThrowsDocblock
  *
- * @psalm-import-type FunctorMockParams from FunctorMockConstructor
+ * @psalm-import-type FunctorMockParams from GetFunctorMockTrait
  *
  * @internal
  */
@@ -143,13 +142,13 @@ final class FunctionTermTest extends TestCase
     public static function providerEvaluateReturnsValue(): array
     {
         return [
-            [
+            'FunctionTermTest.php:'.__LINE__ => [
                 'ok',
                 [],
                 [],
                 [],
             ],
-            [
+            'FunctionTermTest.php:'.__LINE__ => [
                 'ok',
                 [],
                 ['x', 'y', 'z'],
@@ -179,7 +178,6 @@ final class FunctionTermTest extends TestCase
              * @psalm-return MockObject&TermInterface
              */
             function ($argument) use ($environment): MockObject {
-                /** @psalm-var  MockObject&TermInterface */
                 $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')
