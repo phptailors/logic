@@ -31,6 +31,7 @@ use Tailors\Logic\TermInterface;
 #[UsesMethod(FunctionTerm::class, 'function')]
 final class UnaryFunctionTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

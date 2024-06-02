@@ -31,6 +31,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 #[UsesMethod(UnaryPredicateTrait::class, 'with')]
 final class BasicPredicatesTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

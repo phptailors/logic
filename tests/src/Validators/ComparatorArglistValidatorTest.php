@@ -34,6 +34,7 @@ final class ComparatorArglistValidatorTest extends TestCase
     use ImplementsInterfaceTrait;
     use ExtendsClassTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

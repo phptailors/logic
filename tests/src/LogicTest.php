@@ -39,6 +39,7 @@ final class LogicTest extends TestCase
     use ImplementsInterfaceTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

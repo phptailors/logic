@@ -41,6 +41,7 @@ final class ConnectiveFormulaTest extends TestCase
     use ImplementsInterfaceTrait;
     use GetFunctorMockTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -185,7 +186,7 @@ final class ConnectiveFormulaTest extends TestCase
              *
              * @psalm-return MockObject&FormulaInterface
              */
-            function ($argument) use ($environment): MockObject {
+            function (mixed $argument) use ($environment): MockObject {
                 $term = $this->createMock(FormulaInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')

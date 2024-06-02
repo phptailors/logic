@@ -23,6 +23,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(InfixNotationTrait::class)]
 final class InfixNotationTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

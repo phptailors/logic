@@ -27,6 +27,7 @@ final class QuantifiedFormulaTest extends TestCase
 {
     use ImplementsInterfaceTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

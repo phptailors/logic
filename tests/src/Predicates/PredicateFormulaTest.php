@@ -42,6 +42,7 @@ final class PredicateFormulaTest extends TestCase
     use ImplementsInterfaceTrait;
     use GetFunctorMockTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -192,7 +193,7 @@ final class PredicateFormulaTest extends TestCase
              *
              * @psalm-return MockObject&TermInterface
              */
-            function ($argument) use ($environment): MockObject {
+            function (mixed $argument) use ($environment): MockObject {
                 $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')

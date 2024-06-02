@@ -46,6 +46,7 @@ final class SubTest extends TestCase
     use ExtendsClassTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -100,11 +101,9 @@ final class SubTest extends TestCase
     /**
      * @psalm-param Number $result
      * @psalm-param array<Number> $arguments
-     *
-     * @param mixed $result
      */
     #[DataProvider('providerApplyReturnsSubtractedArguments')]
-    public function testApplyReturnsSubtractedArguments($result, array $arguments): void
+    public function testApplyReturnsSubtractedArguments(mixed $result, array $arguments): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)
             ->onlyMethods(['validate'])

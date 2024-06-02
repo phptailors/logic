@@ -40,6 +40,7 @@ final class AbstractFunctorExpressionTest extends TestCase
 {
     use GetFunctorMockTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

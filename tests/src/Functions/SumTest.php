@@ -47,6 +47,7 @@ final class SumTest extends TestCase
     use ExtendsClassTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -101,11 +102,9 @@ final class SumTest extends TestCase
     /**
      * @psalm-param Number $result
      * @psalm-param array<Number> $arguments
-     *
-     * @param mixed $result
      */
     #[DataProvider('providerApplyReturnsSumOfArguments')]
-    public function testApplyReturnsSumOfArguments($result, array $arguments): void
+    public function testApplyReturnsSumOfArguments(mixed $result, array $arguments): void
     {
         $validator = $this->getMockBuilder(NumbersArglistValidatorInterface::class)
             ->onlyMethods(['validate'])

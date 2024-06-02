@@ -31,6 +31,7 @@ use Tailors\Logic\TermInterface;
 #[UsesMethod(PredicateFormula::class, 'predicate')]
 final class BinaryPredicateTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

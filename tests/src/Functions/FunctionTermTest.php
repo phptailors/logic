@@ -37,6 +37,7 @@ final class FunctionTermTest extends TestCase
     use ImplementsInterfaceTrait;
     use GetFunctorMockTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -158,7 +159,6 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     * @param mixed $result
      *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
@@ -166,7 +166,7 @@ final class FunctionTermTest extends TestCase
      */
     #[DataProvider('providerEvaluateReturnsValue')]
     public function testEvaluateReturnsValue(
-        $result,
+        mixed $result,
         array $functorParams,
         array $arguments,
         array $environment
@@ -177,7 +177,7 @@ final class FunctionTermTest extends TestCase
              *
              * @psalm-return MockObject&TermInterface
              */
-            function ($argument) use ($environment): MockObject {
+            function (mixed $argument) use ($environment): MockObject {
                 $term = $this->createMock(TermInterface::class);
                 $term->expects($this->once())
                     ->method('evaluate')

@@ -31,6 +31,7 @@ use Tailors\Logic\FormulaInterface;
 #[UsesMethod(ConnectiveFormula::class, 'connective')]
 final class BinaryConnectiveTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

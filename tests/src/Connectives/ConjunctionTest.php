@@ -35,6 +35,7 @@ final class ConjunctionTest extends TestCase
     use ImplementsInterfaceTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -94,8 +95,6 @@ final class ConjunctionTest extends TestCase
 
     /**
      * @psalm-param array<bool> $arguments
-     *
-     * @param mixed $result
      */
     #[DataProvider('providerApplyReturnsConjunctionOfArguments')]
     public function testApplyReturnsConjunctionOfArguments(bool $result, array $arguments): void

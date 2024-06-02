@@ -29,6 +29,7 @@ final class AbstractNumericFunctionTest extends TestCase
 {
     use ExtendsClassTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

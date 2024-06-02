@@ -23,6 +23,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(SuffixNotationTrait::class)]
 final class SuffixNotationTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

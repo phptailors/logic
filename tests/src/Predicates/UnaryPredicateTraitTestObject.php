@@ -20,24 +20,28 @@ final class UnaryPredicateTraitTestObject implements PredicateInterface
     use UnaryPredicateTrait;
 
     /** @throws \BadMethodCallException */
+    #[\Override]
     public function symbol(): string
     {
         throw new \BadMethodCallException('not implemented');
     }
 
     /** @throws \BadMethodCallException */
+    #[\Override]
     public function notation(): int
     {
         throw new \BadMethodCallException('not implemented');
     }
 
     /** @throws \BadMethodCallException */
+    #[\Override]
     public function precedence(): int
     {
         throw new \BadMethodCallException('not implemented');
     }
 
     /** @throws \BadMethodCallException */
+    #[\Override]
     public function apply(...$arguments): bool
     {
         throw new \BadMethodCallException('not implemented');

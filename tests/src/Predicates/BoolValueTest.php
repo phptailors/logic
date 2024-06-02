@@ -36,6 +36,7 @@ final class BoolValueTest extends TestCase
     use ExtendsClassTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

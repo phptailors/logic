@@ -32,6 +32,7 @@ final class ConstantTest extends TestCase
     use ImplementsInterfaceTrait;
     use UsesTraitTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
@@ -87,11 +88,8 @@ final class ConstantTest extends TestCase
         ];
     }
 
-    /**
-     * @param mixed $value
-     */
     #[DataProvider('providerExpressionString')]
-    public function testExpressionString($value, string $result): void
+    public function testExpressionString(mixed $value, string $result): void
     {
         $const = new Constant($value);
         $this->assertSame($result, $const->expressionString());

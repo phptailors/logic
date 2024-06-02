@@ -20,6 +20,7 @@ final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function symbol(): string
     {
         throw new \BadMethodCallException('not implemented');
@@ -28,6 +29,7 @@ final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function notation(): int
     {
         throw new \BadMethodCallException('not implemented');
@@ -36,6 +38,7 @@ final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function precedence(): int
     {
         throw new \BadMethodCallException('not implemented');
@@ -44,6 +47,7 @@ final class BinaryConnectiveTraitTestObject implements ConnectiveInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function apply(bool ...$arguments): bool
     {
         throw new \BadMethodCallException('not implemented');

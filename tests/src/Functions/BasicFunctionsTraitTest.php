@@ -35,6 +35,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 #[UsesMethod(FunctionTerm::class, 'function')]
 final class BasicFunctionsTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm

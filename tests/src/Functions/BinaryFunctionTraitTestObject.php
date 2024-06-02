@@ -24,6 +24,7 @@ final class BinaryFunctionTraitTestObject implements FunctionInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function symbol(): string
     {
         throw new \BadMethodCallException('not implemented');
@@ -32,6 +33,7 @@ final class BinaryFunctionTraitTestObject implements FunctionInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function notation(): int
     {
         throw new \BadMethodCallException('not implemented');
@@ -40,6 +42,7 @@ final class BinaryFunctionTraitTestObject implements FunctionInterface
     /**
      * @throws \BadMethodCallException
      */
+    #[\Override]
     public function precedence(): int
     {
         throw new \BadMethodCallException('not implemented');
@@ -48,7 +51,8 @@ final class BinaryFunctionTraitTestObject implements FunctionInterface
     /**
      * @throws \BadMethodCallException
      */
-    public function apply(...$arguments)
+    #[\Override]
+    public function apply(...$arguments): never
     {
         throw new \BadMethodCallException('not implemented');
     }

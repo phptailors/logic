@@ -23,6 +23,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(FunctionNotationTrait::class)]
 final class FunctionNotationTraitTest extends TestCase
 {
+    #[\Override]
     public function setUp(): void
     {
         // Without setUp() we get MissingConstructor error from psalm
