@@ -366,6 +366,7 @@ final class AbstractFunctorExpressionTest extends TestCase
         $expression = new
             /**
              * @psalm-immutable
+             *
              * @psalm-suppress MissingTemplateParam
              */
             class($functor, $arguments) extends AbstractFunctorExpression {};

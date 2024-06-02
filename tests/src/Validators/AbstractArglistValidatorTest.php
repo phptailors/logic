@@ -42,13 +42,15 @@ final class AbstractArglistValidatorTest extends TestCase
         $validator = new
             /**
              * @psalm-immutable
+             *
              * @template-extends AbstractArglistValidator<list>
              */
-            class extends AbstractArglistValidator {
-            protected function isValid($value, int $index): bool {
-                return true;
-            }
-        };
+            class() extends AbstractArglistValidator {
+                protected function isValid($value, int $index): bool
+                {
+                    return true;
+                }
+            };
 
         $this->assertNull($validator->validate('foo', ['x', 'y']));
     }
@@ -58,13 +60,15 @@ final class AbstractArglistValidatorTest extends TestCase
         $validator = new
             /**
              * @psalm-immutable
+             *
              * @template-extends AbstractArglistValidator<list>
              */
-            class extends AbstractArglistValidator {
-            protected function isValid($value, int $index): bool {
-                return $index !== 2;
-            }
-        };
+            class() extends AbstractArglistValidator {
+                protected function isValid($value, int $index): bool
+                {
+                    return 2 !== $index;
+                }
+            };
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('argument 3 provided to foo is invalid');
@@ -77,13 +81,15 @@ final class AbstractArglistValidatorTest extends TestCase
         $validator = new
             /**
              * @psalm-immutable
+             *
              * @template-extends AbstractArglistValidator<list>
              */
-            class extends AbstractArglistValidator {
-            protected function isValid($value, int $index): bool {
-                return $index !== 1 && $index !== 3 && $index !== 5;
-            }
-        };
+            class() extends AbstractArglistValidator {
+                protected function isValid($value, int $index): bool
+                {
+                    return 1 !== $index && 3 !== $index && 5 !== $index;
+                }
+            };
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('arguments 2, 4 and 6 provided to foo are invalid');

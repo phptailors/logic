@@ -51,6 +51,7 @@ final class BinaryPredicateTraitTest extends TestCase
     public function testArity(): void
     {
         $binary = new BinaryPredicateTraitTestObject();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(2, $binary->arity());
     }

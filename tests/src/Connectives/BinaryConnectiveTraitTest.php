@@ -51,6 +51,7 @@ final class BinaryConnectiveTraitTest extends TestCase
     public function testArity(): void
     {
         $binary = new BinaryConnectiveTraitTestObject();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(2, $binary->arity());
     }

@@ -62,6 +62,7 @@ trait BasicPredicatesTrait
 
     /**
      * @psalm-return BasicPredicatesMap
+     *
      * @psalm-suppress PossiblyUnusedParam
      */
     protected function makeBasicPredicates(BasicValidatorsInterface $validators): array

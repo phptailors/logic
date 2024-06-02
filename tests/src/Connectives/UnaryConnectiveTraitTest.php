@@ -50,6 +50,7 @@ final class UnaryConnectiveTraitTest extends TestCase
     public function testArity(): void
     {
         $unary = new UnaryConnectiveTraitTestObject();
+
         /** @psalm-suppress RedundantConditionGivenDocblockType */
         $this->assertSame(1, $unary->arity());
     }
