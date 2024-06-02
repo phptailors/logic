@@ -83,10 +83,8 @@ final class Constant implements FunctionInterface, TermInterface
 
     /**
      * @psalm-param array<string,mixed> $environment
-     *
-     * @return mixed
      */
-    public function evaluate(array $environment = [])
+    public function evaluate(array $environment = []): mixed
     {
         return $this->apply();
     }

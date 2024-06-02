@@ -43,11 +43,9 @@ final class Variable implements VariableInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @return mixed
-     *
      * @throws UndefinedVariableException
      */
-    public function evaluate(array $environment = [])
+    public function evaluate(array $environment = []): mixed
     {
         $key = $this->symbol();
 

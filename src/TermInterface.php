@@ -20,9 +20,7 @@ interface TermInterface extends ExpressionInterface
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @return mixed
-     *
      * @throws InvalidArgumentException
      */
-    public function evaluate(array $environment = []);
+    public function evaluate(array $environment = []): mixed;
 }

@@ -42,13 +42,7 @@ final class PredicateFormula extends AbstractFunctorExpression implements Formul
      */
     public function evaluate(array $environment = []): bool
     {
-        $arguments = array_map(
-            /** @return mixed */
-            function (TermInterface $arg) use ($environment) {
-                return $arg->evaluate($environment);
-            },
-            $this->arguments()
-        );
+        $arguments = array_map(fn (TermInterface $arg): mixed => $arg->evaluate($environment), $this->arguments());
 
         return $this->predicate()->apply(...$arguments);
     }

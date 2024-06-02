@@ -35,20 +35,12 @@ final class FunctionTerm extends AbstractFunctorExpression implements TermInterf
     /**
      * @psalm-param array<string,mixed> $environment
      *
-     * @return mixed
-     *
      * @throws InvalidArgumentException
      * @throws UndefinedVariableException
      */
-    public function evaluate(array $environment = [])
+    public function evaluate(array $environment = []): mixed
     {
-        $arguments = array_map(
-            /** @return mixed */
-            function (TermInterface $arg) use ($environment) {
-                return $arg->evaluate($environment);
-            },
-            $this->arguments()
-        );
+        $arguments = array_map(fn (TermInterface $arg): mixed => $arg->evaluate($environment), $this->arguments());
 
         return $this->function()->apply(...$arguments);
     }

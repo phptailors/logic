@@ -62,12 +62,8 @@ final class Sub extends AbstractNumericFunction
              *
              * @param mixed $result
              * @param mixed $arg
-             *
-             * @return mixed
              */
-            function ($result, $arg) {
-                return $result - $arg;
-            },
+            fn ($result, $arg): mixed => $result - $arg,
             $arg1
         );
     }
