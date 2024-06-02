@@ -159,7 +159,6 @@ final class FunctionTermTest extends TestCase
     }
 
     /**
-     *
      * @psalm-param FunctorMockParams $functorParams
      * @psalm-param list $arguments
      * @psalm-param array<string, mixed> $environment
