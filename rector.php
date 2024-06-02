@@ -5,6 +5,7 @@ use Rector\PHPUnit\AnnotationsToAttributes\Rector\ClassMethod\DataProviderAnnota
 use Rector\PHPUnit\AnnotationsToAttributes\Rector\Class_\CoversAnnotationWithValueToAttributeRector;
 use Rector\PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector;
 use Rector\PHPUnit\Rector\StmtsAwareInterface\WithConsecutiveRector;
+use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -16,4 +17,6 @@ return RectorConfig::configure()
         DataProviderAnnotationToAttributeRector::class,
         WithConsecutiveRector::class,
     ])
+    ->withPhpVersion(PhpVersion::PHP_83)
+    ->withPhpSets(php83: true)
 ;
