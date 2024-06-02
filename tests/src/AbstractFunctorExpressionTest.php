@@ -363,10 +363,15 @@ final class AbstractFunctorExpressionTest extends TestCase
 
         $arguments = array_map(fn (string $symbol) => $this->getSymbolExpressionMock($symbol), $functorParams['arguments'] ?? []);
 
-        $expression = new class($functor, $arguments) extends AbstractFunctorExpression {};
+        $expression = new
+            /**
+             * @psalm-immutable
+             * @psalm-suppress MissingTemplateParam
+             */
+            class($functor, $arguments) extends AbstractFunctorExpression {};
 
         if (null !== $parentParams) {
-            $parentExpression = $this->getParentFunctorExpressionMock($parentParams, $functorParams);
+            $parentExpression = $this->getParentFunctorExpressionMock($parentParams);
 
             /** @var FunctorExpressionInterface<ExpressionInterface> $parentExpression */
             $this->assertSame($result, $expression->expressionString($parentExpression));
@@ -377,11 +382,10 @@ final class AbstractFunctorExpressionTest extends TestCase
 
     /**
      * @psalm-param FunctorTestParams $parentParams
-     * @psalm-param FunctorTestParams $functorParams
      *
      * @psalm-return MockObject&FunctorExpressionInterface<ExpressionInterface>
      */
-    protected function getParentFunctorExpressionMock(array $parentParams, array $functorParams): MockObject
+    protected function getParentFunctorExpressionMock(array $parentParams): MockObject
     {
         $parentExpression = $this->getMockBuilder(FunctorExpressionInterface::class)
             ->onlyMethods(['functor', 'arguments'])

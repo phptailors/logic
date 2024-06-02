@@ -23,6 +23,7 @@ use PHPUnit\Framework\MockObject\Rule\InvokedCount;
  *      arity?: Arity,
  *      notation?: FunctorInterface::NOTATION_*,
  *      precedence?: Precedence,
+ *      ...
  *  }
  *
  * @psalm-suppress MissingThrowsDocblock
@@ -34,14 +35,14 @@ trait GetFunctorMockTrait
      *
      * @psalm-param FunctorMockParams $params
      * @psalm-param class-string<MockedType> $class
-     * @psalm-param array<string,bool> $methods
+     * @psalm-param array<non-empty-string,bool> $methods
      *
      * @psalm-return MockObject&MockedType
      */
     public function getFunctorMock(array $params, string $class = FunctorInterface::class, array $methods = []): MockObject
     {
         /**
-         * @var array<string,true>
+         * @var array<non-empty-string,true>
          */
         static $defaultMethods = [
             'arity'      => true,

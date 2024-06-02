@@ -45,7 +45,7 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
     /**
      * @psalm-mutation-free
      *
-     * @psalm-param array<int,mixed> $invalidArgs
+     * @psalm-param non-empty-array<int,mixed> $invalidArgs
      */
     protected function report(string $symbol, array $invalidArgs): string
     {
