@@ -10,12 +10,14 @@
 
 namespace Tailors\Logic;
 
+use Tailors\Logic\Connectives\BasicConnectivesInterface;
 use Tailors\Logic\Functions\BasicFunctionsInterface;
+use Tailors\Logic\Predicates\BasicPredicatesInterface;
 
 /**
  * @psalm-immutable
  */
-interface LogicInterface extends BasicFunctionsInterface
+interface LogicInterface extends BasicConnectivesInterface, BasicFunctionsInterface, BasicPredicatesInterface
 {
     /**
      * @psalm-param non-empty-string $symbol
