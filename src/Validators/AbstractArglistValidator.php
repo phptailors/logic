@@ -31,7 +31,7 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
     final public function validate(string $symbol, array $arguments): void
     {
         /** @var pure-callable(mixed,int):bool */
-        $callback = [$this, 'isValid'];
+        $callback = fn (mixed $value, int $index): bool => $this->isValid($value, $index);
 
         $valid = array_filter($arguments, $callback, ARRAY_FILTER_USE_BOTH);
         $invalid = array_diff_key($arguments, $valid);
