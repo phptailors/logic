@@ -1,2 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.x-dev@"/>
+<files psalm-version="dev-master@16b24bdc94e052b5ce69fd232a77416a1f6ec3e6">
+  <file src="tests/src/AbstractFunctorExpressionTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerExpressionString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Connectives/ConjunctionTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsConjunctionOfArguments]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Connectives/ConnectiveFormulaTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerEvaluateReturnsBool]]></code>
+      <code><![CDATA[providerExpressionStringReturnsString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Connectives/DisjunctionTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsDisjunctionOfArguments]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functions/ConstantTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerExpressionString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functions/FunctionTermTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerEvaluateReturnsValue]]></code>
+      <code><![CDATA[providerExpressionStringReturnsString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functions/SubTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsSubtractedArguments]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functions/SumTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsSumOfArguments]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Predicates/BoolValueTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsBool]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Predicates/PredicateFormulaTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerEvaluateReturnsBool]]></code>
+      <code><![CDATA[providerExpressionStringReturnsString]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+</files>
