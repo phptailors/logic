@@ -62,6 +62,11 @@
       <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="tests/src/Predicates/LessEqualTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="tests/src/Predicates/LessThanTest.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
