@@ -47,6 +47,11 @@
       <code><![CDATA[providerApplyReturnsBool]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="tests/src/Predicates/EqualTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="tests/src/Predicates/PredicateFormulaTest.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[providerEvaluateReturnsBool]]></code>
