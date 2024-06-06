@@ -13,6 +13,35 @@ First-order logic implementation in PHP
 
 The project is in initial phase. No releases yet!
 
+## Quick intro
+
+This library lets you construct and evaluate logical expressions. You may find
+it useful when you need to impose constraints on user input or
+arguments/options passed to a program or API.
+
+## Example
+
+```php
+<?php
+use Tailors\Logic\Logic;
+
+$l = new Logic();
+
+$formula = $l->and($l->bool($l->var('a')), $l->bool($l->var('b')));
+
+var_export($formula->expressionString()); echo "\n";
+var_export($formula->evaluate(['a' => 1, 'b' => true])); echo "\n";
+var_export($formula->evaluate(['a' => true, 'b' => 0])); echo "\n";
+```
+
+The result of above is
+
+```console
+'bool(a) && bool(b)'
+true
+false
+```
+
 ## Online documentation
 
 - https://phptailors.github.io/logic/docs
