@@ -43,7 +43,7 @@ abstract class AbstractFunction implements FunctionInterface
      *
      * @psalm-return Ret
      */
-    abstract protected function applyImpl(array $arguments);
+    abstract protected function applyImpl(array $arguments): mixed;
 
     /**
      * @psalm-param list $arguments

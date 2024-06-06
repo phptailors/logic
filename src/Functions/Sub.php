@@ -45,26 +45,13 @@ final class Sub extends AbstractNumericFunction
      *
      * @psalm-return Number
      */
-    protected function applyImpl(array $arguments)
+    protected function applyImpl(array $arguments): float|int
     {
         if (0 === count($arguments)) {
             return 0;
         }
         $arg1 = array_shift($arguments);
 
-        return array_reduce(
-            $arguments,
-            /**
-             * @psalm-param Number $result
-             * @psalm-param Number $arg
-             *
-             * @psalm-return Number
-             *
-             * @param mixed $result
-             * @param mixed $arg
-             */
-            fn ($result, $arg): mixed => $result - $arg,
-            $arg1
-        );
+        return array_reduce($arguments, fn (float|int $result, float|int $arg) => $result - $arg, $arg1);
     }
 }

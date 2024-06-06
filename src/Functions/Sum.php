@@ -45,23 +45,8 @@ final class Sum extends AbstractNumericFunction
      *
      * @psalm-return Number
      */
-    protected function applyImpl(array $arguments)
+    protected function applyImpl(array $arguments): float|int
     {
-        return array_reduce(
-            $arguments,
-            /**
-             * @psalm-param Number $result
-             * @psalm-param Number $arg
-             *
-             * @psalm-return Number
-             *
-             * @param mixed $result
-             * @param mixed $arg
-             */
-            function ($result, $arg) {
-                return $result + $arg;
-            },
-            0
-        );
+        return array_reduce($arguments, fn (float|int $result, float|int $arg) => $result + $arg, 0);
     }
 }
