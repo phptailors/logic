@@ -19,9 +19,9 @@ use Tailors\Logic\TermInterface;
  */
 trait UnaryFunctionTrait
 {
-    public function with(TermInterface $t1): FunctionTerm
+    public function with(TermInterface $t1, TermInterface ...$t): FunctionTerm
     {
-        return new FunctionTerm($this, $t1);
+        return new FunctionTerm($this, $t1, ...$t);
     }
 
     /**

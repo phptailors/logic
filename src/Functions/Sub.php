@@ -23,7 +23,7 @@ use Tailors\Logic\InfixNotationTrait;
 final class Sub extends AbstractNumericFunction
 {
     use InfixNotationTrait;
-    use AssociativeBinaryFunctionTrait;
+    use BinaryFunctionTrait;
 
     public function symbol(): string
     {

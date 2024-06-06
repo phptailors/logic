@@ -29,7 +29,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 #[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
 #[UsesMethod(AbstractFunctorExpression::class, 'functor')]
 #[UsesMethod(AbstractNumericFunction::class, '__construct')]
-#[UsesMethod(AssociativeBinaryFunctionTrait::class, 'with')]
+#[UsesMethod(BinaryFunctionTrait::class, 'with')]
 #[UsesMethod(Constant::class, '__construct')]
 #[UsesMethod(FunctionTerm::class, '__construct')]
 #[UsesMethod(FunctionTerm::class, 'function')]

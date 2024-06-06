@@ -19,9 +19,9 @@ use Tailors\Logic\TermInterface;
  */
 trait BinaryFunctionTrait
 {
-    public function with(TermInterface $t1, TermInterface $t2): FunctionTerm
+    public function with(TermInterface $t1, TermInterface $t2, TermInterface ...$t): FunctionTerm
     {
-        return new FunctionTerm($this, $t1, $t2);
+        return new FunctionTerm($this, $t1, $t2, ...$t);
     }
 
     /**

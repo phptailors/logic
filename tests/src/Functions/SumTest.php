@@ -65,7 +65,7 @@ final class SumTest extends TestCase
 
     public function testUsesBinaryFunctionTrait(): void
     {
-        $this->assertUsesTrait(AssociativeBinaryFunctionTrait::class, Sub::class);
+        $this->assertUsesTrait(BinaryFunctionTrait::class, Sub::class);
     }
 
     public function testSymbolReturnsPlusSign(): void
