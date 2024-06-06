@@ -58,4 +58,9 @@
       <code><![CDATA[providerExpressionStringReturnsString]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="tests/src/Predicates/SameTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
+    </PossiblyUnusedMethod>
+  </file>
 </files>
