@@ -51,7 +51,7 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
     protected function report(string $symbol, array $invalidArgs): string
     {
         $positions = array_map(
-            fn(int $index): string => (string) (1 + $index),
+            fn (int $index): string => (string) (1 + $index),
             array_keys($invalidArgs)
         );
 

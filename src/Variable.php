@@ -20,9 +20,7 @@ final readonly class Variable implements VariableInterface
     /**
      * @psalm-param non-empty-string $symbol
      */
-    public function __construct(private string $symbol)
-    {
-    }
+    public function __construct(private string $symbol) {}
 
     #[\Override]
     public function symbol(): string

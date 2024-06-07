@@ -25,9 +25,7 @@ use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
  */
 abstract class AbstractNumericFunction extends AbstractFunction
 {
-    public function __construct(private readonly NumbersArglistValidatorInterface $numbersArglistValidator)
-    {
-    }
+    public function __construct(private readonly NumbersArglistValidatorInterface $numbersArglistValidator) {}
 
     /**
      * @psalm-param list $arguments

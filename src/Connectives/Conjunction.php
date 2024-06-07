@@ -37,7 +37,7 @@ final class Conjunction implements ConnectiveInterface
 
         return array_reduce(
             $arguments,
-            fn(bool $result, bool $arg): bool => $result && $arg,
+            fn (bool $result, bool $arg): bool => $result && $arg,
             $last
         );
     }

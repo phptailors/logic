@@ -21,9 +21,7 @@ final readonly class QuantifiedFormula implements FormulaInterface
     /**
      * @psalm-param array<string,mixed> $environment
      */
-    public function __construct(private FormulaInterface $formula, private array $environment)
-    {
-    }
+    public function __construct(private FormulaInterface $formula, private array $environment) {}
 
     public function formula(): FormulaInterface
     {

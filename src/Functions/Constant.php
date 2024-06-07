@@ -28,9 +28,7 @@ final class Constant implements FunctionInterface, TermInterface
     /**
      * @psalm-param T $value
      */
-    public function __construct(private mixed $value)
-    {
-    }
+    public function __construct(private mixed $value) {}
 
     /**
      * @psalm-return 0

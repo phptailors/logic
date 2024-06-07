@@ -43,7 +43,7 @@ final class ConnectiveFormula extends AbstractFunctorExpression implements Formu
     public function evaluate(array $environment = []): bool
     {
         $arguments = array_map(
-            fn(FormulaInterface $arg): bool => $arg->evaluate($environment),
+            fn (FormulaInterface $arg): bool => $arg->evaluate($environment),
             $this->arguments()
         );
 

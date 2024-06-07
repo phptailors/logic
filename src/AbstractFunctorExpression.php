@@ -24,9 +24,7 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
      * @psalm-param Functor $functor
      * @psalm-param array<Argument> $arguments
      */
-    public function __construct(private readonly FunctorInterface $functor, private readonly array $arguments)
-    {
-    }
+    public function __construct(private readonly FunctorInterface $functor, private readonly array $arguments) {}
 
     /**
      * @psalm-return array<Argument>
@@ -70,8 +68,8 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
     {
         return match ($notation) {
             FunctorInterface::NOTATION_FUNCTION => ', ',
-            FunctorInterface::NOTATION_INFIX => ' '.$symbol.' ',
-            default => ' ',
+            FunctorInterface::NOTATION_INFIX    => ' '.$symbol.' ',
+            default                             => ' ',
         };
     }
 
@@ -120,6 +118,6 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
     {
         $me = $this; // this tricks psalm to workaround ImpureFunctionCall below
 
-        return array_map(fn(ExpressionInterface $arg) => $arg->expressionString($me), $this->arguments());
+        return array_map(fn (ExpressionInterface $arg) => $arg->expressionString($me), $this->arguments());
     }
 }
