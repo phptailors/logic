@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic\Functions;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
@@ -24,7 +24,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  *
  * @internal
  */
-#[CoversClass(BasicFunctionsTrait::class)]
+#[CoversTrait(BasicFunctionsTrait::class)]
 #[UsesMethod(AbstractFunctorExpression::class, '__construct')]
 #[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
 #[UsesMethod(AbstractFunctorExpression::class, 'functor')]

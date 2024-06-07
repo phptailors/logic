@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @internal
  */
-#[CoversClass(FunctionNotationTrait::class)]
+#[CoversTrait(FunctionNotationTrait::class)]
 final class FunctionNotationTraitTest extends TestCase
 {
     #[\Override]

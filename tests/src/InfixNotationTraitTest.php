@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @internal
  */
-#[CoversClass(InfixNotationTrait::class)]
+#[CoversTrait(InfixNotationTrait::class)]
 final class InfixNotationTraitTest extends TestCase
 {
     #[\Override]

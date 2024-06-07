@@ -10,7 +10,7 @@
 
 namespace Tailors\Logic\Predicates;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
@@ -23,7 +23,7 @@ use Tailors\Logic\TermInterface;
  *
  * @internal
  */
-#[CoversClass(BinaryPredicateTrait::class)]
+#[CoversTrait(BinaryPredicateTrait::class)]
 #[UsesMethod(AbstractFunctorExpression::class, '__construct')]
 #[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
 #[UsesMethod(AbstractFunctorExpression::class, 'functor')]
