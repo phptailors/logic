@@ -5,6 +5,16 @@
       <code><![CDATA[providerExpressionString]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="tests/src/Connectives/BasicConnectivesTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BasicConnectivesTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/Connectives/BinaryConnectiveTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BinaryConnectiveTrait::class]]></code>
+    </InvalidArgument>
+  </file>
   <file src="tests/src/Connectives/ConjunctionTest.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[providerApplyReturnsConjunctionOfArguments]]></code>
@@ -20,6 +30,26 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[providerApplyReturnsDisjunctionOfArguments]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Connectives/UnaryConnectiveTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[UnaryConnectiveTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/FunctionNotationTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[FunctionNotationTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/Functions/BasicFunctionsTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BasicFunctionsTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/Functions/BinaryFunctionTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BinaryFunctionTrait::class]]></code>
+    </InvalidArgument>
   </file>
   <file src="tests/src/Functions/ConstantTest.php">
     <PossiblyUnusedMethod>
@@ -41,6 +71,26 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[providerApplyReturnsSumOfArguments]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Functions/UnaryFunctionTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[UnaryFunctionTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/InfixNotationTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[InfixNotationTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/Predicates/BasicPredicatesTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BasicPredicatesTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/Predicates/BinaryPredicateTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[BinaryPredicateTrait::class]]></code>
+    </InvalidArgument>
   </file>
   <file src="tests/src/Predicates/BoolValueTest.php">
     <PossiblyUnusedMethod>
@@ -92,5 +142,25 @@
     <PossiblyUnusedMethod>
       <code><![CDATA[providerApplyReturnsComparisonResult]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/src/Predicates/UnaryPredicateTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[UnaryPredicateTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/PrefixNotationTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[PrefixNotationTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/SuffixNotationTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[SuffixNotationTrait::class]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/src/SymbolNotationTraitTest.php">
+    <InvalidArgument>
+      <code><![CDATA[SymbolNotationTrait::class]]></code>
+    </InvalidArgument>
   </file>
 </files>
