@@ -15,7 +15,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
-use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
 use Tailors\PHPUnit\UsesTraitTrait;
@@ -42,19 +41,9 @@ final class SameTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    public function testExtendsAbstractPredicate(): void
+    public function testExtendsAbstractComparisonPredicate(): void
     {
-        $this->assertExtendsClass(AbstractPredicate::class, Same::class);
-    }
-
-    public function testUsesInfixNotationTrait(): void
-    {
-        $this->assertUsesTrait(InfixNotationTrait::class, Same::class);
-    }
-
-    public function testUsesBinaryPredicateTrait(): void
-    {
-        $this->assertUsesTrait(BinaryPredicateTrait::class, Same::class);
+        $this->assertExtendsClass(AbstractComparisonPredicate::class, Same::class);
     }
 
     public function testSymbolReturnsStrictEqualSign(): void

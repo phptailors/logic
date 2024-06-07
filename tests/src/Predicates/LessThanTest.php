@@ -15,10 +15,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
-use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
-use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
@@ -34,7 +32,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
 final class LessThanTest extends TestCase
 {
     use ExtendsClassTrait;
-    use UsesTraitTrait;
 
     #[\Override]
     public function setUp(): void
@@ -42,19 +39,9 @@ final class LessThanTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    public function testExtendsAbstractPredicate(): void
+    public function testExtendsAbstractComparisonPredicate(): void
     {
-        $this->assertExtendsClass(AbstractPredicate::class, LessThan::class);
-    }
-
-    public function testUsesInfixNotationTrait(): void
-    {
-        $this->assertUsesTrait(InfixNotationTrait::class, LessThan::class);
-    }
-
-    public function testUsesBinaryPredicateTrait(): void
-    {
-        $this->assertUsesTrait(BinaryPredicateTrait::class, LessThan::class);
+        $this->assertExtendsClass(AbstractComparisonPredicate::class, LessThan::class);
     }
 
     public function testSymbolReturnsLessThanSign(): void

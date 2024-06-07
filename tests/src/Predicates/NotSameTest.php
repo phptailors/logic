@@ -15,10 +15,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesMethod;
 use PHPUnit\Framework\TestCase;
 use Tailors\Logic\AbstractFunctorExpression;
-use Tailors\Logic\InfixNotationTrait;
 use Tailors\Logic\TermInterface;
 use Tailors\PHPUnit\ExtendsClassTrait;
-use Tailors\PHPUnit\UsesTraitTrait;
 
 /**
  * @author Paweł Tomulik <pawel@tomulik.pl>
@@ -34,7 +32,6 @@ use Tailors\PHPUnit\UsesTraitTrait;
 final class NotSameTest extends TestCase
 {
     use ExtendsClassTrait;
-    use UsesTraitTrait;
 
     #[\Override]
     public function setUp(): void
@@ -42,19 +39,9 @@ final class NotSameTest extends TestCase
         // Without setUp() we get MissingConstructor error from psalm
     }
 
-    public function testExtendsAbstractPredicate(): void
+    public function testExtendsAbstractComparisonPredicate(): void
     {
-        $this->assertExtendsClass(AbstractPredicate::class, NotSame::class);
-    }
-
-    public function testUsesInfixNotationTrait(): void
-    {
-        $this->assertUsesTrait(InfixNotationTrait::class, NotSame::class);
-    }
-
-    public function testUsesBinaryPredicateTrait(): void
-    {
-        $this->assertUsesTrait(BinaryPredicateTrait::class, NotSame::class);
+        $this->assertExtendsClass(AbstractComparisonPredicate::class, NotSame::class);
     }
 
     public function testSymbolReturnsStrictEqualSign(): void
@@ -76,8 +63,8 @@ final class NotSameTest extends TestCase
     public static function providerApplyReturnsComparisonResult(): array
     {
         return [
-            [true, []],
-            [true, [1]],
+            [false, []],
+            [false, [1]],
             [true, [1, 2]],
             [false, [2, 2]],
             [true, [2, '2']],
