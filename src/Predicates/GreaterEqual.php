@@ -12,8 +12,6 @@ namespace Tailors\Logic\Predicates;
 
 /**
  * @psalm-immutable
- *
- * @psalm-type ValidArglist = list
  */
 final class GreaterEqual extends AbstractComparisonPredicate
 {

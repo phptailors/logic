@@ -79,7 +79,7 @@ final class BasicPredicatesTraitTest extends TestCase
         $formula = $predicates->notEqual($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1, $t2], $formula->arguments());
-   }
+    }
 
     public function testSame(): void
     {
