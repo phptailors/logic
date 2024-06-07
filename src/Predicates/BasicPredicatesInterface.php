@@ -30,22 +30,22 @@ interface BasicPredicatesInterface
     /**
      * @no-named-arguments
      */
-    public function equal(TermInterface $t1, TermInterface $t2): FormulaInterface;
+    public function eq(TermInterface $t1, TermInterface $t2): FormulaInterface;
 
     /**
      * @no-named-arguments
      */
-    public function notEqual(TermInterface $t1, TermInterface $t2): FormulaInterface;
+    public function neq(TermInterface $t1, TermInterface $t2): FormulaInterface;
 
     /**
      * @no-named-arguments
      */
-    public function same(TermInterface $t1, TermInterface $t2): FormulaInterface;
+    public function eqq(TermInterface $t1, TermInterface $t2): FormulaInterface;
 
     /**
      * @no-named-arguments
      */
-    public function notSame(TermInterface $t1, TermInterface $t2): FormulaInterface;
+    public function neqq(TermInterface $t1, TermInterface $t2): FormulaInterface;
 
     /**
      * @no-named-arguments

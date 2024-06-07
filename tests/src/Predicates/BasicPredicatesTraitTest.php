@@ -61,42 +61,42 @@ final class BasicPredicatesTraitTest extends TestCase
         $this->assertSame([$t1], $formula->arguments());
     }
 
-    public function testEqual(): void
+    public function testEq(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
         $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
         $predicates = $this->getBasicPredicatesObject();
-        $formula = $predicates->equal($t1, $t2);
+        $formula = $predicates->eq($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1, $t2], $formula->arguments());
     }
 
-    public function testNotEqual(): void
+    public function testNeq(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
         $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
         $predicates = $this->getBasicPredicatesObject();
-        $formula = $predicates->notEqual($t1, $t2);
+        $formula = $predicates->neq($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1, $t2], $formula->arguments());
     }
 
-    public function testSame(): void
+    public function testEqq(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
         $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
         $predicates = $this->getBasicPredicatesObject();
-        $formula = $predicates->same($t1, $t2);
+        $formula = $predicates->eqq($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1, $t2], $formula->arguments());
     }
 
-    public function testNotSame(): void
+    public function testNeqq(): void
     {
         $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
         $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
         $predicates = $this->getBasicPredicatesObject();
-        $formula = $predicates->notSame($t1, $t2);
+        $formula = $predicates->neqq($t1, $t2);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1, $t2], $formula->arguments());
     }

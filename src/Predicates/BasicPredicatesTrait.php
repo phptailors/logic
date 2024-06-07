@@ -68,22 +68,22 @@ trait BasicPredicatesTrait
         return $this->basicPredicates['bool']->with($t1);
     }
 
-    public function equal(TermInterface $t1, TermInterface $t2): FormulaInterface
+    public function eq(TermInterface $t1, TermInterface $t2): FormulaInterface
     {
         return $this->basicPredicates['==']->with($t1, $t2);
     }
 
-    public function notEqual(TermInterface $t1, TermInterface $t2): FormulaInterface
+    public function neq(TermInterface $t1, TermInterface $t2): FormulaInterface
     {
         return $this->basicPredicates['!=']->with($t1, $t2);
     }
 
-    public function same(TermInterface $t1, TermInterface $t2): FormulaInterface
+    public function eqq(TermInterface $t1, TermInterface $t2): FormulaInterface
     {
         return $this->basicPredicates['===']->with($t1, $t2);
     }
 
-    public function notSame(TermInterface $t1, TermInterface $t2): FormulaInterface
+    public function neqq(TermInterface $t1, TermInterface $t2): FormulaInterface
     {
         return $this->basicPredicates['!==']->with($t1, $t2);
     }
