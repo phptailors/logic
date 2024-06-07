@@ -39,10 +39,10 @@ abstract class AbstractComparisonPredicate extends AbstractPredicate
      */
     final protected function applyImpl(array $arguments): bool
     {
-        return count($arguments) >= 2 && $this->compareImpl(...$arguments);
+        return count($arguments) >= 2 && $this->cmpImpl(...$arguments);
     }
 
-    abstract protected function compareImpl(mixed $a1, mixed $a2): bool;
+    abstract protected function cmpImpl(mixed $a1, mixed $a2): bool;
 
     /**
      * @param list $arguments

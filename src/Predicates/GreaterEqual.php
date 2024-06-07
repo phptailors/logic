@@ -20,7 +20,7 @@ final class GreaterEqual extends AbstractComparisonPredicate
         return '>=';
     }
 
-    protected function compareImpl(mixed $a1, mixed $a2): bool
+    protected function cmpImpl(mixed $a1, mixed $a2): bool
     {
         return $a1 >= $a2;
     }
