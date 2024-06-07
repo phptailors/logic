@@ -29,6 +29,7 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
 #[UsesMethod(AbstractFunctorExpression::class, 'arguments')]
 #[UsesMethod(PredicateFormula::class, '__construct')]
 #[UsesMethod(UnaryPredicateTrait::class, 'with')]
+#[UsesMethod(BinaryPredicateTrait::class, 'with')]
 final class BasicPredicatesTraitTest extends TestCase
 {
     #[\Override]
@@ -58,6 +59,86 @@ final class BasicPredicatesTraitTest extends TestCase
         $formula = $predicates->bool($t1);
         $this->assertInstanceOf(PredicateFormula::class, $formula);
         $this->assertSame([$t1], $formula->arguments());
+    }
+
+    public function testEqual(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->equal($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testNotEqual(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->notEqual($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+   }
+
+    public function testSame(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->same($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testNotSame(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->notSame($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testGt(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->gt($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testLt(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->lt($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testGe(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->ge($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
+    }
+
+    public function testLe(): void
+    {
+        $t1 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $t2 = $this->getMockBuilder(TermInterface::class)->getMock();
+        $predicates = $this->getBasicPredicatesObject();
+        $formula = $predicates->le($t1, $t2);
+        $this->assertInstanceOf(PredicateFormula::class, $formula);
+        $this->assertSame([$t1, $t2], $formula->arguments());
     }
 
     protected function getBasicPredicatesObject(): BasicPredicatesInterface

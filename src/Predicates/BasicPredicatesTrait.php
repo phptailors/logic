@@ -36,6 +36,14 @@ use Tailors\Logic\Validators\BasicValidatorsInterface;
  *  tee: Tee,
  *  falsum: Falsum,
  *  bool: BoolValue,
+ *  '==': Equal,
+ *  '!=': NotEqual,
+ *  '===': Same,
+ *  '!==': NotSame,
+ *  '>': GreaterThan,
+ *  '<': LessThan,
+ *  '>=': GreaterEqual,
+ *  '<=': LessEqual,
  * }
  */
 trait BasicPredicatesTrait
@@ -60,6 +68,46 @@ trait BasicPredicatesTrait
         return $this->basicPredicates['bool']->with($t1);
     }
 
+    public function equal(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['==']->with($t1, $t2);
+    }
+
+    public function notEqual(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['!=']->with($t1, $t2);
+    }
+
+    public function same(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['===']->with($t1, $t2);
+    }
+
+    public function notSame(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['!==']->with($t1, $t2);
+    }
+
+    public function gt(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['>']->with($t1, $t2);
+    }
+
+    public function lt(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['<']->with($t1, $t2);
+    }
+
+    public function ge(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['>=']->with($t1, $t2);
+    }
+
+    public function le(TermInterface $t1, TermInterface $t2): FormulaInterface
+    {
+        return $this->basicPredicates['<=']->with($t1, $t2);
+    }
+
     /**
      * @psalm-return BasicPredicatesMap
      *
@@ -71,6 +119,14 @@ trait BasicPredicatesTrait
             'tee'    => new Tee(),
             'falsum' => new Falsum(),
             'bool'   => new BoolValue(),
+            '=='     => new Equal(),
+            '!='     => new NotEqual(),
+            '==='    => new Same(),
+            '!=='    => new NotSame(),
+            '>'      => new GreaterThan(),
+            '<'      => new LessThan(),
+            '>='     => new GreaterEqual(),
+            '<='     => new LessEqual(),
         ];
     }
 }

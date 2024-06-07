@@ -23,4 +23,20 @@ interface BasicPredicatesInterface
     public function falsum(): Falsum;
 
     public function bool(TermInterface $t1): FormulaInterface;
+
+    public function equal(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function notEqual(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function same(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function notSame(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function gt(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function lt(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function ge(TermInterface $t1, TermInterface $t2): FormulaInterface;
+
+    public function le(TermInterface $t1, TermInterface $t2): FormulaInterface;
 }
