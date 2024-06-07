@@ -17,7 +17,13 @@ use Tailors\Logic\FormulaInterface;
  */
 interface BasicConnectivesInterface
 {
+    /**
+     * @no-named-arguments
+     */
     public function and(FormulaInterface $f1, FormulaInterface $f2, FormulaInterface ...$f): FormulaInterface;
 
+    /**
+     * @no-named-arguments
+     */
     public function or(FormulaInterface $f1, FormulaInterface $f2, FormulaInterface ...$f): FormulaInterface;
 }

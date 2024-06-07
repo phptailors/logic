@@ -15,7 +15,7 @@ use Tailors\Logic\Exceptions\InvalidArgumentException;
 /**
  * @psalm-immutable
  *
- * @psalm-template ValidArglist of array
+ * @psalm-template ValidArglist of list
  */
 interface ArglistValidatorInterface
 {

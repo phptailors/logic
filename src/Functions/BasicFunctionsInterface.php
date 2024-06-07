@@ -22,7 +22,13 @@ interface BasicFunctionsInterface
      */
     public function const($value): TermInterface;
 
+    /**
+     * @no-named-arguments
+     */
     public function sub(TermInterface $t1, TermInterface $t2, TermInterface ...$t): TermInterface;
 
+    /**
+     * @no-named-arguments
+     */
     public function sum(TermInterface $t1, TermInterface $t2, TermInterface ...$t): TermInterface;
 }
