@@ -15,11 +15,13 @@ namespace Tailors\Logic\Predicates;
  */
 final class NotEqual extends AbstractComparisonPredicate
 {
+    #[\Override]
     public function symbol(): string
     {
         return '!=';
     }
 
+    #[\Override]
     protected function cmpImpl(mixed $a1, mixed $a2): bool
     {
         return $a1 != $a2;

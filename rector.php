@@ -9,6 +9,7 @@ use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPaths([
+        __DIR__.'/src/',
         __DIR__.'/tests/src/',
     ])
     ->withRules([

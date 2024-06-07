@@ -15,26 +15,22 @@ use Tailors\Logic\Exceptions\UndefinedVariableException;
 /**
  * @psalm-immutable
  */
-final class Variable implements VariableInterface
+final readonly class Variable implements VariableInterface
 {
-    /**
-     * @var non-empty-string
-     */
-    private $symbol;
-
     /**
      * @psalm-param non-empty-string $symbol
      */
-    public function __construct(string $symbol)
+    public function __construct(private string $symbol)
     {
-        $this->symbol = $symbol;
     }
 
+    #[\Override]
     public function symbol(): string
     {
         return $this->symbol;
     }
 
+    #[\Override]
     public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->symbol;
@@ -45,6 +41,7 @@ final class Variable implements VariableInterface
      *
      * @throws UndefinedVariableException
      */
+    #[\Override]
     public function evaluate(array $environment = []): mixed
     {
         $key = $this->symbol();

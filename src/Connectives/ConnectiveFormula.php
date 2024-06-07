@@ -39,12 +39,11 @@ final class ConnectiveFormula extends AbstractFunctorExpression implements Formu
      * @throws InvalidArgumentException
      * @throws UndefinedVariableException
      */
+    #[\Override]
     public function evaluate(array $environment = []): bool
     {
         $arguments = array_map(
-            function (FormulaInterface $arg) use ($environment): bool {
-                return $arg->evaluate($environment);
-            },
+            fn(FormulaInterface $arg): bool => $arg->evaluate($environment),
             $this->arguments()
         );
 
@@ -54,6 +53,7 @@ final class ConnectiveFormula extends AbstractFunctorExpression implements Formu
     /**
      * @psalm-param array<string,mixed> $environment
      */
+    #[\Override]
     public function where(array $environment): QuantifiedFormula
     {
         return new QuantifiedFormula($this, $environment);

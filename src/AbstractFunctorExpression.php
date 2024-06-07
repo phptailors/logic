@@ -21,28 +21,17 @@ namespace Tailors\Logic;
 abstract class AbstractFunctorExpression implements FunctorExpressionInterface
 {
     /**
-     * @var Functor
-     */
-    private $functor;
-
-    /**
-     * @var array<Argument>
-     */
-    private $arguments;
-
-    /**
      * @psalm-param Functor $functor
      * @psalm-param array<Argument> $arguments
      */
-    public function __construct(FunctorInterface $functor, array $arguments)
+    public function __construct(private readonly FunctorInterface $functor, private readonly array $arguments)
     {
-        $this->functor = $functor;
-        $this->arguments = $arguments;
     }
 
     /**
      * @psalm-return array<Argument>
      */
+    #[\Override]
     public function arguments(): array
     {
         return $this->arguments;
@@ -51,6 +40,7 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
     /**
      * @psalm-return Functor
      */
+    #[\Override]
     public function functor(): FunctorInterface
     {
         return $this->functor;
@@ -78,16 +68,11 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
      */
     private function expressionStringArgumentSeparator(int $notation, string $symbol): string
     {
-        switch ($notation) {
-            case FunctorInterface::NOTATION_FUNCTION:
-                return ', ';
-
-            case FunctorInterface::NOTATION_INFIX:
-                return ' '.$symbol.' ';
-
-            default:
-                return ' ';
-        }
+        return match ($notation) {
+            FunctorInterface::NOTATION_FUNCTION => ', ',
+            FunctorInterface::NOTATION_INFIX => ' '.$symbol.' ',
+            default => ' ',
+        };
     }
 
     /**
@@ -135,8 +120,6 @@ abstract class AbstractFunctorExpression implements FunctorExpressionInterface
     {
         $me = $this; // this tricks psalm to workaround ImpureFunctionCall below
 
-        return array_map(function (ExpressionInterface $arg) use ($me) {
-            return $arg->expressionString($me);
-        }, $this->arguments());
+        return array_map(fn(ExpressionInterface $arg) => $arg->expressionString($me), $this->arguments());
     }
 }

@@ -16,25 +16,13 @@ use Tailors\Logic\Exceptions\UndefinedVariableException;
 /**
  * @psalm-immutable
  */
-final class QuantifiedFormula implements FormulaInterface
+final readonly class QuantifiedFormula implements FormulaInterface
 {
-    /**
-     * @var FormulaInterface
-     */
-    private $formula;
-
-    /**
-     * @var array<string,mixed>
-     */
-    private $environment;
-
     /**
      * @psalm-param array<string,mixed> $environment
      */
-    public function __construct(FormulaInterface $formula, array $environment)
+    public function __construct(private FormulaInterface $formula, private array $environment)
     {
-        $this->formula = $formula;
-        $this->environment = $environment;
     }
 
     public function formula(): FormulaInterface
@@ -55,6 +43,7 @@ final class QuantifiedFormula implements FormulaInterface
      *
      * @psalm-param FunctorExpressionInterface<Argument> $parent
      */
+    #[\Override]
     public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->formula()->expressionString($parent);
@@ -66,6 +55,7 @@ final class QuantifiedFormula implements FormulaInterface
      * @throws InvalidArgumentException
      * @throws UndefinedVariableException
      */
+    #[\Override]
     public function evaluate(array $environment = []): bool
     {
         return $this->formula()->evaluate(array_merge($environment, $this->environment()));
@@ -74,6 +64,7 @@ final class QuantifiedFormula implements FormulaInterface
     /**
      * @psalm-param array<string,mixed> $environment
      */
+    #[\Override]
     public function where(array $environment): self
     {
         return new self($this, $environment);

@@ -25,6 +25,7 @@ abstract class AbstractPredicate implements PredicateInterface
      *
      * @throws InvalidArgumentException
      */
+    #[\Override]
     final public function apply(...$arguments): bool
     {
         $argumentsList = array_values($arguments);

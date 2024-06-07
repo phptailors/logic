@@ -26,25 +26,16 @@ final class Constant implements FunctionInterface, TermInterface
     use SymbolNotationTrait;
 
     /**
-     * @var mixed
-     *
-     * @psalm-var T
-     */
-    private $value;
-
-    /**
      * @psalm-param T $value
-     *
-     * @param mixed $value
      */
-    public function __construct($value)
+    public function __construct(private mixed $value)
     {
-        $this->value = $value;
     }
 
     /**
      * @psalm-return 0
      */
+    #[\Override]
     public function arity(): int
     {
         return 0;
@@ -55,16 +46,19 @@ final class Constant implements FunctionInterface, TermInterface
      *
      * @psalm-return T
      */
+    #[\Override]
     public function apply(...$arguments)
     {
         return $this->value;
     }
 
+    #[\Override]
     public function symbol(): string
     {
         return 'const';
     }
 
+    #[\Override]
     public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         // FIXME: make it better
@@ -76,6 +70,7 @@ final class Constant implements FunctionInterface, TermInterface
      *
      * @see https://www.php.net/manual/en/language.operators.precedence.php
      */
+    #[\Override]
     public function precedence(): int
     {
         return 0;
@@ -84,6 +79,7 @@ final class Constant implements FunctionInterface, TermInterface
     /**
      * @psalm-param array<string,mixed> $environment
      */
+    #[\Override]
     public function evaluate(array $environment = []): mixed
     {
         return $this->apply();

@@ -25,14 +25,8 @@ use Tailors\Logic\Validators\NumbersArglistValidatorInterface;
  */
 abstract class AbstractNumericFunction extends AbstractFunction
 {
-    /**
-     * @var NumbersArglistValidatorInterface
-     */
-    private $numbersArglistValidator;
-
-    public function __construct(NumbersArglistValidatorInterface $numbersArglistValidator)
+    public function __construct(private readonly NumbersArglistValidatorInterface $numbersArglistValidator)
     {
-        $this->numbersArglistValidator = $numbersArglistValidator;
     }
 
     /**
@@ -42,6 +36,7 @@ abstract class AbstractNumericFunction extends AbstractFunction
      *
      * @throws InvalidArgumentException
      */
+    #[\Override]
     protected function validate(array $arguments): void
     {
         $this->numbersArglistValidator->validate($this->symbol(), $arguments);

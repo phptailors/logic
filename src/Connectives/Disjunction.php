@@ -20,11 +20,13 @@ final class Disjunction implements ConnectiveInterface
     use InfixNotationTrait;
     use BinaryConnectiveTrait;
 
+    #[\Override]
     public function symbol(): string
     {
         return '||';
     }
 
+    #[\Override]
     public function apply(bool ...$arguments): bool
     {
         if (0 === count($arguments)) {
@@ -35,9 +37,7 @@ final class Disjunction implements ConnectiveInterface
 
         return array_reduce(
             $arguments,
-            function (bool $result, bool $arg): bool {
-                return $result || $arg;
-            },
+            fn(bool $result, bool $arg): bool => $result || $arg,
             $last
         );
     }
@@ -47,6 +47,7 @@ final class Disjunction implements ConnectiveInterface
      *
      * @see https://www.php.net/manual/en/language.operators.precedence.php
      */
+    #[\Override]
     public function precedence(): int
     {
         return 16;

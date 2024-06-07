@@ -30,6 +30,7 @@ abstract class AbstractFunction implements FunctionInterface
      *
      * @throws InvalidArgumentException
      */
+    #[\Override]
     final public function apply(...$arguments)
     {
         $argumentsList = array_values($arguments);

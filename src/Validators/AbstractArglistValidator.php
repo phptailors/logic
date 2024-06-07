@@ -28,6 +28,7 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
      *
      * @throws InvalidArgumentException
      */
+    #[\Override]
     final public function validate(string $symbol, array $arguments): void
     {
         /** @var pure-callable(mixed,int):bool */
@@ -50,9 +51,7 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
     protected function report(string $symbol, array $invalidArgs): string
     {
         $positions = array_map(
-            function (int $index): string {
-                return (string) (1 + $index);
-            },
+            fn(int $index): string => (string) (1 + $index),
             array_keys($invalidArgs)
         );
 
@@ -67,10 +66,8 @@ abstract class AbstractArglistValidator implements ArglistValidatorInterface
 
     /**
      * @psalm-mutation-free
-     *
-     * @param mixed $value
      */
-    abstract protected function isValid($value, int $index): bool;
+    abstract protected function isValid(mixed $value, int $index): bool;
 
     /**
      * @psalm-mutation-free

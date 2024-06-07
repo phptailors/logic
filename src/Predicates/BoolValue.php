@@ -25,6 +25,7 @@ final class BoolValue extends AbstractPredicate
     use FunctionNotationTrait;
     use UnaryPredicateTrait;
 
+    #[\Override]
     public function symbol(): string
     {
         return 'bool';
@@ -33,6 +34,7 @@ final class BoolValue extends AbstractPredicate
     /**
      * @psalm-param ValidArglist $arguments
      */
+    #[\Override]
     protected function applyImpl(array $arguments): bool
     {
         return (bool) reset($arguments);
@@ -45,6 +47,7 @@ final class BoolValue extends AbstractPredicate
      *
      * @throws InvalidArgumentException
      */
+    #[\Override]
     protected function validate(array $arguments): void
     {
         if (0 === count($arguments)) {

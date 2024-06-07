@@ -29,6 +29,7 @@ abstract class AbstractComparisonPredicate extends AbstractPredicate
      *
      * @see https://www.php.net/manual/en/language.operators.precedence.php
      */
+    #[\Override]
     final public function precedence(): int
     {
         return 11;
@@ -37,6 +38,7 @@ abstract class AbstractComparisonPredicate extends AbstractPredicate
     /**
      * @psalm-param ValidArglist $arguments
      */
+    #[\Override]
     final protected function applyImpl(array $arguments): bool
     {
         return count($arguments) >= 2 && $this->cmpImpl(...$arguments);
@@ -47,5 +49,6 @@ abstract class AbstractComparisonPredicate extends AbstractPredicate
     /**
      * @param list $arguments
      */
+    #[\Override]
     final protected function validate(array $arguments): void {}
 }

@@ -24,6 +24,7 @@ final class Tee implements PredicateInterface, FormulaInterface
     /**
      * @param mixed $arguments
      */
+    #[\Override]
     public function apply(...$arguments): bool
     {
         return true;
@@ -32,16 +33,19 @@ final class Tee implements PredicateInterface, FormulaInterface
     /**
      * @psalm-return 0
      */
+    #[\Override]
     public function arity(): int
     {
         return 0;
     }
 
+    #[\Override]
     public function symbol(): string
     {
         return '⊤';
     }
 
+    #[\Override]
     public function expressionString(?FunctorExpressionInterface $parent = null): string
     {
         return $this->symbol();
@@ -52,6 +56,7 @@ final class Tee implements PredicateInterface, FormulaInterface
      *
      * @see https://www.php.net/manual/en/language.operators.precedence.php
      */
+    #[\Override]
     public function precedence(): int
     {
         return 0;
@@ -60,6 +65,7 @@ final class Tee implements PredicateInterface, FormulaInterface
     /**
      * @psalm-param array<string,mixed> $environment
      */
+    #[\Override]
     public function evaluate(array $environment = []): bool
     {
         return $this->apply();
@@ -68,6 +74,7 @@ final class Tee implements PredicateInterface, FormulaInterface
     /**
      * @psalm-param array<string,mixed> $environment
      */
+    #[\Override]
     public function where(array $environment): self
     {
         return $this;

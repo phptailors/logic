@@ -17,10 +17,7 @@ use Tailors\Logic\TermInterface;
  */
 interface BasicFunctionsInterface
 {
-    /**
-     * @param mixed $value
-     */
-    public function const($value): TermInterface;
+    public function const(mixed $value): TermInterface;
 
     /**
      * @no-named-arguments

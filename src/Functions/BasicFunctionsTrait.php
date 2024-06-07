@@ -43,10 +43,7 @@ trait BasicFunctionsTrait
      */
     private $basicFunctions;
 
-    /**
-     * @param mixed $value
-     */
-    public function const($value): TermInterface
+    public function const(mixed $value): TermInterface
     {
         return new Constant($value);
     }

@@ -39,11 +39,13 @@ final class BasicValidators implements BasicValidatorsInterface
         $this->numbersArglist = $options['numbersArglist'] ?? new NumbersArglistValidator();
     }
 
+    #[\Override]
     public function comparatorArglist(): ComparatorArglistValidatorInterface
     {
         return $this->comparatorArglist;
     }
 
+    #[\Override]
     public function numbersArglist(): NumbersArglistValidatorInterface
     {
         return $this->numbersArglist;

@@ -27,11 +27,13 @@ final class NumbersArglistValidator extends AbstractArglistValidator implements 
      *
      * @psalm-assert-if-true Number $value
      */
+    #[\Override]
     protected function isValid($value, int $index): bool
     {
         return is_int($value) || is_float($value);
     }
 
+    #[\Override]
     protected function describeInvalidArguments(bool $plural): string
     {
         return $plural ? 'are not numbers' : 'is not a number';

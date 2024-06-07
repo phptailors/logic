@@ -25,6 +25,7 @@ final class Sub extends AbstractNumericFunction
     use InfixNotationTrait;
     use BinaryFunctionTrait;
 
+    #[\Override]
     public function symbol(): string
     {
         return '-';
@@ -35,6 +36,7 @@ final class Sub extends AbstractNumericFunction
      *
      * @see https://www.php.net/manual/en/language.operators.precedence.php
      */
+    #[\Override]
     public function precedence(): int
     {
         return 7;
@@ -45,6 +47,7 @@ final class Sub extends AbstractNumericFunction
      *
      * @psalm-return Number
      */
+    #[\Override]
     protected function applyImpl(array $arguments): float|int
     {
         if (0 === count($arguments)) {

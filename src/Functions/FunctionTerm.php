@@ -38,6 +38,7 @@ final class FunctionTerm extends AbstractFunctorExpression implements TermInterf
      * @throws InvalidArgumentException
      * @throws UndefinedVariableException
      */
+    #[\Override]
     public function evaluate(array $environment = []): mixed
     {
         $arguments = array_map(fn (TermInterface $arg): mixed => $arg->evaluate($environment), $this->arguments());

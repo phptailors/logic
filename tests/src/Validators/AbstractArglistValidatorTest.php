@@ -47,7 +47,7 @@ final class AbstractArglistValidatorTest extends TestCase
              * @template-extends AbstractArglistValidator<list>
              */
             class() extends AbstractArglistValidator {
-                protected function isValid($value, int $index): bool
+                protected function isValid(mixed $value, int $index): bool
                 {
                     return true;
                 }
@@ -65,7 +65,7 @@ final class AbstractArglistValidatorTest extends TestCase
              * @template-extends AbstractArglistValidator<list>
              */
             class() extends AbstractArglistValidator {
-                protected function isValid($value, int $index): bool
+                protected function isValid(mixed $value, int $index): bool
                 {
                     return 2 !== $index;
                 }
@@ -86,7 +86,7 @@ final class AbstractArglistValidatorTest extends TestCase
              * @template-extends AbstractArglistValidator<list>
              */
             class() extends AbstractArglistValidator {
-                protected function isValid($value, int $index): bool
+                protected function isValid(mixed $value, int $index): bool
                 {
                     return 1 !== $index && 3 !== $index && 5 !== $index;
                 }

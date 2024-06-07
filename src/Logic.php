@@ -40,6 +40,7 @@ final class Logic implements LogicInterface
         $this->basicConnectives = $this->makeBasicConnectives();
     }
 
+    #[\Override]
     public function var(string $symbol): VariableInterface
     {
         return new Variable($symbol);

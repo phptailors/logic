@@ -27,11 +27,13 @@ final class ComparatorArglistValidator extends AbstractArglistValidator implemen
      *
      * @psalm-assert-if-true Comparable $value
      */
+    #[\Override]
     protected function isValid($value, int $index): bool
     {
         return is_int($value) || is_float($value) || is_bool($value);
     }
 
+    #[\Override]
     protected function describeInvalidArguments(bool $plural): string
     {
         return $plural ? 'are not comparable values' : 'is not a comparable value';
